@@ -11,13 +11,16 @@ public class GameManager : MonoBehaviour {
 		DontDestroyOnLoad(transform.gameObject);
 	}
 	// Use this for initialization
-	void Start () 
+	void Start ()
 	{
 		SceneManager.LoadSceneAsync(mainSceneName, LoadSceneMode.Single);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (gameOver)
+		{
+			Application.Quit();
+		}
 	}
 }
