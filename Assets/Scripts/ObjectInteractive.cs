@@ -20,11 +20,17 @@ public class ObjectInteractive : MonoBehaviour
 		var device = SteamVR_Controller.Input((int)trackedObj.index);
 		if (joint == null && device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger))
 		{
-			var go = GameObject.Instantiate(prefab);
-			go.transform.position = attachPoint.transform.position;
+			//var go = GameObject.Instantiate(prefab);
+			//go.transform.position = attachPoint.transform.position;
 
-			joint = go.AddComponent<FixedJoint>();
-			joint.connectedBody = attachPoint;
+			//joint = go.AddComponent<FixedJoint>();
+			//joint.connectedBody = attachPoint;
+			const int maxSearchDistance = 3;
+			RaycastHit hit;
+			if(Physics.SphereCast(transform.position, 1.0f, transform.forward, out hit, maxSearchDistance))
+			{
+				Debug.Log("I did it!");
+			}
 		}
 		else if (joint != null && device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger))
 		{
