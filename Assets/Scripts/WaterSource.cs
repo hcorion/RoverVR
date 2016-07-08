@@ -3,17 +3,14 @@ using System.Collections;
 
 public class WaterSource : MonoBehaviour
 {
-	public float waterRadius = 5;
+	public float waterRadius;
+	public float moistureContent;
+
 	private Transform radiusIndicator;
 
 	void Start ()
 	{
 		radiusIndicator = transform.GetChild (0);
-		radiusIndicator.localScale = new Vector3 ((float)waterRadius, 0.2f, (float)waterRadius);
-	}
-
-	void Update ()
-	{
-
+		radiusIndicator.localScale = new Vector3 ((float) waterRadius, 0.01f, (float) waterRadius);
 	}
 }
