@@ -10,13 +10,17 @@ namespace NewtonVR
 {
     public class NVRHand : MonoBehaviour
     {
-        private Valve.VR.EVRButtonId HoldButton = EVRButtonId.k_EButton_Grip;
+        //Previous value
+        //private Valve.VR.EVRButtonId HoldButton = EVRButtonId.k_EButton_Grip;
+        private Valve.VR.EVRButtonId HoldButton = EVRButtonId.k_EButton_SteamVR_Trigger;
         public bool HoldButtonDown = false;
         public bool HoldButtonUp = false;
         public bool HoldButtonPressed = false;
         public float HoldButtonAxis = 0f;
 
-        private Valve.VR.EVRButtonId UseButton = EVRButtonId.k_EButton_SteamVR_Trigger;
+        //Previous Value
+        //private Valve.VR.EVRButtonId UseButton = EVRButtonId.k_EButton_SteamVR_Trigger;
+        private Valve.VR.EVRButtonId UseButton = EVRButtonId.k_EButton_SteamVR_Touchpad;
         public bool UseButtonDown = false;
         public bool UseButtonUp = false;
         public bool UseButtonPressed = false;
