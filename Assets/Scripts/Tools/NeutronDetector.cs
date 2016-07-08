@@ -19,7 +19,6 @@ public class NeutronDetector : MonoBehaviour
 		Ray ray = new Ray (transform.position, forward);
 		if (Physics.Raycast (ray, out hit, scanDistance)) {
 			WaterSource waterSrc = hit.collider.GetComponent<WaterSource> ();
-			print (hit);
 			if (waterSrc != null) {
 				float moisture = waterSrc.moistureContent / Vector3.Distance (hit.point, hit.transform.position);
 				return moisture.ToString ();

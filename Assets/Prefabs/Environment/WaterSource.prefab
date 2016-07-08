@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 131.59735, y: 0.009081289, z: 142.76566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -101,10 +101,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 145574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af11f70fc333a48b4bb276174fd79c76, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a9686a2d7614244ab7f84dc08a2adc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterRadius: 5
+  waterRadius: 10
+  moistureContent: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
