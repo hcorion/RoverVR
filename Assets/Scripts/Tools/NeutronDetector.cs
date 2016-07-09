@@ -4,11 +4,13 @@ using System.Collections;
 public class NeutronDetector : MonoBehaviour
 {
 	public float scanDistance;
+	public string prompt;
+	public string units;
 
 	void Update ()
 	{
 		if (Input.GetMouseButton (0)) {
-			print (GetMoistureContent ());
+			print (prompt + GetMoistureContent ());
 		}
 	}
 
@@ -21,12 +23,17 @@ public class NeutronDetector : MonoBehaviour
 			WaterSource waterSrc = hit.collider.GetComponent<WaterSource> ();
 			if (waterSrc != null) {
 				float moisture = waterSrc.moistureContent / Vector3.Distance (hit.point, hit.transform.position);
-				return moisture.ToString ();
+				Debug.DrawLine (hit.transform.position, hit.point, Color.red, 20, false);
+				if (moisture > 0) {
+					return moisture.ToString () + units;
+				} else {
+					return ("None");
+				}
 			} else {
-				return ("No Moisture Found");
+				return ("None");
 			}
 		} else {
-			return ("No Moisture Found");
+			return ("None");
 		}
 	}
 }
