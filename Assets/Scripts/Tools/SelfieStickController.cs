@@ -5,23 +5,15 @@ namespace NewtonVR.Example
 {
     public class SelfieStickController : NVRInteractableItem
     {
-        //public GameObject BulletPrefab;
 
-        //public Transform FirePoint;
-
-        //public Vector3 BulletForce = new Vector3(0, 0, 500);
 
         public override void UseButtonDown()
         {
-            //base.UseButtonDown();
+            
+        }
+        public override void UseButtonUp()
+        {
 
-            //GameObject bullet = GameObject.Instantiate(BulletPrefab);
-            //bullet.transform.position = FirePoint.position;
-            //bullet.transform.forward = FirePoint.forward;
-
-            //bullet.GetComponent<Rigidbody>().AddRelativeForce(BulletForce);
-
-            //AttachedHand.TriggerHapticPulse(500);
         }
     }
 }

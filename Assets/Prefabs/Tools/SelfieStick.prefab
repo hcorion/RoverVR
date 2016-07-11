@@ -18,24 +18,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &108028
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 421858}
-  - 33: {fileID: 3310766}
-  - 65: {fileID: 6584320}
-  - 23: {fileID: 2318586}
-  m_Layer: 0
-  m_Name: Balancer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &132152
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,9 +97,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 487906}
-  - 114: {fileID: 11462932}
   - 136: {fileID: 13656492}
   - 54: {fileID: 5437324}
+  - 114: {fileID: 11447512}
   m_Layer: 0
   m_Name: SelfieStick
   m_TagString: Untagged
@@ -125,19 +107,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &421858
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 108028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.08, z: 0}
-  m_LocalScale: {x: 0.0003, y: 0.0003, z: 0.0003}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 487906}
-  m_RootOrder: 0
 --- !u!4 &433470
 Transform:
   m_ObjectHideFlags: 1
@@ -150,7 +119,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 487906}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &456016
 Transform:
   m_ObjectHideFlags: 1
@@ -164,7 +133,7 @@ Transform:
   m_Children:
   - {fileID: 22472538}
   m_Father: {fileID: 487906}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &464336
 Transform:
   m_ObjectHideFlags: 1
@@ -177,7 +146,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 487906}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &487906
 Transform:
   m_ObjectHideFlags: 1
@@ -185,42 +154,15 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191186}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 136.19661, y: 0.66, z: 134.42787}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 142.26, y: -0.21297, z: 134.11}
+  m_LocalScale: {x: 0.38517594, y: 0.38517585, z: 0.38517585}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 421858}
   - {fileID: 464336}
   - {fileID: 456016}
   - {fileID: 433470}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2318586
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 108028}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!23 &2342348
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -299,13 +241,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3310766
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 108028}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &3314170
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -354,18 +289,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6584320
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 108028}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11407388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,7 +310,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &11462932
+--- !u!114 &11447512
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -395,17 +318,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 191186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15bd493558da4798997ec5bfed764d4, type: 3}
+  m_Script: {fileID: 11500000, guid: fa4a39dec1a23a043a14d554ccce8fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rigidbody: {fileID: 5437324}
+  Rigidbody: {fileID: 0}
   CanAttach: 1
   DisableKinematicOnAttach: 1
   EnableKinematicOnDetach: 0
-  DropDistance: 1
+  DropDistance: 3
   EnableGravityOnDetach: 1
   AttachedHand: {fileID: 0}
-  InteractionPoint: {fileID: 464336}
+  InteractionPoint: {fileID: 0}
 --- !u!114 &11470490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -484,10 +407,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.07105492
-  m_Height: 1.4283412
+  m_Radius: 0.043876547
+  m_Height: 1.2565564
   m_Direction: 1
-  m_Center: {x: 0, y: 1.85, z: 0}
+  m_Center: {x: 0, y: 1.77, z: 0}
 --- !u!222 &22292168
 CanvasRenderer:
   m_ObjectHideFlags: 1
