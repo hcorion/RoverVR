@@ -1,16 +1,27 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class NeutronDetector : MonoBehaviour
 {
 	public float scanDistance;
-	public string prompt;
 	public string units;
+	public GameObject textObject;
+
+	Text content;
+
+	void Start ()
+	{
+		content = textObject.GetComponent<Text> ();
+		content.text = "";
+	}
 
 	void Update ()
 	{
 		if (Input.GetMouseButton (0)) {
-			print (prompt + GetMoistureContent ());
+			content.text = GetMoistureContent ();
+		} else {
+			content.text = "";
 		}
 	}
 
