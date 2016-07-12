@@ -29,10 +29,11 @@ namespace NewtonVR.Example
 
 		public override void UseButtonDown ()
 		{
+			print ("Start Activated!");
 			base.UseButtonDown ();
 			content.text = GetMoistureContent ();
 			AttachedHand.TriggerHapticPulse (500);
-			print ("Activated!");
+			print ("Finish Activated!");
 		}
 
 		string GetMoistureContent ()
