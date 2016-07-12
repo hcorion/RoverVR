@@ -7,6 +7,13 @@ namespace NewtonVR.Example
 	{
 		public float scanDistance;
 		public Transform selfieCamera;
+		private GameObject gameController;
+
+		new void Start ()
+		{
+			base.Start ();
+			gameController = GameObject.FindGameObjectWithTag ("GameController");
+		}
 
 		public override void UseButtonDown ()
 		{
@@ -26,6 +33,7 @@ namespace NewtonVR.Example
 					Debug.DrawLine (hit.transform.position, hit.point, Color.blue, 20, false);
 					if (moisture < 1) {
 						return "You found life";
+						gameController.GetComponent<GameManager> ().GameOver ();
 					} else {
 						return "You are close";
 					}
@@ -41,5 +49,6 @@ namespace NewtonVR.Example
 		{
 
 		}
+
 	}
 }
