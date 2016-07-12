@@ -134,7 +134,7 @@ GameObject:
   - 222: {fileID: 22299304}
   - 114: {fileID: 11415498}
   m_Layer: 0
-  m_Name: Screem
+  m_Name: Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
