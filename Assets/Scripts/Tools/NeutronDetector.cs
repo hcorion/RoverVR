@@ -38,7 +38,7 @@ namespace NewtonVR.Example
 					float moisture = waterSrc.moistureContent / Vector3.Distance (hit.point, hit.transform.position);
 					Debug.DrawLine (hit.transform.position, hit.point, Color.blue, 20, false);
 					if (moisture > 0) {
-						return moisture.ToString () + units;
+						return moisture.ToString ("F2") + units;
 					} else {
 						return ("None");
 					}
