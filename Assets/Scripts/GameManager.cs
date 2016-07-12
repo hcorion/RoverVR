@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	public bool gameOver = false;
+	public GameObject wonText;
 	public string mainSceneName = "Main Scene";
 	void Awake()
 	{
@@ -20,7 +21,12 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		if (gameOver)
 		{
-			Application.Quit();
+			//Application.Quit();
+			wonText.SetActive(true);
 		}
+	}
+	public void GameOver()
+	{
+		gameOver = true;
 	}
 }
