@@ -523,6 +523,7 @@ MonoBehaviour:
   CameraScreen: {fileID: 11448846}
   loadingScreen: {fileID: 161018}
   blankImage: {fileID: 21300000, guid: ac329d459272c7f42916059775cda26d, type: 3}
+  waterSrc: {fileID: 0}
 --- !u!136 &13620286
 CapsuleCollider:
   m_ObjectHideFlags: 1

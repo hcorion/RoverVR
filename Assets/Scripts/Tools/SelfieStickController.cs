@@ -21,6 +21,8 @@ namespace NewtonVR.Example
 
 		private bool isLoading = false;
 
+		public WaterSource waterSrc;
+
 		new void Start ()
 		{
 			base.Start ();
@@ -28,11 +30,6 @@ namespace NewtonVR.Example
 			if (noLifeImages [0] == null || LifeImages [0] == null) {
 				Debug.LogWarning ("NoLifeImages or LifeImages has no images assigned!");
 			}
-		}
-
-		void Update ()
-		{
-
 		}
 
 		public override void UseButtonDown ()
@@ -48,31 +45,34 @@ namespace NewtonVR.Example
 			Vector3 fwd = selfieCamera.TransformDirection (Vector3.forward); 
 			RaycastHit hit;
 			Ray r = new Ray (selfieCamera.position, fwd);
+
 			if (Physics.Raycast (r, out hit, scanDistance)) {
-				Debug.DrawRay (selfieCamera.position, fwd, Color.red, 1, false);
+				
+				Debug.DrawRay (selfieCamera.position, fwd, Color.yellow, 1, false);
 				WaterSource waterSrc = hit.collider.GetComponent<WaterSource> ();
+
 				if (waterSrc != null) {
+					
 					float moisture = 1 / Vector3.Distance (hit.point, hit.transform.position);
-					Debug.DrawLine (hit.transform.position, hit.point, Color.green, 20, false);
-					if (moisture > 1) {
+
+					if (moisture >= waterSrc.minWaterForLife) {
 						StartCoroutine (loadOnScreen (LifeImages [Random.Range (0, LifeImages.Length)], true));
+						Debug.DrawLine (hit.transform.position, hit.point, Color.green, 20, false);
 						return "Life found";
 					} else {
 						StartCoroutine (loadOnScreen (noLifeImages [Random.Range (0, noLifeImages.Length)], false));
+						Debug.DrawLine (hit.transform.position, hit.point, Color.red, 20, false);
 						return "You are close";
 					}
 				} else {
 					StartCoroutine (loadOnScreen (noLifeImages [Random.Range (0, noLifeImages.Length)], false));
+					Debug.DrawLine (hit.transform.position, hit.point, Color.red, 20, false);
 					return "No life here";
 				}
 			} else {
+				Debug.DrawLine (hit.transform.position, hit.point, Color.red, 20, false);
 				return "Use on soil";
 			}
-		}
-
-		public override void UseButtonUp ()
-		{
-
 		}
 
 		IEnumerator loadOnScreen (Sprite image, bool hasWon)

@@ -4,6 +4,7 @@ using System.Collections;
 public class WaterSource : MonoBehaviour
 {
 	public float waterRadius;
+	public float minWaterForLife;
 	public float moistureContent;
 
 	private Transform radiusIndicator;

@@ -54,6 +54,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &128686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 411248}
+  - 33: {fileID: 3322210}
+  - 65: {fileID: 6594596}
+  - 23: {fileID: 2330410}
+  m_Layer: 0
+  m_Name: Fire Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &134864
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +160,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &411248
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128686}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.082, y: 0.1307, z: 0.0266}
+  m_LocalScale: {x: 0.0065810583, y: 0.006581058, z: 0.006581058}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 486646}
+  m_RootOrder: 3
 --- !u!4 &435250
 Transform:
   m_ObjectHideFlags: 1
@@ -196,6 +227,7 @@ Transform:
   - {fileID: 460714}
   - {fileID: 459648}
   - {fileID: 22491474}
+  - {fileID: 411248}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!23 &2311500
@@ -250,6 +282,32 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!23 &2330410
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128686}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!23 &2333100
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -283,6 +341,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134864}
   m_Mesh: {fileID: 4300000, guid: 8ebaca2e2016444b88170dbf31b43128, type: 3}
+--- !u!33 &3322210
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128686}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &3346490
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -342,6 +407,18 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6594596
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128686}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -516,15 +593,12 @@ MonoBehaviour:
   EnableGravityOnDetach: 1
   AttachedHand: {fileID: 0}
   InteractionPoint: {fileID: 435250}
-  scanDistance: 5
+  scanDistance: 2.5
   units: cm3
   textObject: {fileID: 171862}
+  firePoint: {fileID: 411248}
   lineRenderer: {fileID: 12059788}
   laserWidth: 0.01
-  body: {fileID: 460714}
-  rayOffSetX: 0
-  rayOffSetY: 0.05
-  rayOffSetZ: 0.03
 --- !u!120 &12059788
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -559,10 +633,10 @@ LineRenderer:
     endWidth: 1
     m_StartColor:
       serializedVersion: 2
-      rgba: 4278190335
+      rgba: 4294930688
     m_EndColor:
       serializedVersion: 2
-      rgba: 4278190335
+      rgba: 4294930688
   m_UseWorldSpace: 1
 --- !u!222 &22218534
 CanvasRenderer:

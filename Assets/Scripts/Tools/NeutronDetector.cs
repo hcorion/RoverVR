@@ -9,22 +9,23 @@ namespace NewtonVR.Example
 		public float scanDistance;
 		public string units;
 		public GameObject textObject;
+		public Transform firePoint;
 
 		public LineRenderer lineRenderer;
 		public float laserWidth;
-		public Transform body;
-
-		public float rayOffSetX;
-		public float rayOffSetY;
-		public float rayOffSetZ;
 
 		Text content;
 		bool buttonPressed;
 
+		//Aaron's Power Limit
+		public int maxPower = 100;
+		public int startingPower = 100;
+		//Has a lower limit of 0 and an upper limit of 100
+		[Range (0.0f, 100.0f)] private float currentPower;
+
 		new void Start ()
 		{
 			base.Start ();
-
 			buttonPressed = false;
 
 			Vector3[] initLaserPositions = new Vector3[2] {
@@ -37,20 +38,24 @@ namespace NewtonVR.Example
 
 			content = textObject.GetComponent<Text> ();
 			content.text = "";
+
+			//For power limit
+			currentPower = startingPower;
 		}
 
 		void Update ()
 		{
-			if (buttonPressed) {
-				content.text = GetMoistureContent ();
-			}
+			if (currentPower >= 0) {
+				if (buttonPressed) {
+					//To make the battery go down by time, not framerate.
+					currentPower -= Time.deltaTime / 2;
+					Debug.Log ("Current power for Neutron Detector: " + currentPower);
+					content.text = GetMoistureContent ();
+				}
 
-			if (!buttonPressed) {
-				lineRenderer.enabled = false;
-			}
-
-			if (AttachedHand != null) {
-				//Disable Hand Modle
+				if (!buttonPressed) {
+					lineRenderer.enabled = false;
+				}
 			}
 		}
 
@@ -70,16 +75,15 @@ namespace NewtonVR.Example
 		{
 			RaycastHit hit;
 			Vector3 forward = transform.TransformVector (Vector3.left);
-			Vector3 targetPosition = new Vector3 (body.position.x + rayOffSetX, body.position.y + rayOffSetY, body.position.z + rayOffSetZ);
-			Ray ray = new Ray (targetPosition, forward);
-			ShootLaserFromTargetPosition (targetPosition, forward, scanDistance);
+			Ray ray = new Ray (firePoint.position, forward);
+			ShootLaserFromTargetPosition (firePoint.position, forward, scanDistance);
 			lineRenderer.enabled = true;
 			if (Physics.Raycast (ray, out hit, scanDistance)) {
-				Debug.DrawRay (body.position, forward, Color.red, 1, false);
+				Debug.DrawRay (firePoint.position, forward, Color.blue, 0.01f, false);
 				WaterSource waterSrc = hit.collider.GetComponent<WaterSource> ();
 				if (waterSrc != null) {
 					float moisture = 1 / Vector3.Distance (hit.point, hit.transform.position);
-					Debug.DrawLine (hit.transform.position, hit.point, Color.green, 20, false);
+					Debug.DrawLine (hit.transform.position, hit.point, Color.white, 20f, false);
 					if (moisture > 0) {
 						return moisture.ToString ("F2") + units;
 					} else {
@@ -95,7 +99,6 @@ namespace NewtonVR.Example
 
 		public void ShootLaserFromTargetPosition (Vector3 targetPosition, Vector3 direction, float length)
 		{
-			targetPosition = new Vector3 (targetPosition.x + rayOffSetX, targetPosition.y + rayOffSetY, targetPosition.z + rayOffSetZ);
 			Ray ray = new Ray (targetPosition, direction);
 			RaycastHit hit;
 			Vector3 endPosition = targetPosition + (length * direction);
@@ -103,6 +106,8 @@ namespace NewtonVR.Example
 			if (Physics.Raycast (ray, out hit, length)) {
 				endPosition = hit.point;
 			}
+
+			lineRenderer.material = new Material (Shader.Find ("Particles/Additive"));
 
 			lineRenderer.SetColors (Color.blue, Color.blue);
 			lineRenderer.SetPosition (0, targetPosition);
