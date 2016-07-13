@@ -19,6 +19,8 @@ namespace NewtonVR.Example
 
 		public Sprite blankImage;
 
+		private bool isLoading = false;
+
 		new void Start ()
 		{
 			base.Start ();
@@ -35,7 +37,11 @@ namespace NewtonVR.Example
 
 		public override void UseButtonDown ()
 		{
-			print (isLife ());
+			if(!isLoading)
+			{
+				print (isLife ());
+			}
+			
 		}
 
 		string isLife ()
@@ -73,11 +79,13 @@ namespace NewtonVR.Example
 
 		IEnumerator loadOnScreen (Sprite image)
 		{
+			isLoading = true;
 			CameraScreen.sprite = blankImage;
 			loadingScreen.SetActive (true);
 			yield return new WaitForSeconds (waitTime);
 			loadingScreen.SetActive (false);
 			CameraScreen.sprite = image;
+			isLoading = false;
 			yield return null;
 		}
 
