@@ -12,6 +12,11 @@ namespace NewtonVR.Example
 
 		public LineRenderer lineRenderer;
 		public float laserWidth;
+		public Transform body;
+
+		public float rayOffSetX;
+		public float rayOffSetY;
+		public float rayOffSetZ;
 
 		Text content;
 		bool buttonPressed;
@@ -40,6 +45,10 @@ namespace NewtonVR.Example
 				content.text = GetMoistureContent ();
 			}
 
+			if (!buttonPressed) {
+				lineRenderer.enabled = false;
+			}
+
 			if (AttachedHand != null) {
 				//Disable Hand Modle
 			}
@@ -61,14 +70,15 @@ namespace NewtonVR.Example
 		{
 			RaycastHit hit;
 			Vector3 forward = transform.TransformVector (Vector3.left);
-			Ray ray = new Ray (transform.position, forward);
+			Vector3 targetPosition = new Vector3 (body.position.x + rayOffSetX, body.position.y + rayOffSetY, body.position.z + rayOffSetZ);
+			Ray ray = new Ray (targetPosition, forward);
+			ShootLaserFromTargetPosition (targetPosition, forward, scanDistance);
+			lineRenderer.enabled = true;
 			if (Physics.Raycast (ray, out hit, scanDistance)) {
-				Debug.DrawRay (transform.position, forward, Color.red, 1, false);
+				Debug.DrawRay (body.position, forward, Color.red, 1, false);
 				WaterSource waterSrc = hit.collider.GetComponent<WaterSource> ();
 				if (waterSrc != null) {
 					float moisture = 1 / Vector3.Distance (hit.point, hit.transform.position);
-					ShootLaserFromTargetPosition (transform.position, forward, scanDistance);
-					lineRenderer.enabled = true;
 					Debug.DrawLine (hit.transform.position, hit.point, Color.green, 20, false);
 					if (moisture > 0) {
 						return moisture.ToString ("F2") + units;
@@ -85,6 +95,7 @@ namespace NewtonVR.Example
 
 		public void ShootLaserFromTargetPosition (Vector3 targetPosition, Vector3 direction, float length)
 		{
+			targetPosition = new Vector3 (targetPosition.x + rayOffSetX, targetPosition.y + rayOffSetY, targetPosition.z + rayOffSetZ);
 			Ray ray = new Ray (targetPosition, direction);
 			RaycastHit hit;
 			Vector3 endPosition = targetPosition + (length * direction);
@@ -93,6 +104,7 @@ namespace NewtonVR.Example
 				endPosition = hit.point;
 			}
 
+			lineRenderer.SetColors (Color.blue, Color.blue);
 			lineRenderer.SetPosition (0, targetPosition);
 			lineRenderer.SetPosition (1, endPosition);
 		}

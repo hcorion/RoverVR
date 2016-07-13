@@ -521,6 +521,10 @@ MonoBehaviour:
   textObject: {fileID: 171862}
   lineRenderer: {fileID: 12059788}
   laserWidth: 0.01
+  body: {fileID: 460714}
+  rayOffSetX: 0
+  rayOffSetY: 0.05
+  rayOffSetZ: 0.03
 --- !u!120 &12059788
 LineRenderer:
   m_ObjectHideFlags: 1
