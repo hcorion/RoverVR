@@ -12,20 +12,22 @@ namespace NewtonVR.Example
 
 		public LineRenderer lineRenderer;
 		public float laserWidth;
-		public LaserScript laserScript;
 
 		Text content;
+		bool buttonPressed;
 
 		new void Start ()
 		{
 			base.Start ();
+
+			buttonPressed = false;
 
 			Vector3[] initLaserPositions = new Vector3[2] {
 				Vector3.zero,
 				Vector3.zero
 			};
 
-			//lineRenderer.SetPosition (initLaserPositions);
+			lineRenderer.SetPositions (initLaserPositions);
 			lineRenderer.SetWidth (laserWidth, laserWidth);
 
 			content = textObject.GetComponent<Text> ();
@@ -34,6 +36,10 @@ namespace NewtonVR.Example
 
 		void Update ()
 		{
+			if (buttonPressed) {
+				content.text = GetMoistureContent ();
+			}
+
 			if (AttachedHand != null) {
 				//Disable Hand Modle
 			}
@@ -42,8 +48,13 @@ namespace NewtonVR.Example
 		public override void UseButtonDown ()
 		{
 			base.UseButtonDown ();
-			content.text = GetMoistureContent ();
-			AttachedHand.TriggerHapticPulse (500);
+			buttonPressed = true;
+		}
+
+		public override void UseButtonUp ()
+		{
+			base.UseButtonUp ();
+			buttonPressed = false;
 		}
 
 		string GetMoistureContent ()
@@ -56,8 +67,9 @@ namespace NewtonVR.Example
 				WaterSource waterSrc = hit.collider.GetComponent<WaterSource> ();
 				if (waterSrc != null) {
 					float moisture = 1 / Vector3.Distance (hit.point, hit.transform.position);
-					laserScript.ShootLaserFromTargetPosition (lineRenderer, transform.position, forward, scanDistance, laserWidth);
-					Debug.DrawLine (hit.transform.position, hit.point, Color.blue, 20, false);
+					ShootLaserFromTargetPosition (transform.position, forward, scanDistance);
+					lineRenderer.enabled = true;
+					Debug.DrawLine (hit.transform.position, hit.point, Color.green, 20, false);
 					if (moisture > 0) {
 						return moisture.ToString ("F2") + units;
 					} else {
@@ -69,6 +81,20 @@ namespace NewtonVR.Example
 			} else {
 				return ("None");
 			}
+		}
+
+		public void ShootLaserFromTargetPosition (Vector3 targetPosition, Vector3 direction, float length)
+		{
+			Ray ray = new Ray (targetPosition, direction);
+			RaycastHit hit;
+			Vector3 endPosition = targetPosition + (length * direction);
+
+			if (Physics.Raycast (ray, out hit, length)) {
+				endPosition = hit.point;
+			}
+
+			lineRenderer.SetPosition (0, targetPosition);
+			lineRenderer.SetPosition (1, endPosition);
 		}
 	}
 }

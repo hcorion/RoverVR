@@ -23,13 +23,12 @@ namespace NewtonVR.Example
 		{
 			base.Start ();
 			gameController = GameObject.FindGameObjectWithTag ("GameController");
-			if (noLifeImages[0] == null || LifeImages[0] == null)
-			{
-				Debug.LogWarning("NoLifeImages or LifeImages has no images assigned!");
+			if (noLifeImages [0] == null || LifeImages [0] == null) {
+				Debug.LogWarning ("NoLifeImages or LifeImages has no images assigned!");
 			}
 		}
 
-		void Update()
+		void Update ()
 		{
 
 		}
@@ -49,17 +48,17 @@ namespace NewtonVR.Example
 				WaterSource waterSrc = hit.collider.GetComponent<WaterSource> ();
 				if (waterSrc != null) {
 					float moisture = 1 / Vector3.Distance (hit.point, hit.transform.position);
-					Debug.DrawLine (hit.transform.position, hit.point, Color.blue, 20, false);
+					Debug.DrawLine (hit.transform.position, hit.point, Color.green, 20, false);
 					if (moisture < 1) {
 						gameController.GetComponent<GameManager> ().GameOver ();
-						StartCoroutine(loadOnScreen(LifeImages[Random.Range(0, LifeImages.Length)]));
+						StartCoroutine (loadOnScreen (LifeImages [Random.Range (0, LifeImages.Length)]));
 						return "Life found";
 					} else {
-						StartCoroutine(loadOnScreen(noLifeImages[Random.Range(0, noLifeImages.Length)]));
+						StartCoroutine (loadOnScreen (noLifeImages [Random.Range (0, noLifeImages.Length)]));
 						return "You are close";
 					}
 				} else {
-					StartCoroutine(loadOnScreen(noLifeImages[Random.Range(0, noLifeImages.Length)]));
+					StartCoroutine (loadOnScreen (noLifeImages [Random.Range (0, noLifeImages.Length)]));
 					return "No life here";
 				}
 			} else {
@@ -72,12 +71,12 @@ namespace NewtonVR.Example
 
 		}
 
-		IEnumerator loadOnScreen(Sprite image)
+		IEnumerator loadOnScreen (Sprite image)
 		{
 			CameraScreen.sprite = blankImage;
-			loadingScreen.SetActive(true);
-			yield return new WaitForSeconds(waitTime);
-			loadingScreen.SetActive(false);
+			loadingScreen.SetActive (true);
+			yield return new WaitForSeconds (waitTime);
+			loadingScreen.SetActive (false);
 			CameraScreen.sprite = image;
 			yield return null;
 		}

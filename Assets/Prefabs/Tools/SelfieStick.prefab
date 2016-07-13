@@ -46,6 +46,7 @@ GameObject:
   - 224: {fileID: 22440924}
   - 222: {fileID: 22292168}
   - 114: {fileID: 11470490}
+  - 95: {fileID: 9502784}
   m_Layer: 5
   m_Name: loadingScreen
   m_TagString: Untagged
@@ -205,10 +206,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164234}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.744, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0.763, z: 0}
   m_LocalScale: {x: 0.45757383, y: 0.45757383, z: 0.45757383}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 464336}
   m_RootOrder: 0
@@ -383,6 +384,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &9502784
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 161018}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9a3e3b8ee8e5442b08763f0641751481, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11407388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -501,7 +519,7 @@ MonoBehaviour:
   LifeImages:
   - {fileID: 21300000, guid: 6a34f757b71e5431ab2da12c48d41f2b, type: 3}
   - {fileID: 21300000, guid: 04a96a34cc04b4c268f383503e0f4216, type: 3}
-  waitTime: 50
+  waitTime: 3
   CameraScreen: {fileID: 11448846}
   loadingScreen: {fileID: 161018}
   blankImage: {fileID: 21300000, guid: ac329d459272c7f42916059775cda26d, type: 3}
