@@ -30,7 +30,6 @@ GameObject:
   - 114: {fileID: 11469922}
   - 54: {fileID: 5443994}
   - 120: {fileID: 12059788}
-  - 114: {fileID: 11455158}
   m_Layer: 0
   m_Name: radargun_basic
   m_TagString: Untagged
@@ -498,17 +497,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &11455158
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b167cd4c8f786f4bab109b3e8553d8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11469922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,7 +520,7 @@ MonoBehaviour:
   units: cm3
   textObject: {fileID: 171862}
   lineRenderer: {fileID: 12059788}
-  laserWidth: 2
+  laserWidth: 0.01
 --- !u!120 &12059788
 LineRenderer:
   m_ObjectHideFlags: 1

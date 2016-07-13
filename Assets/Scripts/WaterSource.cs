@@ -10,7 +10,6 @@ public class WaterSource : MonoBehaviour
 
 	void Start ()
 	{
-		//radiusIndicator = transform.GetChild (0);
 		radiusIndicator = transform;
 		radiusIndicator.localScale = new Vector3 ((float)waterRadius, 0.005f, (float)waterRadius);
 	}

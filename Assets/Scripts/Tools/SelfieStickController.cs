@@ -37,8 +37,7 @@ namespace NewtonVR.Example
 
 		public override void UseButtonDown ()
 		{
-			if(!isLoading)
-			{
+			if (!isLoading) {
 				print (isLife ());
 			}
 			
@@ -55,16 +54,15 @@ namespace NewtonVR.Example
 				if (waterSrc != null) {
 					float moisture = 1 / Vector3.Distance (hit.point, hit.transform.position);
 					Debug.DrawLine (hit.transform.position, hit.point, Color.green, 20, false);
-					if (moisture < 1) {
-						gameController.GetComponent<GameManager> ().GameOver ();
-						StartCoroutine (loadOnScreen (LifeImages [Random.Range (0, LifeImages.Length)]));
+					if (moisture > 1) {
+						StartCoroutine (loadOnScreen (LifeImages [Random.Range (0, LifeImages.Length)], true));
 						return "Life found";
 					} else {
-						StartCoroutine (loadOnScreen (noLifeImages [Random.Range (0, noLifeImages.Length)]));
+						StartCoroutine (loadOnScreen (noLifeImages [Random.Range (0, noLifeImages.Length)], false));
 						return "You are close";
 					}
 				} else {
-					StartCoroutine (loadOnScreen (noLifeImages [Random.Range (0, noLifeImages.Length)]));
+					StartCoroutine (loadOnScreen (noLifeImages [Random.Range (0, noLifeImages.Length)], false));
 					return "No life here";
 				}
 			} else {
@@ -77,7 +75,7 @@ namespace NewtonVR.Example
 
 		}
 
-		IEnumerator loadOnScreen (Sprite image)
+		IEnumerator loadOnScreen (Sprite image, bool hasWon)
 		{
 			isLoading = true;
 			CameraScreen.sprite = blankImage;
@@ -85,6 +83,9 @@ namespace NewtonVR.Example
 			yield return new WaitForSeconds (waitTime);
 			loadingScreen.SetActive (false);
 			CameraScreen.sprite = image;
+			if (hasWon == true) {
+				gameController.GetComponent<GameManager> ().GameOver ();
+			}
 			isLoading = false;
 			yield return null;
 		}
