@@ -38,10 +38,10 @@ namespace NewtonVR.Example
 				Debug.DrawRay (selfieCamera.position, fwd, Color.red, 1, false);
 				WaterSource waterSrc = hit.collider.GetComponent<WaterSource> ();
 				if (waterSrc != null) {
-					float moisture = waterSrc.moistureContent / Vector3.Distance (hit.point, hit.transform.position);
+					float moisture = 1 / Vector3.Distance (hit.point, hit.transform.position);
 					Debug.DrawLine (hit.transform.position, hit.point, Color.blue, 20, false);
 					if (moisture < 1) {
-						return "You found life";
+						return "Life found";
 						gameController.GetComponent<GameManager> ().GameOver ();
 						CameraScreen.sprite = LifeImages[Random.Range(0, LifeImages.Length)];
 					} else {
