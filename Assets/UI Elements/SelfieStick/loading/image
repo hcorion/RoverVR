@@ -1,0 +1,39 @@
+{
+  "targets" : {
+    "default" : {
+      "coordinates" : {
+        "file-path" : "$(DOCUMENT)-$(SHEET)-$(TARGET).plist",
+        "format" : "com.zwopple.zwoptex.coordinates.cocos2d"
+      },
+      "texture" : {
+        "dithering" : true,
+        "file-path" : "$(DOCUMENT)-$(SHEET)-$(TARGET).png",
+        "color-profile" : "com.zwopple.zwoptex.texture.colorprofile.none",
+        "compression" : "com.zwopple.zwoptex.texture.compression.none",
+        "format" : "com.zwopple.zwoptex.texture.png"
+      },
+      "manifest" : {
+        "file-path" : "$(DOCUMENT)-$(TARGET).json",
+        "format" : "com.zwopple.zwoptex.manifest.json"
+      },
+      "scale-mode" : "smooth",
+      "scale" : 1
+    }
+  },
+  "resources" : [
+    "\/Users\/zionnimchuk\/Documents\/Unity 3D Projects\/RoverVR\/Assets\/UI Elements\/SelfieStick\/loading"
+  ],
+  "settings" : {
+    "layout-padding" : 2,
+    "sheet-size-mode" : "next_power_of_two",
+    "layout-mode" : "basic",
+    "sprite-extruding" : 0,
+    "sprite-trimming" : true,
+    "sheet-height" : 2048,
+    "sheet-width" : 2048,
+    "sprite-aliasing" : true,
+    "layout-spacing" : 2,
+    "sprite-padding" : 0,
+    "sprite-divisor" : 1
+  }
+}

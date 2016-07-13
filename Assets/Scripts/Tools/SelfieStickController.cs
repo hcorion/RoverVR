@@ -11,8 +11,11 @@ namespace NewtonVR.Example
 		private GameObject gameController;
 		public Sprite[] noLifeImages;
 		public Sprite[] LifeImages;
+
+		public float waitTime = 0.0f;
 		
 		public Image CameraScreen;
+		private float curTime = 0.0f;
 
 		new void Start ()
 		{
@@ -24,9 +27,18 @@ namespace NewtonVR.Example
 			}
 		}
 
+		void Update()
+		{
+			curTime += Time.deltaTime;
+		}
+
 		public override void UseButtonDown ()
 		{
-			print (isLife ());
+			if(curTime >= waitTime)
+			{
+				curTime = 0.0f;
+				print (isLife ());
+			}
 		}
 
 		string isLife ()
