@@ -15,7 +15,9 @@ namespace NewtonVR.Example
 		public float waitTime = 0.0f;
 		
 		public Image CameraScreen;
-		private float curTime = 0.0f;
+		public GameObject loadingScreen;
+
+		public Sprite blankImage;
 
 		new void Start ()
 		{
@@ -29,16 +31,12 @@ namespace NewtonVR.Example
 
 		void Update()
 		{
-			curTime += Time.deltaTime;
+
 		}
 
 		public override void UseButtonDown ()
 		{
-			if(curTime >= waitTime)
-			{
-				curTime = 0.0f;
-				print (isLife ());
-			}
+			print (isLife ());
 		}
 
 		string isLife ()
@@ -55,14 +53,14 @@ namespace NewtonVR.Example
 					if (moisture < 1) {
 						return "Life found";
 						gameController.GetComponent<GameManager> ().GameOver ();
-						CameraScreen.sprite = LifeImages[Random.Range(0, LifeImages.Length)];
+						StartCoroutine(loadOnScreen(LifeImages[Random.Range(0, LifeImages.Length)]));
 					} else {
 						return "You are close";
-						CameraScreen.sprite = noLifeImages[Random.Range(0, noLifeImages.Length)];
+						StartCoroutine(loadOnScreen(noLifeImages[Random.Range(0, noLifeImages.Length)]));
 					}
 				} else {
 					return "No life here";
-					CameraScreen.sprite = noLifeImages[Random.Range(0, noLifeImages.Length)];
+					StartCoroutine(loadOnScreen(noLifeImages[Random.Range(0, noLifeImages.Length)]));
 				}
 			} else {
 				return "Use on soil";
@@ -72,6 +70,16 @@ namespace NewtonVR.Example
 		public override void UseButtonUp ()
 		{
 
+		}
+
+		IEnumerator loadOnScreen(Sprite image)
+		{
+			CameraScreen.sprite = blankImage;
+			loadingScreen.SetActive(true);
+			yield return new WaitForSeconds(waitTime);
+			loadingScreen.SetActive(false);
+			CameraScreen.sprite = image;
+			yield return null;
 		}
 
 	}
