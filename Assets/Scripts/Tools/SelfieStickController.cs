@@ -51,16 +51,16 @@ namespace NewtonVR.Example
 					float moisture = 1 / Vector3.Distance (hit.point, hit.transform.position);
 					Debug.DrawLine (hit.transform.position, hit.point, Color.blue, 20, false);
 					if (moisture < 1) {
-						return "Life found";
 						gameController.GetComponent<GameManager> ().GameOver ();
 						StartCoroutine(loadOnScreen(LifeImages[Random.Range(0, LifeImages.Length)]));
+						return "Life found";
 					} else {
-						return "You are close";
 						StartCoroutine(loadOnScreen(noLifeImages[Random.Range(0, noLifeImages.Length)]));
+						return "You are close";
 					}
 				} else {
-					return "No life here";
 					StartCoroutine(loadOnScreen(noLifeImages[Random.Range(0, noLifeImages.Length)]));
+					return "No life here";
 				}
 			} else {
 				return "Use on soil";
