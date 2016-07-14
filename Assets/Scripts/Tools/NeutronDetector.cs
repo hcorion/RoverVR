@@ -45,7 +45,7 @@ namespace NewtonVR.Example
 
 		void Update ()
 		{
-			if (currentPower >= 0) {
+			if (currentPower > 0) {
 				if (buttonPressed) {
 					//To make the battery go down by time, not framerate.
 					currentPower -= Time.deltaTime / 2;
@@ -56,6 +56,8 @@ namespace NewtonVR.Example
 				if (!buttonPressed) {
 					lineRenderer.enabled = false;
 				}
+			} else {
+				lineRenderer.enabled = false;
 			}
 		}
 
