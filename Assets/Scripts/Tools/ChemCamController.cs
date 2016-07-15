@@ -115,6 +115,7 @@ namespace NewtonVR
                 //If we're changing color
                 currentTime = 0.0f;
                 previousColour = light.color;
+                //Test
             }
         }
     }
