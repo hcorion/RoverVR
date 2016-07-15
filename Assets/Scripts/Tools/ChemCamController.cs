@@ -10,13 +10,13 @@ namespace NewtonVR
 		//Is used to tell if the user has changed and is now pointing at a different rock.
 		private GameObject lastRock;
 		public GameObject laser;
-		private Transform laserIntialPosition;
+		private Vector3 laserIntialPosition;
 
         // Use this for initialization
         new void Start()
         {
             base.Start();
-			laserIntialPosition = laser.transform;
+			laserIntialPosition = laser.transform.localPosition;
         }
 
         new void Update()
@@ -49,7 +49,7 @@ namespace NewtonVR
 						{
 							//If we've changed to a new rock (extremely unlikely)
 						}
-						laser.transform.localPosition = new Vector3(0, hit.distance / 2, 0) + laserIntialPosition.position;
+						laser.transform.localPosition = new Vector3(hit.distance / 2, 0, 0) + laserIntialPosition;
 
 
                     }
@@ -72,6 +72,7 @@ namespace NewtonVR
 		{
 			buttonDown = false;
 			lastRock = null;
+			laser.SetActive(false);
 		}
     }
 }
