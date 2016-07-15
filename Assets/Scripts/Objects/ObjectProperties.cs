@@ -4,19 +4,18 @@ using System.Collections;
 public class ObjectProperties : MonoBehaviour
 {
 	//public readonly string[] Materials = {"", ""};
-	public enum materials { nil, Aluminium, Copper };
+	public enum materials
+	{
+		nil,
+		Aluminum,
+		Copper}
+
+	;
+
 	public materials materialSelect;
 
-	void Start ()
+	public string getMaterial ()
 	{
-	}
-
-	void Update ()
-	{
-
-	}
-	public string getMaterial()
-	{
-		return materialSelect.ToString();
+		return materialSelect.ToString ();
 	}
 }

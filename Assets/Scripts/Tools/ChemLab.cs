@@ -7,16 +7,17 @@ public class ChemLab : MonoBehaviour
 	public GameObject activationPlate;
 	public GameObject textObject;
 
-	Text elements;
+	Text element;
 
 	void Start ()
 	{
-		elements = textObject.GetComponent <Text> ();
-		elements.text = "";
+		element = textObject.GetComponent<Text> ();
+		element.text = activationPlate.GetComponent<RockCollider> ().element;
 	}
 
-	void OnCollisionEnter (Collider c)
+	void Update ()
 	{
-		
+		element.text = activationPlate.GetComponent<RockCollider> ().element;
+		Instantiate (GameObject.Find (element.text));
 	}
 }
