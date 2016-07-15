@@ -4,7 +4,7 @@ using System.Collections;
 public class ObjectProperties : MonoBehaviour
 {
 	//public readonly string[] Materials = {"", ""};
-	public enum materials { Aluminium, Copper };
+	public enum materials { nil, Aluminium, Copper };
 	public materials materialSelect;
 
 	void Start ()
