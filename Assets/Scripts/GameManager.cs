@@ -14,13 +14,12 @@ public class GameManager : MonoBehaviour
 		DontDestroyOnLoad (transform.gameObject);
 		wonText.SetActive (false);
 	}
-	// Use this for initialization
+
 	void Start ()
 	{
 		//SceneManager.LoadSceneAsync(mainSceneName, LoadSceneMode.Single);
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
 	{
 		if (gameOver) {

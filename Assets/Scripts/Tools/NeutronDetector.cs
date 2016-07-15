@@ -56,6 +56,11 @@ namespace NewtonVR.Example
 				if (!buttonPressed) {
 					lineRenderer.enabled = false;
 				}
+
+				if (AttachedHand == null) {
+					buttonPressed = false;
+					lineRenderer.enabled = false;
+				}
 			} else {
 				lineRenderer.enabled = false;
 			}
