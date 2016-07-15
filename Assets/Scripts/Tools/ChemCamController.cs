@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-
 namespace NewtonVR
 {
     public class ChemCamController : NVRInteractableItem
@@ -12,7 +11,6 @@ namespace NewtonVR
 		private GameObject lastRock;
 		public GameObject laser;
 		private Transform laserIntialPosition;
-
 
         // Use this for initialization
         new void Start()
