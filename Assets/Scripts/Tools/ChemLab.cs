@@ -7,6 +7,8 @@ public class ChemLab : MonoBehaviour
 	public GameObject activationPlate;
 	public GameObject textObject;
 
+	public GameObject[] refinedElements;
+
 	Text element;
 
 	void Start ()
@@ -18,6 +20,6 @@ public class ChemLab : MonoBehaviour
 	void Update ()
 	{
 		element.text = activationPlate.GetComponent<RockCollider> ().element;
-		Instantiate (GameObject.Find (element.text));
+		//Instantiate ();
 	}
 }
