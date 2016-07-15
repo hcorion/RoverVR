@@ -49,8 +49,8 @@ namespace NewtonVR
 						{
 							//If we've changed to a new rock (extremely unlikely)
 						}
-						laser.transform.localPosition = new Vector3(hit.distance / 2, 0, 0) + laserIntialPosition;
-						laser.transform.localScale = new Vector3(laser.transform.localScale.x, hit.distance / 2 * 0.05f, laser.transform.localScale.z );
+						laser.transform.localPosition = new Vector3(0, hit.distance / 2, 0) + laserIntialPosition;
+						laser.transform.localScale = new Vector3(laser.transform.localScale.x, hit.distance / 2, laser.transform.localScale.z );
 
 
                     }
