@@ -42,6 +42,7 @@ namespace NewtonVR.Example
 
 		string isLife ()
 		{
+			GetComponent<AudioSource>().Play();
 			Vector3 fwd = selfieCamera.TransformDirection (Vector3.forward); 
 			RaycastHit hit;
 			Ray r = new Ray (selfieCamera.position, fwd);
