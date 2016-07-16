@@ -3,23 +3,29 @@ using System.Collections;
 
 public class ObjectProperties : MonoBehaviour
 {
-	//public readonly string[] Materials = {"", ""};
-	/*If your changing the following values it also needs to be changed in the scripts listed below:
-	- ChemCamController
-	*/
+	public string[] rockContent = new string [] 
+	{"nil",
+	 "Aluminium", 
+	 "Copper"};
+	 public float[] rockPercentage = new float []
+	 {0.0f, 
+	 0.0f, 
+	 0.0f};
 
-	public enum materials
+	public string getSimpleMaterial ()
 	{
-		nil,
-		Aluminum,
-		Copper}
-
-	;
-
-	public materials materialSelect;
-
-	public string getMaterial ()
-	{
-		return materialSelect.ToString ();
+		float maxValue = 0;
+		int i = 0;
+		int maxIndex = 0;
+		foreach(float d in rockPercentage)
+		{
+			if (d >= maxValue)
+			{
+				maxValue = d;
+				maxIndex = i;
+			}
+			i++;
+		}
+		return rockContent[maxIndex];
 	}
 }

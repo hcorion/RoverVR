@@ -30,6 +30,7 @@ namespace NewtonVR
         new void Update()
         {
             base.Update();
+            //lerpColor();
             if (buttonDown == true)
             {
                 //Raycasting to ground
@@ -42,7 +43,7 @@ namespace NewtonVR
                     ObjectProperties objectProperties = hit.transform.GetComponent<ObjectProperties>();
                     if (objectProperties != null)
                     {
-                        string rockMaterial = objectProperties.getMaterial();
+                        string rockMaterial = objectProperties.getSimpleMaterial();
                         Debug.Log("The current material is:" + rockMaterial);
 
                         //Updating the position of the laser and the light

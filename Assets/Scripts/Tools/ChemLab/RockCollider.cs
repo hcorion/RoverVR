@@ -30,7 +30,7 @@ public class RockCollider : MonoBehaviour
 		ObjectProperties objProp = c.gameObject.GetComponent<ObjectProperties> ();
 
 		if (objProp != null) {
-			element = objProp.getMaterial ();
+			//element = objProp.getMaterial ();
 			
 			Instantiate (GetElement (element), new Vector3 (body.position.x + spawnOffsetX, body.position.y + spawnOffsetY, body.position.z + spawnOffsetZ), Quaternion.identity);
 			Destroy (c.gameObject);
