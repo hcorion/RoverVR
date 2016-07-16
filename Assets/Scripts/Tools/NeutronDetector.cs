@@ -86,11 +86,11 @@ namespace NewtonVR.Example
 			ShootLaserFromTargetPosition (firePoint.position, forward, scanDistance);
 			lineRenderer.enabled = true;
 			if (Physics.Raycast (ray, out hit, scanDistance)) {
-				Debug.DrawRay (firePoint.position, forward, Color.blue, 0.01f, false);
+				Debug.DrawRay (firePoint.position, forward, Color.red, 0.01f, false);
 				WaterSource waterSrc = hit.collider.GetComponent<WaterSource> ();
 				if (waterSrc != null) {
 					float moisture = 1 / Vector3.Distance (hit.point, hit.transform.position);
-					Debug.DrawLine (hit.transform.position, hit.point, Color.white, 20f, false);
+					Debug.DrawLine (hit.transform.position, hit.point, Color.blue, 20f, false);
 					if (moisture > 0) {
 						return moisture.ToString ("F2") + units;
 					} else {
@@ -116,7 +116,7 @@ namespace NewtonVR.Example
 
 			lineRenderer.material = new Material (Shader.Find ("Particles/Additive"));
 
-			lineRenderer.SetColors (Color.blue, Color.blue);
+			lineRenderer.SetColors (Color.red, Color.red);
 			lineRenderer.SetPosition (0, targetPosition);
 			lineRenderer.SetPosition (1, endPosition);
 		}

@@ -684,6 +684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activationPlate: {fileID: 0}
   textObject: {fileID: 118470}
+  element: {fileID: 0}
 --- !u!114 &11491672
 MonoBehaviour:
   m_ObjectHideFlags: 1
