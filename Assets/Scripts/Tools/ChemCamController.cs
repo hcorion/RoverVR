@@ -13,9 +13,9 @@ namespace NewtonVR
         private Vector3 laserIntialPosition;
         private Material laserMat;
         public GameObject lightGameObject;
-        private Light light;
-        private Color lightColourToLerp;
-        private Color previousColour;
+        public Light light;
+        private Color32 lightColourToLerp;
+        private Color32 previousColour;
         private float currentTime;
 
         // Use this for initialization
@@ -24,13 +24,14 @@ namespace NewtonVR
             base.Start();
             laserIntialPosition = laser.transform.localPosition;
             laserMat = laser.GetComponent<Renderer>().material;
-            light = lightGameObject.GetComponent<Light>();
+            //light = lightGameObject.GetComponent<Light>();
+            previousColour = light.color;
+
         }
 
         new void Update()
         {
             base.Update();
-            //lerpColor();
             if (buttonDown == true)
             {
                 //Raycasting to ground
@@ -47,9 +48,9 @@ namespace NewtonVR
                         Debug.Log("The current material is:" + rockMaterial);
 
                         //Updating the position of the laser and the light
-                        laser.transform.localPosition = new Vector3(hit.distance / 2, 0, 0) + laserIntialPosition;
+                        laser.transform.localPosition = new Vector3(hit.distance / 2 + 0.12f, 0, 0) + laserIntialPosition;
                         laser.transform.localScale = new Vector3(laser.transform.localScale.x, hit.distance * 55, laser.transform.localScale.z);
-                        lightGameObject.transform.position = new Vector3(hit.point.x - 0.2f, hit.point.y, hit.point.z);
+                        lightGameObject.transform.position = new Vector3(hit.point.x - 0.08f, hit.point.y, hit.point.z);
                         if (lastRock == hit.transform.gameObject)
                         {
                             //If we're still on the same rock.
@@ -67,10 +68,10 @@ namespace NewtonVR
                                     lightColourToLerp = Color.red;
                                     break;
                                 case "Aluminium":
-                                    lightColourToLerp = new Color(76, 88, 156);
+                                    lightColourToLerp = new Color32(76, 88, 156, 255);
                                     break;
                                 case "Copper":
-                                    lightColourToLerp = new Color(111, 181, 109);
+                                    lightColourToLerp = new Color32(111, 181, 109, 255);
                                     break;
                                 default:
                                     {
@@ -84,7 +85,8 @@ namespace NewtonVR
                     }
                     else
                         Debug.Log("This object has no ObjectProperties script.");
-                    lastRock = null;
+                    //lastRock = null;
+                    lerpColor();
                 }
                 else
                 {
@@ -105,11 +107,19 @@ namespace NewtonVR
         }
         private void lerpColor()
         {
+            //if (lightColourToLerp == null || light.color == null || previousColour == null || currentTime == null)
+            //{
+            //    return;
+            //    Debug.Log("LightColourToLerp == null");
+            //}
+            Debug.Log("TEST");
+            Debug.Log(light);
+            Debug.Log(lightColourToLerp);
             const float lerpTime = 2;
             if (currentTime / lerpTime < 1.0) {
                 //If we haven't acheived the goal.
             currentTime += Time.deltaTime;
-            light.color = Color.Lerp(previousColour, lightColourToLerp, currentTime / lerpTime);
+            light.color = Color32.Lerp(previousColour, lightColourToLerp, currentTime / lerpTime);
             }
             else if (lightColourToLerp != light.color)
             {
