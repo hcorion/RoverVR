@@ -7,6 +7,12 @@ public class RockCollider : MonoBehaviour
 {
 	public string element = "";
 
+	public float spawnOffsetX;
+	public float spawnOffsetY;
+	public float spawnOffsetZ;
+
+	public Transform body;
+
 	public GameObject[] refinedElements;
 	public string[] refinedElementNames;
 
@@ -26,7 +32,7 @@ public class RockCollider : MonoBehaviour
 		if (objProp != null) {
 			element = objProp.getMaterial ();
 			
-			Instantiate (GetElement (element));
+			Instantiate (GetElement (element), new Vector3 (body.position.x + spawnOffsetX, body.position.y + spawnOffsetY, body.position.z + spawnOffsetZ), Quaternion.identity);
 			Destroy (c.gameObject);
 		}
 	}
