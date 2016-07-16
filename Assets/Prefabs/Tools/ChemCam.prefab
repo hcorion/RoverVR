@@ -112,7 +112,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106158}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: 0.11399841, y: 0.5869999, z: 0.0030059814}
+  m_LocalPosition: {x: 0.105, y: 0, z: 0.0030059814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_Children: []
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188346}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0.5126, z: 0}
+  m_LocalPosition: {x: -0.016, y: -0.041, z: 0}
   m_LocalScale: {x: 0.04420887, y: 0.083770365, z: 0.026233403}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children: []
@@ -138,7 +138,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.042, y: 0.574, z: 0}
+  m_LocalPosition: {x: 0.042, y: 0, z: 0}
   m_LocalScale: {x: 0.15193094, y: 0.048563555, z: 0.0376228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -151,7 +151,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 228.02264, y: 12.897976, z: 206.30368}
+  m_LocalPosition: {x: -0.574, y: 0.333, z: -0.007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -169,7 +169,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.109, y: 0.57400036, z: 0}
+  m_LocalPosition: {x: 0.109, y: 0, z: 0}
   m_LocalScale: {x: 0.014258754, y: 0.014258754, z: 0.014258754}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -182,7 +182,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111258}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0.4622, y: 0.5550003, z: 0}
+  m_LocalPosition: {x: 0.4622, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children: []
@@ -437,7 +437,9 @@ MonoBehaviour:
   InteractionPoint: {fileID: 422430}
   shootPoint: {fileID: 494298}
   laser: {fileID: 106158}
+  laserMat: {fileID: 2100000, guid: ea72d0d78cde94900bdd357dc9709f09, type: 2}
   lightGameObject: {fileID: 111258}
+  light: {fileID: 10827110}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

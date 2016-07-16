@@ -11,7 +11,7 @@ namespace NewtonVR
         private GameObject lastRock;
         public GameObject laser;
         private Vector3 laserIntialPosition;
-        private Material laserMat;
+        public Material laserMat;
         public GameObject lightGameObject;
         public Light light;
         private Color32 lightColourToLerp;
@@ -23,7 +23,7 @@ namespace NewtonVR
         {
             base.Start();
             laserIntialPosition = laser.transform.localPosition;
-            laserMat = laser.GetComponent<Renderer>().material;
+            //laserMat = laser.GetComponent<Renderer>().material;
             //light = lightGameObject.GetComponent<Light>();
             previousColour = light.color;
 
@@ -120,6 +120,7 @@ namespace NewtonVR
                 //If we haven't acheived the goal.
             currentTime += Time.deltaTime;
             light.color = Color32.Lerp(previousColour, lightColourToLerp, currentTime / lerpTime);
+            laserMat.color = Color32.Lerp(previousColour, lightColourToLerp, currentTime / lerpTime);
             }
             else if (lightColourToLerp != light.color)
             {
