@@ -7,24 +7,16 @@ public class ObjectProperties : MonoBehaviour
 	/*If your changing the following values it also needs to be changed in the scripts listed below:
 	- ChemCamController
 	*/
+
 	public enum materials
 	{
 		nil,
-		Aluminium,
+		Aluminum,
 		Copper}
 
 	;
 
 	public materials materialSelect;
-
-	void Start ()
-	{
-	}
-
-	void Update ()
-	{
-
-	}
 
 	public string getMaterial ()
 	{

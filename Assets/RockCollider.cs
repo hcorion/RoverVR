@@ -4,6 +4,7 @@ using System.Collections;
 public class RockCollider : MonoBehaviour
 {
 	public string element = "";
+	public static bool activated = false;
 
 	void OnTriggerEnter (Collider c)
 	{
@@ -11,6 +12,7 @@ public class RockCollider : MonoBehaviour
 
 		if (objProp != null) {
 			element = objProp.getMaterial ();
+			activated = true;
 			Destroy (c.gameObject);
 		}
 	}
