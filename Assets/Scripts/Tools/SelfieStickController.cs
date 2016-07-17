@@ -35,6 +35,7 @@ namespace NewtonVR.Example
 		public override void UseButtonDown ()
 		{
 			if (!isLoading) {
+				GetComponent<AudioSource>().Play();
 				print (isLife ());
 			}
 			
