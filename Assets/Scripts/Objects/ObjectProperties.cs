@@ -11,6 +11,12 @@ public class ObjectProperties : MonoBehaviour
 		0.0f, 
 		0.0f
 	};
+	//The seconds in time it takes for the material to break
+	//0.0f is equal to unbreakable.
+	float[] rockBreakage = new float [] {0.0f,
+	 2.0f,
+	 3.0f
+	};
 
 	public string getSimpleMaterial ()
 	{
@@ -25,5 +31,19 @@ public class ObjectProperties : MonoBehaviour
 			i++;
 		}
 		return rockContent [maxIndex];
+	}
+	public float getSimpleRockBreakage()
+	{
+		int i = 0;
+		foreach(string s in rockContent)
+		{
+			if (s == rockContent[i])
+			{
+				return rockBreakage[i];
+			}
+			i++;
+		}
+		Debug.LogError("Hmmm, something went wrong in getSimpleRockBreakage");
+		return 0.0f;
 	}
 }
