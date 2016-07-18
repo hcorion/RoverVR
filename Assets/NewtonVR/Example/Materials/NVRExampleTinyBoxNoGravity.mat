@@ -6,12 +6,13 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: lambert1
+  m_Name: NVRExampleTinyBoxNoGravity
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: S_RECEIVE_SHADOWS S_SPECULAR_METALLIC
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    OriginalShader: Standard
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -78,6 +79,20 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: g_tOverrideLightmap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -102,7 +117,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.5
+        second: 0.571
       data:
         first:
           name: _BumpScale
@@ -126,7 +141,71 @@ Material:
       data:
         first:
           name: _Metallic
+        second: 1
+      data:
+        first:
+          name: _Cull
+        second: 2
+      data:
+        first:
+          name: _FogMultiplier
+        second: 1
+      data:
+        first:
+          name: _OcclusionStrengthDirectDiffuse
+        second: 1
+      data:
+        first:
+          name: _OcclusionStrengthDirectSpecular
+        second: 1
+      data:
+        first:
+          name: _OcclusionStrengthIndirectDiffuse
+        second: 1
+      data:
+        first:
+          name: _OcclusionStrengthIndirectSpecular
+        second: 1
+      data:
+        first:
+          name: _SpecularMode
+        second: 2
+      data:
+        first:
+          name: g_bReceiveShadows
+        second: 1
+      data:
+        first:
+          name: g_bRenderBackfaces
         second: 0
+      data:
+        first:
+          name: g_bUnlit
+        second: 0
+      data:
+        first:
+          name: g_bWorldAlignedTexture
+        second: 0
+      data:
+        first:
+          name: g_flCubeMapScalar
+        second: 1
+      data:
+        first:
+          name: g_flReflectanceBias
+        second: 0
+      data:
+        first:
+          name: g_flReflectanceMax
+        second: 1
+      data:
+        first:
+          name: g_flReflectanceMin
+        second: 0
+      data:
+        first:
+          name: g_flReflectanceScale
+        second: 1
     m_Colors:
       data:
         first:
@@ -135,4 +214,28 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0.29803923, g: 0.34509805, b: 0.6117647, a: 1}
+        second: {r: 0.63235295, g: 0, b: 0.63235295, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+      data:
+        first:
+          name: g_vWorldAlignedNormalTangentU
+        second: {r: -1, g: 0, b: 0, a: 0}
+      data:
+        first:
+          name: g_vWorldAlignedNormalTangentV
+        second: {r: 0, g: 0, b: 1, a: 0}
+      data:
+        first:
+          name: g_vWorldAlignedTextureNormal
+        second: {r: 0, g: 1, b: 0, a: 0}
+      data:
+        first:
+          name: g_vWorldAlignedTexturePosition
+        second: {r: 0, g: 0, b: 0, a: 0}
+      data:
+        first:
+          name: g_vWorldAlignedTextureSize
+        second: {r: 1, g: 1, b: 1, a: 0}

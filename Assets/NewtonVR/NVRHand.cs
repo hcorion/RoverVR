@@ -10,17 +10,13 @@ namespace NewtonVR
 {
     public class NVRHand : MonoBehaviour
     {
-        //Previous value
-        //private Valve.VR.EVRButtonId HoldButton = EVRButtonId.k_EButton_Grip;
-        private Valve.VR.EVRButtonId HoldButton = EVRButtonId.k_EButton_SteamVR_Trigger;
+        private Valve.VR.EVRButtonId HoldButton = EVRButtonId.k_EButton_Grip;
         public bool HoldButtonDown = false;
         public bool HoldButtonUp = false;
         public bool HoldButtonPressed = false;
         public float HoldButtonAxis = 0f;
 
-        //Previous Value
-        //private Valve.VR.EVRButtonId UseButton = EVRButtonId.k_EButton_SteamVR_Trigger;
-        private Valve.VR.EVRButtonId UseButton = EVRButtonId.k_EButton_SteamVR_Touchpad;
+        private Valve.VR.EVRButtonId UseButton = EVRButtonId.k_EButton_SteamVR_Trigger;
         public bool UseButtonDown = false;
         public bool UseButtonUp = false;
         public bool UseButtonPressed = false;
@@ -106,7 +102,20 @@ namespace NewtonVR
             }
 
             SteamVR_Utils.Event.Listen("render_model_loaded", RenderModelLoaded);
+            SteamVR_Utils.Event.Listen("new_poses_applied", OnNewPosesApplied);
         }
+
+        private void OnNewPosesApplied(params object[] args)
+        {
+            if (Controller == null)
+                return;
+
+            if (CurrentlyInteracting != null)
+            {
+                CurrentlyInteracting.OnNewPosesApplied();
+            }
+        }
+
 
         protected virtual void Update()
         {
@@ -214,7 +223,7 @@ namespace NewtonVR
             StartCoroutine(DoLongHapticPulse(seconds, buttonId));
         }
 
-        private IEnumerator DoLongHapticPulse(float seconds, EVRButtonId buttonId = EVRButtonId.k_EButton_Axis0)
+        private IEnumerator DoLongHapticPulse(float seconds, EVRButtonId buttonId)
         {
             float startTime = Time.time;
             float endTime = startTime + seconds;
@@ -592,6 +601,8 @@ namespace NewtonVR
             if (Rigidbody == null)
                 Rigidbody = this.gameObject.AddComponent<Rigidbody>();
             Rigidbody.isKinematic = true;
+            Rigidbody.maxAngularVelocity = float.MaxValue;
+            Rigidbody.useGravity = false;
 
             Collider[] Colliders = null;
 
@@ -655,8 +666,9 @@ namespace NewtonVR
                         break;
                 }
             }
-            else
+            else if (RenderModelInitialized == false)
             {
+                RenderModelInitialized = true;
                 GameObject CustomModelObject = GameObject.Instantiate(CustomModel);
                 Colliders = CustomModelObject.GetComponentsInChildren<Collider>(); //note: these should be trigger colliders
 
@@ -686,8 +698,12 @@ namespace NewtonVR
                 {
                     NVRHelpers.SetTransparent(GhostRenderers[rendererIndex].material, transparentcolor);
                 }
+                
+                if (Colliders != null)
+                {
+                    GhostColliders = Colliders;
+                }
 
-                GhostColliders = Colliders;
                 CurrentVisibility = VisibilityLevel.Ghost;
             }
             else
@@ -701,7 +717,11 @@ namespace NewtonVR
                     NVRHelpers.SetTransparent(GhostRenderers[rendererIndex].material, transparentcolor);
                 }
 
-                GhostColliders = Colliders;
+                if (Colliders != null)
+                {
+                    GhostColliders = Colliders;
+                }
+
                 CurrentVisibility = VisibilityLevel.Ghost;
             }
 
@@ -724,6 +744,12 @@ namespace NewtonVR
             {
                 return this.GetComponentInChildren<SteamVR_RenderModel>().renderModelName;
             }
+        }
+
+        private void OnDestroy()
+        {
+            SteamVR_Utils.Event.Remove("render_model_loaded", RenderModelLoaded);
+            SteamVR_Utils.Event.Remove("new_poses_applied", OnNewPosesApplied);
         }
     }
     
