@@ -48,9 +48,13 @@ namespace NewtonVR
                         Debug.Log("The current material is:" + rockMaterial);
 
                         //Updating the position of the laser and the light
+                        //Transform testing;
+                        //testing.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                        //Vector3 localHit = new InverseTransformPoint();
                         laser.transform.localPosition = new Vector3(hit.distance / 2 + 0.12f, 0, 0) + laserIntialPosition;
                         laser.transform.localScale = new Vector3(laser.transform.localScale.x, hit.distance * 55, laser.transform.localScale.z);
-                        lightGameObject.transform.position = new Vector3(hit.point.x - 0.08f, hit.point.y, hit.point.z);
+                          lightGameObject.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z) - transform.right / 9.0f;
+                        //lightGameObject.transform.localPosition = localHit;
                         if (lastRock == hit.transform.gameObject)
                         {
                             //If we're still on the same rock.
@@ -65,7 +69,7 @@ namespace NewtonVR
                             switch (rockMaterial)
                             {
                                 case "nil":
-                                    lightColourToLerp = Color.red;
+                                    lightColourToLerp = new Color32(100, 255, 0, 255);
                                     break;
                                 case "Aluminium":
                                     lightColourToLerp = new Color32(76, 88, 156, 255);
@@ -79,7 +83,6 @@ namespace NewtonVR
                                         lightColourToLerp = Color.red;
                                         break;
                                     }
-                                    //Instantiate a light here hit.point.position;
                             }
                         }
                     }
