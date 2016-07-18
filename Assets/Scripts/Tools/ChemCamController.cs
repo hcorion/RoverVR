@@ -13,10 +13,13 @@ namespace NewtonVR
         private Vector3 laserIntialPosition;
         public Material laserMat;
         public GameObject lightGameObject;
+        //For the manipulation of the color of light.
         public Light light;
         private Color32 lightColourToLerp;
         private Color32 previousColour;
         private float currentTime;
+        //For breaking the rocks
+        private float breakTime;
 
         // Use this for initialization
         new void Start()
@@ -50,13 +53,30 @@ namespace NewtonVR
                         //Updating the position of the laser and the light
                         laser.transform.localPosition = new Vector3(hit.distance / 2 + 0.12f, 0, 0) + laserIntialPosition;
                         laser.transform.localScale = new Vector3(laser.transform.localScale.x, hit.distance * 55, laser.transform.localScale.z);
-                        lightGameObject.transform.position = new Vector3(hit.point.x - 0.08f, hit.point.y, hit.point.z);
+                          lightGameObject.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z) - transform.right / 9.0f;
+                        float rockbreakage = 0.0f;
                         if (lastRock == hit.transform.gameObject)
                         {
                             //If we're still on the same rock.
+                            
+                                if (rockbreakage != 0.0f)
+                                {
+                                    breakTime += Time.deltaTime;
+                                    if (breakTime >= rockbreakage)
+                                    {
+                                        Debug.Log("Rock has been broken");
+                                    }
+                                }
+                                else
+                                {
+                                    Debug.Log("Rock is unbreakable");
+                                }
+                                
                         }
                         else
                         {
+                            rockbreakage = objectProperties.getSimpleRockBreakage();
+                            breakTime = 0;
                             if (lastRock == null)
                             {
                                 //If we haven't hit anything yet.
@@ -65,7 +85,7 @@ namespace NewtonVR
                             switch (rockMaterial)
                             {
                                 case "nil":
-                                    lightColourToLerp = Color.red;
+                                    lightColourToLerp = new Color32(100, 255, 0, 255);
                                     break;
                                 case "Aluminium":
                                     lightColourToLerp = new Color32(76, 88, 156, 255);
@@ -79,7 +99,6 @@ namespace NewtonVR
                                         lightColourToLerp = Color.red;
                                         break;
                                     }
-                                    //Instantiate a light here hit.point.position;
                             }
                         }
                     }
@@ -107,11 +126,6 @@ namespace NewtonVR
         }
         private void lerpColor()
         {
-            //if (lightColourToLerp == null || light.color == null || previousColour == null || currentTime == null)
-            //{
-            //    return;
-            //    Debug.Log("LightColourToLerp == null");
-            //}
             Debug.Log("TEST");
             Debug.Log(light);
             Debug.Log(lightColourToLerp);
