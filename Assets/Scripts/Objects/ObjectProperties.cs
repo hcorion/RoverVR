@@ -8,8 +8,8 @@ public class ObjectProperties : MonoBehaviour
 		"Copper"
 	};
 	public float[] rockPercentage = new float [] {0.0f, 
-		2.0f, 
-		1.0f
+		0.0f, 
+		0.0f
 	};
 	//The seconds in time it takes for the material to break
 	//0.0f is equal to unbreakable.
@@ -53,7 +53,7 @@ public class ObjectProperties : MonoBehaviour
 		if(gameObject.name.StartsWith("rock_d_01"))
 		{
 			gameObject.SetActive(false);
-			Instantiate(Resources.Load("/Prefabs/Rocks/rock-d-01-f"), transform.position, transform.rotation);
+			Instantiate(Resources.Load("Prefabs/Rocks/rock-d-01-f"), transform.position, transform.rotation);
 			Destroy(gameObject);
 		}
 		else
