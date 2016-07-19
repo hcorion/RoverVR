@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using System;
+using System.Collections.Generic;
 
 public class ObjectProperties : MonoBehaviour
 {
 	public string[] rockContent = new string [] {"Nil",
-		"Aluminium", 
+		"Aluminum", 
 		"Copper"
 	};
 	public float[] rockPercentage = new float [] {0.0f, 
@@ -14,9 +16,11 @@ public class ObjectProperties : MonoBehaviour
 	//The seconds in time it takes for the material to break
 	//0.0f is equal to unbreakable.
 	float[] rockBreakage = new float [] {0.0f,
-	 2.0f,
-	 3.0f
+		2.0f,
+		3.0f
 	};
+
+	private Dictionary<string, float> elements = new Dictionary<string, float> ();
 
 	public string getSimpleMaterial ()
 	{
@@ -32,19 +36,23 @@ public class ObjectProperties : MonoBehaviour
 		}
 		return rockContent [maxIndex];
 	}
-	public float getSimpleRockBreakage()
+
+	public Dictionary <string, float> getComplexMaterial ()
+	{
+		return elements;
+	}
+
+	public float getSimpleRockBreakage ()
 	{
 		int i = 0;
-		foreach(string s in rockContent)
-		{
-			Debug.Log(rockBreakage[i]);
-			if (s == getSimpleMaterial())
-			{
-				return rockBreakage[i];
+		foreach (string s in rockContent) {
+			Debug.Log (rockBreakage [i]);
+			if (s == getSimpleMaterial ()) {
+				return rockBreakage [i];
 			}
 			i++;
 		}
-		Debug.LogError("Hmmm, something went wrong in getSimpleRockBreakage");
+		Debug.LogError ("Hmmm, something went wrong in getSimpleRockBreakage");
 		return 0.0f;
 	}
 }
