@@ -5,16 +5,18 @@ namespace NewtonVR.Example
 {
 	public class Binoculars : NVRInteractableItem
 	{
+		public float maxDistance;
+		public float minDistance;
+		public float zoomSpeed;
 
-		public float distance;
-		public GameObject viewCamera;
+		public Camera viewCamera;
+
+		float distance = 5;
+		float zoom = 0;
 
 		void Update ()
 		{
-			Vector3 forward = transform.TransformVector (Vector3.back);
-			Vector3 cameraPosition = transform.position + forward * distance;
-
-			viewCamera.transform.position = cameraPosition;
+			viewCamera.fieldOfView = distance + zoom;
 		}
 	}
 }
