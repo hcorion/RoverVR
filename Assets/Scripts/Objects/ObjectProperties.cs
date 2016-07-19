@@ -39,8 +39,8 @@ public class ObjectProperties : MonoBehaviour
 	{
 		Dictionary<string, float> elements = new Dictionary<string, float> ();
 
-		foreach (int i in rockContent) {
-			if (rockPercentage > 0f) {
+		for (int i = 0; i < rockPercentage.Length; ++i) {
+			if (rockPercentage [i] > 0f) {
 				elements.Add (rockContent [i], rockPercentage [i]);
 			}
 		}
@@ -50,10 +50,10 @@ public class ObjectProperties : MonoBehaviour
 
 	public ArrayList getMaterialNames ()
 	{
-		ArrayList elementNames = ArrayList ();
+		ArrayList elementNames = new ArrayList ();
 
-		foreach (int i in rockContent) {
-			if (rockPercentage > 0f) {
+		for (int i = 0; i < rockPercentage.Length; ++i) {
+			if (rockPercentage [i] > 0f) {
 				elementNames.Add (rockContent [i]);
 			}
 		}

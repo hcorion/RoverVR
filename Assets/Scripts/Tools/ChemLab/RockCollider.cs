@@ -17,7 +17,9 @@ public class RockCollider : MonoBehaviour
 	public string[] refinedElementNames;
 
 	private Dictionary<string, GameObject> elements = new Dictionary<string, GameObject> ();
-	private Dictionary<string, float> complexMaterials;
+	private Dictionary<string, float> materialDictionary;
+
+	private ArrayList materialNames;
 
 	void Start ()
 	{
@@ -31,17 +33,33 @@ public class RockCollider : MonoBehaviour
 		ObjectProperties objProp = c.gameObject.GetComponent<ObjectProperties> ();
 
 		if (objProp != null) {
-			element = objProp.getSimpleMaterial ();
-			
-			Instantiate (GetElement (element), new Vector3 (body.position.x + spawnOffsetX, body.position.y + spawnOffsetY, body.position.z + spawnOffsetZ), Quaternion.identity);
+			materialDictionary = objProp.getMaterialDictionary ();
+			materialNames = objProp.getMaterialNames ();
+
+			for (int i = 0; i < materialNames.Count; ++i) {
+				float value;
+				materialDictionary.TryGetValue (materialNames [i].ToString (), out value);
+				element = materialNames [i].ToString () + " " + value + "% \n";
+
+				/*GameObject spawned = (GameObject)Instantiate (GetElement (materialNames [i].ToString ()), new Vector3 (body.position.x + spawnOffsetX, body.position.y + spawnOffsetY, body.position.z + spawnOffsetZ), Quaternion.identity);
+				Vector3 scale = spawned.transform.localScale;
+				spawned.transform.localScale = new Vector3 (scale.x / (100 / value), scale.y / (100 / value), scale.z / (100 / value));*/
+
+				Instantiate (GetElement (materialNames [i].ToString (), value), new Vector3 (body.position.x + spawnOffsetX, body.position.y + spawnOffsetY, body.position.z + spawnOffsetZ), Quaternion.identity);
+			}
+
 			Destroy (c.gameObject);
 		}
 	}
 
-	GameObject GetElement (string element)
+	GameObject GetElement (string name, float percent)
 	{
 		GameObject value;
-		elements.TryGetValue (element, out value);
+		elements.TryGetValue (name, out value);
+
+		Vector3 scale = value.transform.localScale;
+		value.transform.localScale = new Vector3 (scale.x / (100 / percent), scale.y / (100 / percent), scale.z / (100 / percent));
+
 		return value;
 	}
 }
