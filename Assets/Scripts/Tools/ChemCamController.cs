@@ -62,7 +62,7 @@ namespace NewtonVR
                                     if (breakTime >= rockbreakage)
                                     {
                                         Debug.Log("Rock has been broken");
-                                        
+                                        objectProperties.breakRock();
                                     }
                                 }
                                 else

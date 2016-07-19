@@ -47,4 +47,18 @@ public class ObjectProperties : MonoBehaviour
 		Debug.LogError("Hmmm, something went wrong in getSimpleRockBreakage");
 		return 0.0f;
 	}
+
+	public void breakRock()
+	{
+		if(gameObject.name.StartsWith("rock_d_01"))
+		{
+			gameObject.SetActive(false);
+			Instantiate(Resources.Load("/Prefabs/Rocks/rock-d-01-f"), transform.position, transform.rotation);
+			Destroy(gameObject);
+		}
+		else
+		{
+			Debug.Log("That object doesn't yet have a fancy breaking animation.");
+		}
+	}
 }
