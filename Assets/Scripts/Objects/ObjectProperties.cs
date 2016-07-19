@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class ObjectProperties : MonoBehaviour
 {
-	public string[] rockContent = new string [] {"Nil",
+	public string[] rockContent = new string [] {"Unusable",
 		"Aluminum", 
 		"Copper"
 	};

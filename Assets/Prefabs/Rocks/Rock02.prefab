@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockContent:
-  - nil
+  - Unusable
   - Aluminium
   - Copper
   rockPercentage:

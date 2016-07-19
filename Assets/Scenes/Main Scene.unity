@@ -336,53 +336,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 147750522}
---- !u!1001 &381834074
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 228.086
-      objectReference: {fileID: 0}
-    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 13.482
-      objectReference: {fileID: 0}
-    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 204.254
-      objectReference: {fileID: 0}
-    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 191186, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
-      propertyPath: m_Name
-      value: Selfie Stick
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
-  m_IsPrefabParent: 0
---- !u!43 &422931000
+--- !u!43 &270065249
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -510,6 +464,52 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!1001 &381834074
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 228.086
+      objectReference: {fileID: 0}
+    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 13.482
+      objectReference: {fileID: 0}
+    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 204.254
+      objectReference: {fileID: 0}
+    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 487906, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 191186, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
+      propertyPath: m_Name
+      value: Selfie Stick
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 54b53ec89f46d463ba79fa4e7f74fdb0, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &510671379
 Prefab:
   m_ObjectHideFlags: 0
@@ -1603,7 +1603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockContent:
-  - Nil
+  - Unusable
   - Aluminum
   - Copper
   rockPercentage:
@@ -2456,7 +2456,7 @@ Prefab:
     - target: {fileID: 3392232, guid: b0047dd65ff208349bf3a5aaaeae24d0, type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 422931000}
+      objectReference: {fileID: 270065249}
     - target: {fileID: 140386, guid: b0047dd65ff208349bf3a5aaaeae24d0, type: 2}
       propertyPath: m_IsActive
       value: 1
