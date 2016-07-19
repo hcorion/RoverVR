@@ -39,8 +39,8 @@ public class ObjectProperties : MonoBehaviour
 	{
 		Dictionary<string, float> elements = new Dictionary<string, float> ();
 
-		foreach (int i in rockContent) {
-			if (rockPercentage > 0f) {
+		for ( int i = 0; i >= rockContent.Length; i++) {
+			if (rockPercentage[i] > 0f) {
 				elements.Add (rockContent [i], rockPercentage [i]);
 			}
 		}
