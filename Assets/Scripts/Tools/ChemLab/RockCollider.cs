@@ -17,6 +17,7 @@ public class RockCollider : MonoBehaviour
 	public string[] refinedElementNames;
 
 	private Dictionary<string, GameObject> elements = new Dictionary<string, GameObject> ();
+	private Dictionary<string, float> complexMaterials;
 
 	void Start ()
 	{

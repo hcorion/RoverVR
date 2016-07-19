@@ -20,8 +20,6 @@ public class ObjectProperties : MonoBehaviour
 		3.0f
 	};
 
-	private Dictionary<string, float> elements = new Dictionary<string, float> ();
-
 	public string getSimpleMaterial ()
 	{
 		float maxValue = 0;
@@ -37,9 +35,30 @@ public class ObjectProperties : MonoBehaviour
 		return rockContent [maxIndex];
 	}
 
-	public Dictionary <string, float> getComplexMaterial ()
+	public Dictionary <string, float> getMaterialDictionary ()
 	{
+		Dictionary<string, float> elements = new Dictionary<string, float> ();
+
+		foreach (int i in rockContent) {
+			if (rockPercentage > 0f) {
+				elements.Add (rockContent [i], rockPercentage [i]);
+			}
+		}
+
 		return elements;
+	}
+
+	public ArrayList getMaterialNames ()
+	{
+		ArrayList elementNames = ArrayList ();
+
+		foreach (int i in rockContent) {
+			if (rockPercentage > 0f) {
+				elementNames.Add (rockContent [i]);
+			}
+		}
+
+		return elementNames;
 	}
 
 	public float getSimpleRockBreakage ()
@@ -56,17 +75,14 @@ public class ObjectProperties : MonoBehaviour
 		return 0.0f;
 	}
 
-	public void breakRock()
+	public void breakRock ()
 	{
-		if(gameObject.name.StartsWith("rock_d_01"))
-		{
-			gameObject.SetActive(false);
-			Instantiate(Resources.Load("Prefabs/Rocks/rock-d-01-f"), transform.position, transform.rotation);
-			Destroy(gameObject);
-		}
-		else
-		{
-			Debug.Log("That object doesn't yet have a fancy breaking animation.");
+		if (gameObject.name.StartsWith ("rock_d_01")) {
+			gameObject.SetActive (false);
+			Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-01-f"), transform.position, transform.rotation);
+			Destroy (gameObject);
+		} else {
+			Debug.Log ("That object doesn't yet have a fancy breaking animation.");
 		}
 	}
 }
