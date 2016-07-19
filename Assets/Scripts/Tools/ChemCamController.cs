@@ -20,6 +20,7 @@ namespace NewtonVR
         private float currentTime;
         //For breaking the rocks
         private float breakTime;
+        float rockbreakage = 0.0f;
 
         // Use this for initialization
         new void Start()
@@ -54,7 +55,6 @@ namespace NewtonVR
                         laser.transform.localPosition = new Vector3(hit.distance / 2 + 0.12f, 0, 0) + laserIntialPosition;
                         laser.transform.localScale = new Vector3(laser.transform.localScale.x, hit.distance * 55, laser.transform.localScale.z);
                           lightGameObject.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z) - transform.right / 9.0f;
-                        float rockbreakage = 0.0f;
                         if (lastRock == hit.transform.gameObject)
                         {
                             //If we're still on the same rock.
@@ -65,6 +65,7 @@ namespace NewtonVR
                                     if (breakTime >= rockbreakage)
                                     {
                                         Debug.Log("Rock has been broken");
+                                        
                                     }
                                 }
                                 else
@@ -79,6 +80,7 @@ namespace NewtonVR
                             breakTime = 0;
                             if (lastRock == null)
                             {
+                                lastRock = hit.transform.gameObject;
                                 //If we haven't hit anything yet.
                                 laser.SetActive(true);
                             }
@@ -126,7 +128,7 @@ namespace NewtonVR
         }
         private void lerpColor()
         {
-            Debug.Log("TEST");
+            //Debug.Log("TEST");
             Debug.Log(light);
             Debug.Log(lightColourToLerp);
             const float lerpTime = 2;

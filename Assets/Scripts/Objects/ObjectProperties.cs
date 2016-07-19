@@ -8,8 +8,8 @@ public class ObjectProperties : MonoBehaviour
 		"Copper"
 	};
 	public float[] rockPercentage = new float [] {0.0f, 
-		0.0f, 
-		0.0f
+		2.0f, 
+		1.0f
 	};
 	//The seconds in time it takes for the material to break
 	//0.0f is equal to unbreakable.
@@ -37,7 +37,8 @@ public class ObjectProperties : MonoBehaviour
 		int i = 0;
 		foreach(string s in rockContent)
 		{
-			if (s == rockContent[i])
+			Debug.Log(rockBreakage[i]);
+			if (s == getSimpleMaterial())
 			{
 				return rockBreakage[i];
 			}
