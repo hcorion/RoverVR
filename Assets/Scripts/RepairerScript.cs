@@ -45,6 +45,6 @@ public class RepairerScript : MonoBehaviour {
 	private void snapObject(GameObject obj)
 	{
 		//We also should set the object to knematic
-		if(rightController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting == false &&)
+		//if(rightController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name == obj.name &&)
 	}
 }
