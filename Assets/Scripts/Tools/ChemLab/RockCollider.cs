@@ -31,6 +31,7 @@ public class RockCollider : MonoBehaviour
 	void OnTriggerEnter (Collider c)
 	{
 		ObjectProperties objProp = c.gameObject.GetComponent<ObjectProperties> ();
+		IngotProperties ingotProp = c.gameObject.GetComponent<IngotProperties> ();
 
 		if (objProp != null) {
 			materialDictionary = objProp.getMaterialDictionary ();
@@ -39,14 +40,26 @@ public class RockCollider : MonoBehaviour
 			for (int i = 0; i < materialNames.Count; ++i) {
 				float value;
 				materialDictionary.TryGetValue (materialNames [i].ToString (), out value);
-				element += materialNames [i].ToString () + " " + value + "% \n";
+				element += materialNames [i].ToString () + " " + value + "g \n";
 
 				GameObject spawned = (GameObject)Instantiate (GetElement (materialNames [i].ToString ()), new Vector3 (body.position.x + spawnOffsetX, body.position.y + spawnOffsetY, body.position.z + spawnOffsetZ), Quaternion.identity);
+
+				spawned.GetComponent<IngotProperties> ().SetName (materialNames [i].ToString ());
+				spawned.GetComponent<IngotProperties> ().SetValue (value);
+
 				Vector3 scale = spawned.transform.localScale;
 				spawned.transform.localScale = new Vector3 (scale.x / (100 / value), scale.y / (100 / value), scale.z / (100 / value));
 			}
 
 			Destroy (c.gameObject);
+		}
+
+		if (ingotProp != null) {
+			string name = ingotProp.GetName ();
+			float value = ingotProp.GetValue ();
+
+			element = name + " " + value + "g";
+			c.gameObject.transform.position = new Vector3 (body.position.x + spawnOffsetX, body.position.y + spawnOffsetY, body.position.z + spawnOffsetZ);
 		}
 	}
 

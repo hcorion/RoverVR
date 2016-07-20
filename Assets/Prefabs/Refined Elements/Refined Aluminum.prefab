@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2372542}
   - 54: {fileID: 5492760}
   - 114: {fileID: 11433178}
+  - 114: {fileID: 11439216}
   m_Layer: 0
   m_Name: Refined Aluminum
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 145550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 228.15895, y: 13.474576, z: 206.29999}
-  m_LocalScale: {x: 0.05150706, y: 0.031693827, z: 0.13026999}
+  m_LocalScale: {x: 0.09216629, y: 0.056712672, z: 0.23310405}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -112,6 +113,17 @@ MonoBehaviour:
   EnableGravityOnDetach: 1
   AttachedHand: {fileID: 0}
   InteractionPoint: {fileID: 0}
+--- !u!114 &11439216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfad77c184d0e2848adb6a9860c53a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
