@@ -10,5 +10,6 @@ public class ToolProperties : MonoBehaviour {
 	public string getTool()
 	{
 		return tool.ToString();
+		gameObject.GetComponent<ChemCamController>()
 	}
 }
