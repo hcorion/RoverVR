@@ -3,6 +3,7 @@ using System.Collections;
 
 public class RepairerScript : MonoBehaviour {
 	public GameObject door;
+	public FixedJoint objectSnapPoint;
 	// Use this for initialization
 	void Start () {
 	
@@ -41,6 +42,7 @@ public class RepairerScript : MonoBehaviour {
 	private void snapObject(GameObject obj)
 	{
 		//We also should set the object to knematic
+		
 
 	}
 }

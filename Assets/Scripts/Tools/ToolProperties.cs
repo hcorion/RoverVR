@@ -6,15 +6,6 @@ public class ToolProperties : MonoBehaviour {
      
      //This is what you need to show in the inspector.
      public toolList tool;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	public string getTool()
 	{
