@@ -18,7 +18,7 @@ public class RepairerScript : MonoBehaviour {
 		 {
             case "SelfieStick":
 				Debug.Log("Selfie Stick has been added");
-				snapObject();
+				snapObject(col.gameObject);
 				break;
 			case "NeutronDetector":
 				break;
@@ -36,7 +36,7 @@ public class RepairerScript : MonoBehaviour {
 	{
 		
 	}
-	private void snapObject()
+	private void snapObject(GameObject obj)
 	{
 
 	}
