@@ -5,9 +5,9 @@ public class toolDetector : MonoBehaviour {
 	public bool isToolDetector;
 	void OnTriggerEnter(Collider other)
      {
-		 if(other.gameObject.GetComponent<toolProperties>() != null && isToolDetector == true)
+		 if(other.gameObject.GetComponent<ToolProperties>() != null && isToolDetector == true)
 		 {
-		 	repairerScript.ToolTriggerEntered(other.gameObject.GetComponent<toolProperties>().getTool(), other);
+		 	repairerScript.ToolTriggerEntered(other.gameObject.GetComponent<ToolProperties>().getTool(), other);
 		 }
 		 else if (other.gameObject.tag == "" && isToolDetector == false)
 		 {
