@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
-
 public class toolDetector : MonoBehaviour {
+	public RepairerScript repairerScript;
+	public bool isToolDetector;
 	void OnTriggerEnter(Collider other)
      {
-         switch (other.gameObject.GetComponent<toolProperties>().getTool())
+		 if(other.gameObject.GetComponent<toolProperties>() != null && isToolDetector == true)
 		 {
-            case "SelfieStick":
-				break;
-			default:
-				Debug.Log("That object is not supported for input.");
-				break;
+		 	repairerScript.ToolTriggerEntered(other.gameObject.GetComponent<toolProperties>().getTool(), other);
+		 }
+		 else if (other.gameObject.tag == "" && isToolDetector == false)
+		 {
+			 repairerScript.rfMaterialTriggerEntered(other.gameObject);
 		 }
      }
 }

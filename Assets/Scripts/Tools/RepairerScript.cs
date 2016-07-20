@@ -12,7 +12,31 @@ public class RepairerScript : MonoBehaviour {
 	
 	}
 
-	public void SomeTriggerEntered()
+	public void ToolTriggerEntered(string tool, Collider col)
+	{
+		switch (tool)
+		 {
+            case "SelfieStick":
+				Debug.Log("Selfie Stick has been added");
+				snapObject();
+				break;
+			case "NeutronDetector":
+				break;
+			case "Binoculars":
+				break;
+			case "ChemCam":
+				break;
+			default:
+				Debug.Log("The object " + tool + " is not supported for input.");
+				break;
+		 }
+	}
+
+	public void rfMaterialTriggerEntered(GameObject rfMaterial)
+	{
+
+	}
+	private void snapObject()
 	{
 
 	}
