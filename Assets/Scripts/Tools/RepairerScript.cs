@@ -34,7 +34,7 @@ public class RepairerScript : MonoBehaviour {
 
 	public void rfMaterialTriggerEntered(GameObject rfMaterial)
 	{
-
+		
 	}
 	private void snapObject()
 	{
