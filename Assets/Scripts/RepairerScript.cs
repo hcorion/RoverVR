@@ -31,6 +31,7 @@ public class RepairerScript : MonoBehaviour {
 				break;
 			case "ChemCam":
 				Debug.Log("Hit the ChemCam!");
+				snapObject(col.gameObject);
 				break;
 			default:
 				Debug.Log("The object " + tool + " is not supported for input.");
@@ -54,6 +55,6 @@ public class RepairerScript : MonoBehaviour {
 		{
 			objectSnapPoint.connectedBody = obj.GetComponent<Rigidbody>();
 		}
-		
+
 	}
 }
