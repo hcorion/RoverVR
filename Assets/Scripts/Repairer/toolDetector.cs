@@ -5,6 +5,7 @@ public class toolDetector : MonoBehaviour {
 	public bool isToolDetector;
 	void OnTriggerEnter(Collider other)
      {
+		 Debug.Log("We made it here!");
 		 if(other.gameObject.GetComponent<ToolProperties>() != null && isToolDetector == true)
 		 {
 			 Debug.Log("I've hit a Tool!");
