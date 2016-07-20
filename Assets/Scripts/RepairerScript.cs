@@ -7,18 +7,10 @@ public class RepairerScript : MonoBehaviour {
 
 	public GameObject rightController;
 	public GameObject leftController;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	public void ToolTriggerEntered(string tool, Collider col)
 	{
+		Debug.Log("We made it to ToolTriggerEntered. The tool is: " + tool);
 		switch (tool)
 		 {
             case "SelfieStick":
@@ -45,6 +37,7 @@ public class RepairerScript : MonoBehaviour {
 	}
 	private void snapObject(GameObject obj)
 	{
+		Debug.Log("We made it to snapObject");
 		if(rightController.GetComponent<NewtonVR.NVRHand>() == null)
 		{
 			Debug.Log("ERROR!");
@@ -54,6 +47,10 @@ public class RepairerScript : MonoBehaviour {
 		 leftController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name != obj.name)
 		{
 			objectSnapPoint.connectedBody = obj.GetComponent<Rigidbody>();
+		}
+		else
+		{
+			Debug.Log("Looks like it's being held");
 		}
 
 	}
