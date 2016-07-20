@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 438070}
   - 65: {fileID: 6532640}
+  - 114: {fileID: 11436804}
   m_Layer: 0
   m_Name: detection
   m_TagString: Untagged
@@ -75,6 +76,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 488536}
+  - 114: {fileID: 11497374}
   m_Layer: 0
   m_Name: Repairer
   m_TagString: Untagged
@@ -295,6 +297,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 415770}
   - 65: {fileID: 6564210}
+  - 114: {fileID: 11436098}
   m_Layer: 0
   m_Name: detector
   m_TagString: Untagged
@@ -1412,6 +1415,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11436098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e544031e9bd5c4b33838a164cd52a749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repairerScript: {fileID: 11497374}
+  isToolDetector: 0
+--- !u!114 &11436804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e544031e9bd5c4b33838a164cd52a749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repairerScript: {fileID: 11497374}
+  isToolDetector: 1
+--- !u!114 &11497374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cfc00ea103874a37992bbfab746aa8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 195688}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -26,6 +26,7 @@ public class RepairerScript : MonoBehaviour {
 			case "Binoculars":
 				break;
 			case "ChemCam":
+				Debug.Log("Hit the ChemCam!");
 				break;
 			default:
 				Debug.Log("The object " + tool + " is not supported for input.");
