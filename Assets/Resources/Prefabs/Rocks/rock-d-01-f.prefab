@@ -27,6 +27,7 @@ GameObject:
   - 33: {fileID: 3313148}
   - 23: {fileID: 2343420}
   - 54: {fileID: 5423676}
+  - 114: {fileID: 11466838}
   m_Layer: 0
   m_Name: rockLP001.007
   m_TagString: Untagged
@@ -61,6 +62,7 @@ GameObject:
   - 33: {fileID: 3343740}
   - 23: {fileID: 2326506}
   - 54: {fileID: 5460438}
+  - 114: {fileID: 11425560}
   m_Layer: 0
   m_Name: rockLP001.008
   m_TagString: Untagged
@@ -125,6 +127,7 @@ GameObject:
   - 33: {fileID: 3355348}
   - 23: {fileID: 2349518}
   - 54: {fileID: 5486752}
+  - 114: {fileID: 11435730}
   m_Layer: 0
   m_Name: rockLP001.005
   m_TagString: Untagged
@@ -143,6 +146,7 @@ GameObject:
   - 33: {fileID: 3300986}
   - 23: {fileID: 2332894}
   - 54: {fileID: 5419600}
+  - 114: {fileID: 11422344}
   m_Layer: 0
   m_Name: rockLP001.006
   m_TagString: Untagged
@@ -224,6 +228,7 @@ GameObject:
   - 33: {fileID: 3314442}
   - 23: {fileID: 2351190}
   - 54: {fileID: 5489204}
+  - 114: {fileID: 11458554}
   m_Layer: 0
   m_Name: rockLP001.004
   m_TagString: Untagged
@@ -738,6 +743,101 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11422344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4a39dec1a23a043a14d554ccce8fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rigidbody: {fileID: 5419600}
+  CanAttach: 1
+  DisableKinematicOnAttach: 1
+  EnableKinematicOnDetach: 0
+  DropDistance: 1
+  EnableGravityOnDetach: 1
+  AttachedHand: {fileID: 0}
+  InteractionPoint: {fileID: 0}
+--- !u!114 &11425560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4a39dec1a23a043a14d554ccce8fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rigidbody: {fileID: 5460438}
+  CanAttach: 1
+  DisableKinematicOnAttach: 1
+  EnableKinematicOnDetach: 0
+  DropDistance: 1
+  EnableGravityOnDetach: 1
+  AttachedHand: {fileID: 0}
+  InteractionPoint: {fileID: 0}
+--- !u!114 &11435730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4a39dec1a23a043a14d554ccce8fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rigidbody: {fileID: 5486752}
+  CanAttach: 1
+  DisableKinematicOnAttach: 1
+  EnableKinematicOnDetach: 0
+  DropDistance: 1
+  EnableGravityOnDetach: 1
+  AttachedHand: {fileID: 0}
+  InteractionPoint: {fileID: 0}
+--- !u!114 &11458554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4a39dec1a23a043a14d554ccce8fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rigidbody: {fileID: 5489204}
+  CanAttach: 1
+  DisableKinematicOnAttach: 1
+  EnableKinematicOnDetach: 0
+  DropDistance: 1
+  EnableGravityOnDetach: 1
+  AttachedHand: {fileID: 0}
+  InteractionPoint: {fileID: 0}
+--- !u!114 &11466838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4a39dec1a23a043a14d554ccce8fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rigidbody: {fileID: 5423676}
+  CanAttach: 1
+  DisableKinematicOnAttach: 1
+  EnableKinematicOnDetach: 0
+  DropDistance: 1
+  EnableGravityOnDetach: 1
+  AttachedHand: {fileID: 0}
+  InteractionPoint: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

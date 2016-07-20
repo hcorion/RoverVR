@@ -42,7 +42,7 @@ namespace NewtonVR
 				Vector3 forward = transform.TransformVector (Vector3.right);
 				Debug.DrawRay (shootPoint.position, forward, new Color (255, 136, 0), 20, false);
 				if (Physics.Raycast (shootPoint.position, forward, out hit, 3)) {
-					Debug.Log ("The ChemCam hit " + hit.transform.name + "At a distance of " + hit.distance);
+					//Debug.Log ("The ChemCam hit " + hit.transform.name + "At a distance of " + hit.distance);
 					ObjectProperties objectProperties = hit.transform.GetComponent<ObjectProperties> ();
 					if (objectProperties != null) {
 						string rockMaterial = objectProperties.getSimpleMaterial ();
