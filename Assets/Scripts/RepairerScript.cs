@@ -44,7 +44,16 @@ public class RepairerScript : MonoBehaviour {
 	}
 	private void snapObject(GameObject obj)
 	{
+		if(rightController.GetComponent<NewtonVR.NVRHand>() == null)
+		{
+			Debug.Log("ERROR!");
+		}
 		//We also should set the object to knematic
-		//if(rightController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name == obj.name &&)
+		if(rightController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name != obj.name &&
+		 leftController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name != obj.name)
+		{
+			objectSnapPoint.connectedBody = obj.GetComponent<Rigidbody>();
+		}
+		
 	}
 }
