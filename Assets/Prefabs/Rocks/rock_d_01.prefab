@@ -225,8 +225,8 @@ MonoBehaviour:
   - Copper
   rockPercentage:
   - 0
-  - 2
-  - 1
+  - 60
+  - 40
 --- !u!114 &11493504
 MonoBehaviour:
   m_ObjectHideFlags: 1

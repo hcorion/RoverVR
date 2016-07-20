@@ -58,6 +58,7 @@ namespace NewtonVR
                             
                                 if (rockbreakage != 0.0f)
                                 {
+																		GetComponent<AudioSource>().Play();
                                     breakTime += Time.deltaTime;
                                     if (breakTime >= rockbreakage)
                                     {
