@@ -40,7 +40,7 @@ public class RockCollider : MonoBehaviour
 			for (int i = 0; i < materialNames.Count; ++i) {
 				float value;
 				materialDictionary.TryGetValue (materialNames [i].ToString (), out value);
-				element += materialNames [i].ToString () + " " + value + "g \n";
+				element += materialNames [i].ToString () + " " + value + "g\n";
 
 				GameObject spawned = (GameObject)Instantiate (GetElement (materialNames [i].ToString ()), new Vector3 (body.position.x + spawnOffsetX, body.position.y + spawnOffsetY, body.position.z + spawnOffsetZ), Quaternion.identity);
 

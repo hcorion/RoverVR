@@ -28,6 +28,7 @@ GameObject:
   - 23: {fileID: 2343420}
   - 54: {fileID: 5423676}
   - 114: {fileID: 11466838}
+  - 114: {fileID: 11436672}
   m_Layer: 0
   m_Name: rockLP001.007
   m_TagString: Untagged
@@ -63,6 +64,7 @@ GameObject:
   - 23: {fileID: 2326506}
   - 54: {fileID: 5460438}
   - 114: {fileID: 11425560}
+  - 114: {fileID: 11439670}
   m_Layer: 0
   m_Name: rockLP001.008
   m_TagString: Untagged
@@ -109,6 +111,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 427344}
+  - 114: {fileID: 11404184}
   m_Layer: 0
   m_Name: rock-d-01-f
   m_TagString: Untagged
@@ -128,6 +131,7 @@ GameObject:
   - 23: {fileID: 2349518}
   - 54: {fileID: 5486752}
   - 114: {fileID: 11435730}
+  - 114: {fileID: 11460360}
   m_Layer: 0
   m_Name: rockLP001.005
   m_TagString: Untagged
@@ -147,6 +151,7 @@ GameObject:
   - 23: {fileID: 2332894}
   - 54: {fileID: 5419600}
   - 114: {fileID: 11422344}
+  - 114: {fileID: 11423348}
   m_Layer: 0
   m_Name: rockLP001.006
   m_TagString: Untagged
@@ -229,6 +234,7 @@ GameObject:
   - 23: {fileID: 2351190}
   - 54: {fileID: 5489204}
   - 114: {fileID: 11458554}
+  - 114: {fileID: 11468734}
   m_Layer: 0
   m_Name: rockLP001.004
   m_TagString: Untagged
@@ -743,6 +749,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11404184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: effe783476466ab4f88db63fdae5bc5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockContent:
+  - Unusable
+  - Aluminum
+  - Copper
+  rockPercentage:
+  - 20
+  - 40
+  - 30
 --- !u!114 &11422344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -762,6 +787,25 @@ MonoBehaviour:
   EnableGravityOnDetach: 1
   AttachedHand: {fileID: 0}
   InteractionPoint: {fileID: 0}
+--- !u!114 &11423348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: effe783476466ab4f88db63fdae5bc5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockContent:
+  - Unusable
+  - Aluminum
+  - Copper
+  rockPercentage:
+  - 20
+  - 30
+  - 10
 --- !u!114 &11425560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -800,6 +844,44 @@ MonoBehaviour:
   EnableGravityOnDetach: 1
   AttachedHand: {fileID: 0}
   InteractionPoint: {fileID: 0}
+--- !u!114 &11436672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: effe783476466ab4f88db63fdae5bc5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockContent:
+  - Unusable
+  - Aluminum
+  - Copper
+  rockPercentage:
+  - 0
+  - 40
+  - 35
+--- !u!114 &11439670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: effe783476466ab4f88db63fdae5bc5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockContent:
+  - Unusable
+  - Aluminum
+  - Copper
+  rockPercentage:
+  - 20
+  - 30
+  - 0
 --- !u!114 &11458554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -819,6 +901,25 @@ MonoBehaviour:
   EnableGravityOnDetach: 1
   AttachedHand: {fileID: 0}
   InteractionPoint: {fileID: 0}
+--- !u!114 &11460360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: effe783476466ab4f88db63fdae5bc5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockContent:
+  - Unusable
+  - Aluminum
+  - Copper
+  rockPercentage:
+  - 25
+  - 15
+  - 10
 --- !u!114 &11466838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -838,6 +939,25 @@ MonoBehaviour:
   EnableGravityOnDetach: 1
   AttachedHand: {fileID: 0}
   InteractionPoint: {fileID: 0}
+--- !u!114 &11468734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: effe783476466ab4f88db63fdae5bc5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockContent:
+  - Unusable
+  - Aluminum
+  - Copper
+  rockPercentage:
+  - 25
+  - 30
+  - 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
