@@ -208,6 +208,18 @@ Prefab:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11481456, guid: d82ef5a664a094fffb1e09924780d855, type: 2}
+      propertyPath: rockContent.Array.data[1]
+      value: Aluminum
+      objectReference: {fileID: 0}
+    - target: {fileID: 11481456, guid: d82ef5a664a094fffb1e09924780d855, type: 2}
+      propertyPath: rockPercentage.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11481456, guid: d82ef5a664a094fffb1e09924780d855, type: 2}
+      propertyPath: rockPercentage.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d82ef5a664a094fffb1e09924780d855, type: 2}
   m_IsPrefabParent: 0

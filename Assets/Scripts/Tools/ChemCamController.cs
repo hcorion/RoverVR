@@ -135,6 +135,7 @@ namespace NewtonVR
             currentTime += Time.deltaTime;
             light.color = Color32.Lerp(previousColour, lightColourToLerp, currentTime / lerpTime);
             laserMat.color = Color32.Lerp(previousColour, lightColourToLerp, currentTime / lerpTime);
+            laserMat.SetColor("_EmissionColor", laserMat.color);
             }
             else if (lightColourToLerp != light.color)
             {
