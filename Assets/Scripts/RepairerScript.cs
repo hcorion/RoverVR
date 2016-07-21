@@ -60,6 +60,14 @@ public class RepairerScript : MonoBehaviour {
 		{
 			Debug.Log("ERROR!");
 		}
+		else
+		{
+			Debug.Log("The NVRHand is: " + rightController.GetComponent<NewtonVR.NVRHand>());
+		}
+		Debug.Log("Made it to this place, here!");
+		NewtonVR.NVRHand hand;
+		hand = rightController.GetComponent<NewtonVR.NVRHand>();
+		Debug.Log("the hand is currently interacting with " + hand.CurrentlyInteracting);
 		//We also should set the object to knematic
 		//if(rightController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name != obj.name &&
 		// leftController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name != obj.name)
