@@ -6,7 +6,7 @@ public class toolDetector : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
      {
 		 Debug.Log("We made it here!");
-		 if(other.gameObject.GetComponent<ToolProperties>() != null && isToolDetector == true)
+		 if(other.gameObject.GetComponent<ToolProperties>() != null)// && isToolDetector == true)
 		 {
 			 Debug.Log("I've hit a Tool!");
 		 	repairerScript.ToolTriggerEntered(other.gameObject.GetComponent<ToolProperties>().getTool(), other);
@@ -15,6 +15,10 @@ public class toolDetector : MonoBehaviour {
 		 {
 			 Debug.Log("I've hit  a rfMaterial!");
 			 repairerScript.rfMaterialTriggerEntered(other.gameObject);
+		 }
+		 else
+		 {
+			 Debug.Log("This object doesn't have toolProperties or isn't an ingot");
 		 }
      }
 }
