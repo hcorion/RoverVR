@@ -39,7 +39,7 @@ namespace NewtonVR
 			if (buttonDown == true) {
 				//Raycasting to ground
 				RaycastHit hit;
-				Vector3 forward = transform.TransformVector (Vector3.right);
+				Vector3 forward = transform.TransformVector (Vector3.left);
 				Debug.DrawRay (shootPoint.position, forward, new Color (255, 136, 0), 20, false);
 				if (Physics.Raycast (shootPoint.position, forward, out hit, 3)) {
 					//Debug.Log ("The ChemCam hit " + hit.transform.name + "At a distance of " + hit.distance);
@@ -49,16 +49,16 @@ namespace NewtonVR
 						Debug.Log ("The current material is:" + rockMaterial);
 
                         //Updating the position of the laser and the light
-                        laser.transform.localPosition = new Vector3(hit.distance / 2 + 0.12f, 0, 0) + laserIntialPosition;
+                        laser.transform.localPosition = new Vector3((-hit.distance) / 2 - 0.29f, 0.068f, 0) + laserIntialPosition;
                         laser.transform.localScale = new Vector3(laser.transform.localScale.x, hit.distance * 55, laser.transform.localScale.z);
-                          lightGameObject.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z) - transform.right / 9.0f;
+                          lightGameObject.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z) + transform.right / 9.0f;
                         if (lastRock == hit.transform.gameObject)
                         {
                             //If we're still on the same rock.
                             
                                 if (rockbreakage != 0.0f)
                                 {
-																		GetComponent<AudioSource>().Play();
+									GetComponent<AudioSource>().Play();
                                     breakTime += Time.deltaTime;
                                     if (breakTime >= rockbreakage)
                                     {
@@ -87,7 +87,7 @@ namespace NewtonVR
                                 case "nil":
                                     lightColourToLerp = new Color32(100, 255, 0, 255);
                                     break;
-                                case "Aluminium":
+                                case "Aluminum":
                                     lightColourToLerp = new Color32(76, 88, 156, 255);
                                     break;
                                 case "Copper":
