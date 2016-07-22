@@ -91,16 +91,16 @@ namespace NewtonVR.Example
 				if (waterSrc != null) {
 					float moisture = 1 / Vector3.Distance (hit.point, hit.transform.position);
 					Debug.DrawLine (hit.transform.position, hit.point, Color.blue, 20f, false);
-					if (moisture > 0) {
+					if (moisture >= 0) {
 						return moisture.ToString ("F2") + units;
 					} else {
-						return ("None");
+						return ("0" + units);
 					}
 				} else {
-					return ("None");
+					return (hit.collider.gameObject.tag + " Contains No Moisture");
 				}
 			} else {
-				return ("None");
+				return ("No Object Found");
 			}
 		}
 

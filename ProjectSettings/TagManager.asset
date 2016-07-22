@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tool
+  - Rover
+  - Machine
+  - Soil
+  - Storm
+  - Rock
+  - Wood
   layers:
   - Default
   - TransparentFX

@@ -28,7 +28,7 @@ public class RockCollider : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter (Collider c)
+	void OnColliderEnter (Collider c)
 	{
 		ObjectProperties objProp = c.gameObject.GetComponent<ObjectProperties> ();
 		IngotProperties ingotProp = c.gameObject.GetComponent<IngotProperties> ();
