@@ -97,10 +97,10 @@ namespace NewtonVR.Example
 						return ("0" + units);
 					}
 				} else {
-					return (hit.collider.gameObject.tag + " Contains No Moisture");
+					return ("Object Contains No Moisture");
 				}
 			} else {
-				return ("No Object Found");
+				return ("No Soil Found");
 			}
 		}
 
