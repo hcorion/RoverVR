@@ -50,11 +50,13 @@ public class RepairerScript : MonoBehaviour {
 				currentTool.GetComponent<Rigidbody>().isKinematic = false;
 				currentTool = null;
 				toolIndex = 23;
+				objIsSnapped = false;
 			}
 		}
 		else
 		{
 			door.SetActive(true);
+			////You need to add the removal of the elements from inside the 'furnace'
 		}
 	}
 	public void ToolTriggerEntered(string tool, GameObject toolObj)
@@ -170,8 +172,9 @@ public class RepairerScript : MonoBehaviour {
 		{
 			objToLerp = obj;
 			oldLerpPos = objToLerp.transform;
-			objIsSnapped = true;
 			currentTool = obj;
+			objIsSnapped = true;
+			objToLerp.GetComponent<Rigidbody>().isKinematic = true;
 		}
 		//We also should set the object to knematic
 		//if(rightController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name != obj.name &&
@@ -204,7 +207,7 @@ public class RepairerScript : MonoBehaviour {
         }
 		else
 		{
-			objToLerp.GetComponent<Rigidbody>().isKinematic = true;
+			//If we have reached our goal and are waiting for new instructions.
 		}
     }
 }
