@@ -35,6 +35,6 @@ public class Skateboard : MonoBehaviour
 			Debug.Log ("The angle is not zero!");
 		}
 		this.transform.position += transform.right * Time.deltaTime * speed;
-		hinge.anchor += transform.right * Time.deltaTime * speed;
+		hinge.connectedAnchor += transform.right * Time.deltaTime * speed;
 	}
 }

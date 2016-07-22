@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Outlined_Material
-  m_Shader: {fileID: 4800000, guid: 7dcb66847d89f3e4c80372638388c43c, type: 3}
+  m_Name: Outlined_Diffuse
+  m_Shader: {fileID: 4800000, guid: b8347a14ec961cf4ab385d8e56e08693, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: 3000
@@ -130,7 +130,7 @@ Material:
       data:
         first:
           name: _Outline
-        second: 0.005
+        second: 0.01
     m_Colors:
       data:
         first:
@@ -143,4 +143,4 @@ Material:
       data:
         first:
           name: _OutlineColor
-        second: {r: 0, g: 0, b: 0, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
