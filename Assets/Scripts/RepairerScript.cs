@@ -56,6 +56,7 @@ public class RepairerScript : MonoBehaviour {
 		else
 		{
 			door.SetActive(true);
+			//currentTool.GetComponent<Rigidbody>().isKinematic = true;
 			////You need to add the removal of the elements from inside the 'furnace'
 		}
 	}
@@ -171,7 +172,7 @@ public class RepairerScript : MonoBehaviour {
 		if(leftHand.IsInteracting != obj || rightHand.IsInteracting != obj)
 		{
 			objToLerp = obj;
-			oldLerpPos = objToLerp.transform;
+			//oldLerpPos = objToLerp.transform;
 			currentTool = obj;
 			objIsSnapped = true;
 			objToLerp.GetComponent<Rigidbody>().isKinematic = true;
@@ -196,6 +197,7 @@ public class RepairerScript : MonoBehaviour {
 		}
 		else if (oldLerpPos == null || oldLerpPos.name != objToLerp.name)
 		{
+			//If we haven't started the lerp yet.
 			oldLerpPos = objToLerp.transform;
 		}
         else if (currentLerpTime / lerpTime < 0.1)
