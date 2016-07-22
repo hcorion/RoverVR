@@ -1,0 +1,28 @@
+using UnityEngine;
+using System.Collections;
+
+public class Skateboard : MonoBehaviour {
+	public float speed = 0;
+	public float maxspeed = 100;
+	public int gear = 1;
+	public int gearCount = 5;
+	int [] maxSpeedsperGear = new int[]{40, 70, 100, 130, 170};
+	public GameObject axle;
+	public Vector3 eulerAngles;
+
+	void Start () {
+		eulerAngles = axle.transform.localRotation.eulerAngles;
+	}
+	float getAngle(){
+		return eulerAngles.z;
+	}
+	float setSpeed()
+	{
+		return speed = getAngle ()/100 * maxspeed;
+	}
+	// Update is called once per frame
+	void Update () {
+		setSpeed ();
+		this.transform.position += transform.forward * Time.deltaTime * speed;
+	}	
+} 		
