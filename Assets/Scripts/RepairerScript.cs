@@ -155,6 +155,7 @@ public class RepairerScript : MonoBehaviour {
 	}
 	private void snapObject(GameObject obj)
 	{
+		Debug.Log("The gameobject of snapObject is: " + obj + " and is called " + obj.name);
 		Debug.Log("the right hand is currently interacting with " + rightHand.CurrentlyInteracting);
 		if(leftHand.IsInteracting != obj || rightHand.IsInteracting != obj)
 		{
