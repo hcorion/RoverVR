@@ -14,18 +14,42 @@ public class RepairerScript : MonoBehaviour {
 	private float lerpTime = 2.0f;
 	private float currentLerpTime = 0.0f;
 	private Transform oldLerpPos = null;
+	private bool objIsSnapped = false;
+	private GameObject currentTool;
+	NewtonVR.NVRHand leftHand;
+	NewtonVR.NVRHand rightHand;
+
 	
 	void Start()
 	{
-
+		if(rightController.GetComponent<NewtonVR.NVRHand>() == null)
+		{
+			Debug.Log("Error, the right Controller doesn't have NVRHand as a script");
+		}
+		NewtonVR.NVRHand rightHand = rightController.GetComponent<NewtonVR.NVRHand>();
+		rightHand = rightController.GetComponent<NewtonVR.NVRHand>();
+		leftHand = leftController.GetComponent<NewtonVR.NVRHand>();
 	}
 	void Update()
 	{
 		lerpObjectToSnap();
+		if (objIsSnapped == true)
+		{
+			if (leftHand.CurrentlyInteracting == currentTool || rightHand.CurrentlyInteracting == currentTool)
+			{
+				currentTool.GetComponent<Rigidbody>().isKinematic = false;
+				currentTool = null;
+			}
+		}
 	}
 	public void ToolTriggerEntered(string tool, Collider col)
 	{
 		Debug.Log("We made it to ToolTriggerEntered. The tool is: " + tool);
+		if(currentTool != null)
+		{
+			Debug.Log("We already have a tool that's being used.");
+			return;
+		}
 		switch (tool)
 		 {
             case "SelfieStick":
@@ -52,22 +76,13 @@ public class RepairerScript : MonoBehaviour {
 	}
 	private void snapObject(GameObject obj)
 	{
-		Debug.Log("We made it to snapObject");
-		//objectSnapPoint.connectedBody = obj.GetComponent<Rigidbody>();
-		objToLerp = obj;
-		oldLerpPos = objToLerp.transform;
-		if(rightController.GetComponent<NewtonVR.NVRHand>() == null)
+		Debug.Log("the right hand is currently interacting with " + rightHand.CurrentlyInteracting);
+		if(leftHand.IsInteracting != obj && rightHand.IsInteracting != obj)
 		{
-			Debug.Log("ERROR!");
+			objToLerp = obj;
+			oldLerpPos = objToLerp.transform;
+			objIsSnapped = true;
 		}
-		else
-		{
-			Debug.Log("The NVRHand is: " + rightController.GetComponent<NewtonVR.NVRHand>());
-		}
-		Debug.Log("Made it to this place, here!");
-		NewtonVR.NVRHand hand;
-		hand = rightController.GetComponent<NewtonVR.NVRHand>();
-		Debug.Log("the hand is currently interacting with " + hand.CurrentlyInteracting);
 		//We also should set the object to knematic
 		//if(rightController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name != obj.name &&
 		// leftController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name != obj.name)
@@ -84,7 +99,7 @@ public class RepairerScript : MonoBehaviour {
     {
 		if(objToLerp == null)
 		{
-
+			//If we haven't placed an object on the tble
 		}
 		else if (oldLerpPos == null || oldLerpPos.name != objToLerp.name)
 		{
