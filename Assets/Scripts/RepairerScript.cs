@@ -22,7 +22,7 @@ public class RepairerScript : MonoBehaviour {
 	//Used for the detection of ingots.
 	private GameObject[] ingots;
 
-	
+	private int toolIndex;
 	void Start()
 	{
 		if(rightController.GetComponent<NewtonVR.NVRHand>() == null)
@@ -44,6 +44,7 @@ public class RepairerScript : MonoBehaviour {
 				//If we're picking up the tool again.
 				currentTool.GetComponent<Rigidbody>().isKinematic = false;
 				currentTool = null;
+				toolIndex = 23;
 			}
 		}
 		else
@@ -63,13 +64,17 @@ public class RepairerScript : MonoBehaviour {
 		 {
             case "SelfieStick":
 				Debug.Log("Selfie Stick has been added");
+				toolIndex = 0;
 				snapObject(toolObj);
 				break;
 			case "NeutronDetector":
+				toolIndex = 1;
 				break;
 			case "Binoculars":
+				toolIndex = 2;
 				break;
 			case "ChemCam":
+				toolIndex = 3;
 				Debug.Log("Hit the ChemCam!");
 				snapObject(toolObj);
 				break;
@@ -100,7 +105,53 @@ public class RepairerScript : MonoBehaviour {
 	}
 	public void repairTool()
 	{
-		
+		/*Selfie Stick takes: 
+		2 100% Aluminum
+		1 100% Copper*/
+		/*ChemCam takes
+		1 50% Aluminum
+		1 20% Copper
+		*/
+		int AluminumRepairValue;
+		int CopperRepairValue;
+		switch (toolIndex)
+		{
+            case 0:
+				Debug.Log("The Selfie Stick can't yet be repaired");
+				break;
+			case 1:
+				Debug.Log("The Selfie Stick can't yet be repaired");
+				break;
+			case 3:
+				Debug.Log("I'm going to repair the ChemCam.");
+				AluminumRepairValue = 50;
+				CopperRepairValue = 20;
+				break;
+			case 23:
+				Debug.Log("No tool is present, or it has been removed.");
+				break;
+			default:
+				Debug.Log("That tool isn't yet added to the RepairerScript");
+				break;
+		}
+		int currentAluminium;
+		int currentCopper;
+		foreach(GameObject ingot in ingots)
+		{
+			string name = ingot.GetComponent<IngotProperties>().GetName();
+			if(name == "Aluminum")
+			{
+				currentAluminium = Mathf.FloorToInt(ingot.transform.localScale.x)*100;
+			}
+			else if (name == "Copper")
+			{
+				currentCopper = Mathf.FloorToInt(ingot.transform.localScale.x)*100;
+			}
+			else
+			{
+				Debug.Log("Woops, RepairerScript doesn't recognize the material of type: " + name);
+			}
+		}
 	}
 	private void snapObject(GameObject obj)
 	{
