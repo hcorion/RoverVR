@@ -11,12 +11,12 @@ public class toolDetector : MonoBehaviour {
 		 {
 			 Debug.Log("The object " + parent.name + " is a tool");
 			 Debug.Log("I've hit a Tool!");
-		 	repairerScript.ToolTriggerEntered(parent.GetComponent<ToolProperties>().getTool(), other);
+		 	repairerScript.ToolTriggerEntered(parent.GetComponent<ToolProperties>().getTool(), parent);
 		 }
-		 else if (parent.tag == "" && isToolDetector == false)
+		 else if (parent.tag == "Ingot" && isToolDetector == false)
 		 {
 			 Debug.Log("I've hit a rfMaterial!");
-			 repairerScript.rfMaterialTriggerEntered(other.gameObject);
+			 repairerScript.IngotTriggerEntered(other.gameObject);
 		 }
 		 else
 		 {

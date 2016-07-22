@@ -15,9 +15,12 @@ public class RepairerScript : MonoBehaviour {
 	private float currentLerpTime = 0.0f;
 	private Transform oldLerpPos = null;
 	private bool objIsSnapped = false;
+	//Used for basic detection of what the hand is holding.
 	private GameObject currentTool;
 	NewtonVR.NVRHand leftHand;
 	NewtonVR.NVRHand rightHand;
+	//Used for the detection of ingots.
+	private GameObject[] ingots;
 
 	
 	void Start()
@@ -35,14 +38,20 @@ public class RepairerScript : MonoBehaviour {
 		lerpObjectToSnap();
 		if (objIsSnapped == true)
 		{
+			door.SetActive(false);
 			if (leftHand.CurrentlyInteracting == currentTool || rightHand.CurrentlyInteracting == currentTool)
 			{
+				//If we're picking up the tool again.
 				currentTool.GetComponent<Rigidbody>().isKinematic = false;
 				currentTool = null;
 			}
 		}
+		else
+		{
+			door.SetActive(true);
+		}
 	}
-	public void ToolTriggerEntered(string tool, Collider col)
+	public void ToolTriggerEntered(string tool, GameObject toolObj)
 	{
 		Debug.Log("We made it to ToolTriggerEntered. The tool is: " + tool);
 		if(currentTool != null)
@@ -54,7 +63,7 @@ public class RepairerScript : MonoBehaviour {
 		 {
             case "SelfieStick":
 				Debug.Log("Selfie Stick has been added");
-				snapObject(col.gameObject);
+				snapObject(toolObj);
 				break;
 			case "NeutronDetector":
 				break;
@@ -62,7 +71,7 @@ public class RepairerScript : MonoBehaviour {
 				break;
 			case "ChemCam":
 				Debug.Log("Hit the ChemCam!");
-				snapObject(col.gameObject);
+				snapObject(toolObj);
 				break;
 			default:
 				Debug.Log("The object " + tool + " is not supported for input.");
@@ -70,14 +79,33 @@ public class RepairerScript : MonoBehaviour {
 		 }
 	}
 
-	public void rfMaterialTriggerEntered(GameObject rfMaterial)
+	public void IngotTriggerEntered(GameObject rfMaterial)
+	{
+		bool isAlreadyAdded = false;
+		for(int i = 0; i >= ingots.Length; i++)
+		{
+			if (rfMaterial == ingots[i])
+			{
+				return;
+			}
+		}
+		if(ingots.Length != 0)
+		{
+			ingots[ingots.Length+1] = rfMaterial;
+		}
+		else
+		{
+			ingots[0] = rfMaterial;
+		}
+	}
+	public void repairTool()
 	{
 		
 	}
 	private void snapObject(GameObject obj)
 	{
 		Debug.Log("the right hand is currently interacting with " + rightHand.CurrentlyInteracting);
-		if(leftHand.IsInteracting != obj && rightHand.IsInteracting != obj)
+		if(leftHand.IsInteracting != obj || rightHand.IsInteracting != obj)
 		{
 			objToLerp = obj;
 			oldLerpPos = objToLerp.transform;
