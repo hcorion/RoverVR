@@ -17,11 +17,10 @@ public class RepairerScript : MonoBehaviour {
 	private bool objIsSnapped = false;
 	//Used for basic detection of what the hand is holding.
 	private GameObject currentTool;
-	NewtonVR.NVRHand leftHand;
-	NewtonVR.NVRHand rightHand;
+	public NewtonVR.NVRHand leftHand;
+	public NewtonVR.NVRHand rightHand;
 	//Used for the detection of ingots.
 	private GameObject[] ingots;
-
 	private int toolIndex;
 	void Start()
 	{
@@ -30,8 +29,8 @@ public class RepairerScript : MonoBehaviour {
 			Debug.Log("Error, the right Controller doesn't have NVRHand as a script");
 		}
 		NewtonVR.NVRHand rightHand = rightController.GetComponent<NewtonVR.NVRHand>();
-		rightHand = rightController.GetComponent<NewtonVR.NVRHand>();
-		leftHand = leftController.GetComponent<NewtonVR.NVRHand>();
+		//rightHand = rightController.GetComponent<NewtonVR.NVRHand>();
+		//leftHand = leftController.GetComponent<NewtonVR.NVRHand>();
 	}
 	void Update()
 	{
