@@ -117,8 +117,8 @@ public class RepairerScript : MonoBehaviour {
 		1 50% Aluminum
 		1 20% Copper
 		*/
-		int AluminumRepairValue;
-		int CopperRepairValue;
+		int AluminumRepairValue = 0;
+		int CopperRepairValue = 0;
 		switch (toolIndex)
 		{
             case 0:
@@ -139,8 +139,8 @@ public class RepairerScript : MonoBehaviour {
 				Debug.Log("That tool isn't yet added to the RepairerScript");
 				break;
 		}
-		int currentAluminium;
-		int currentCopper;
+		int currentAluminium = 0;
+		int currentCopper = 0;
 		foreach(GameObject ingot in ingots)
 		{
 			string name = ingot.GetComponent<IngotProperties>().GetName();
@@ -157,6 +157,10 @@ public class RepairerScript : MonoBehaviour {
 				Debug.Log("Woops, RepairerScript doesn't recognize the material of type: " + name);
 			}
 		}
+		if(currentAluminium >= AluminumRepairValue)
+		{
+
+		}
 	}
 	private void snapObject(GameObject obj)
 	{
@@ -167,6 +171,7 @@ public class RepairerScript : MonoBehaviour {
 			objToLerp = obj;
 			oldLerpPos = objToLerp.transform;
 			objIsSnapped = true;
+			currentTool = obj;
 		}
 		//We also should set the object to knematic
 		//if(rightController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name != obj.name &&
@@ -190,7 +195,7 @@ public class RepairerScript : MonoBehaviour {
 		{
 			oldLerpPos = objToLerp.transform;
 		}
-        else if (currentLerpTime / lerpTime < 1.0)
+        else if (currentLerpTime / lerpTime < 0.1)
         {
 			//If we haven't reached our goal.
 			currentLerpTime += Time.deltaTime;
