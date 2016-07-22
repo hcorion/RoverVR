@@ -28,7 +28,7 @@ public class RepairerScript : MonoBehaviour {
 		{
 			Debug.Log("Error, the right Controller doesn't have NVRHand as a script");
 		}
-		NewtonVR.NVRHand rightHand = rightController.GetComponent<NewtonVR.NVRHand>();
+		//NewtonVR.NVRHand rightHand = rightController.GetComponent<NewtonVR.NVRHand>();
 		//rightHand = rightController.GetComponent<NewtonVR.NVRHand>();
 		//leftHand = leftController.GetComponent<NewtonVR.NVRHand>();
 	}
@@ -38,9 +38,15 @@ public class RepairerScript : MonoBehaviour {
 		if (objIsSnapped == true)
 		{
 			door.SetActive(false);
+			Debug.Log("The left hand is currently interacting with: " + leftHand.CurrentlyInteracting);
+			Debug.Log("The right hand is currently interacting with: " + rightHand.CurrentlyInteracting);
 			if (leftHand.CurrentlyInteracting == currentTool || rightHand.CurrentlyInteracting == currentTool)
 			{
 				//If we're picking up the tool again.
+				if (currentTool.GetComponent<Rigidbody>() == null)
+				{
+					Debug.Log("Hmm, this tool doesn't have a rigidbody.");
+				}
 				currentTool.GetComponent<Rigidbody>().isKinematic = false;
 				currentTool = null;
 				toolIndex = 23;
