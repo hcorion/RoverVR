@@ -24,4 +24,12 @@ public class toolDetector : MonoBehaviour {
 			 Debug.Log("The object " + parent.name + " doesn't work.");
 		 }
      }
+	 void OnTriggerExit(Collider other)
+	 {
+		 GameObject parent = other.transform.root.gameObject;
+		 if(isToolDetector == true)
+		 {
+			 //tool has exited.
+		 }
+	 }
 }

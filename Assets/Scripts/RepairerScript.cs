@@ -8,6 +8,8 @@ public class RepairerScript : MonoBehaviour {
 	public GameObject rightController;
 	public GameObject leftController;
 
+	public GameObject objectDropPoint;
+
 	//Used for LerpObjectToSnap
 
 	private GameObject objToLerp;
@@ -56,6 +58,7 @@ public class RepairerScript : MonoBehaviour {
 		else
 		{
 			door.SetActive(true);
+			//currentTool.GetComponent<Rigidbody>().isKinematic = true;
 			////You need to add the removal of the elements from inside the 'furnace'
 		}
 	}
@@ -119,6 +122,11 @@ public class RepairerScript : MonoBehaviour {
 		1 50% Aluminum
 		1 20% Copper
 		*/
+		if(currentTool == null)
+		{
+			Debug.Log("CurrentTool is equal to null in repairTool");
+			return;
+		}
 		int AluminumRepairValue = 0;
 		int CopperRepairValue = 0;
 		switch (toolIndex)
@@ -161,31 +169,41 @@ public class RepairerScript : MonoBehaviour {
 		}
 		if(currentAluminium >= AluminumRepairValue)
 		{
-
+			Debug.Log("You have enough Aluminum!");
+			if(currentCopper >= CopperRepairValue)
+			{
+				Debug.Log("You have enough copper!");
+				currentTool.transform.position = objectDropPoint.transform.position;
+				int i = 0;
+				foreach(GameObject ingot in ingots)
+				{
+					Object.Destroy(ingot);
+					ingots[i] = null;
+					i++;
+				}
+			}
+		}
+		else
+		{
+			Debug.Log("You do not have enough aluminum. You have " + currentAluminium + " and need " + AluminumRepairValue);
 		}
 	}
 	private void snapObject(GameObject obj)
 	{
 		Debug.Log("The gameobject of snapObject is: " + obj + " and is called " + obj.name);
 		Debug.Log("the right hand is currently interacting with " + rightHand.CurrentlyInteracting);
-		if(leftHand.IsInteracting != obj || rightHand.IsInteracting != obj)
+		if(leftHand.IsInteracting != obj && rightHand.IsInteracting != obj)
 		{
 			objToLerp = obj;
-			oldLerpPos = objToLerp.transform;
+			//oldLerpPos = objToLerp.transform;
 			currentTool = obj;
 			objIsSnapped = true;
 			objToLerp.GetComponent<Rigidbody>().isKinematic = true;
 		}
-		//We also should set the object to knematic
-		//if(rightController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name != obj.name &&
-		// leftController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name != obj.name)
-		//{
-		
-		//}
-		//else
-		//{
-		//	Debug.Log("Looks like it's being held");
-		//
+		else
+		{
+			//Possibly enter into the Update() function to continue checking if the object is being added.
+		}
 
 	}
     private void lerpObjectToSnap()
@@ -196,6 +214,7 @@ public class RepairerScript : MonoBehaviour {
 		}
 		else if (oldLerpPos == null || oldLerpPos.name != objToLerp.name)
 		{
+			//If we haven't started the lerp yet.
 			oldLerpPos = objToLerp.transform;
 		}
         else if (currentLerpTime / lerpTime < 0.1)
