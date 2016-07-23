@@ -44,6 +44,7 @@ public class RepairerScript : MonoBehaviour {
 			Debug.Log("The right hand is currently interacting with: " + rightHand.CurrentlyInteracting);
 			if (leftHand.CurrentlyInteracting == currentTool || rightHand.CurrentlyInteracting == currentTool)
 			{
+				Debug.Log("We've removed the tool.");
 				//If we're picking up the tool again.
 				if (currentTool.GetComponent<Rigidbody>() == null)
 				{
@@ -57,6 +58,7 @@ public class RepairerScript : MonoBehaviour {
 		}
 		else
 		{
+			Debug.Log("Object is not snapped.");
 			door.SetActive(true);
 			//currentTool.GetComponent<Rigidbody>().isKinematic = true;
 			////You need to add the removal of the elements from inside the 'furnace'
@@ -85,7 +87,7 @@ public class RepairerScript : MonoBehaviour {
 				break;
 			case "ChemCam":
 				toolIndex = 3;
-				Debug.Log("Hit the ChemCam!");
+				Debug.Log("The ChemCam has been added.");
 				snapObject(toolObj);
 				break;
 			default:
@@ -181,6 +183,10 @@ public class RepairerScript : MonoBehaviour {
 					ingots[i] = null;
 					i++;
 				}
+				//Clean up stuff for next tool repair.
+				currentTool = null;
+				objIsSnapped = false;
+				currentTool.GetComponent<Rigidbody>().isKinematic = false;
 			}
 		}
 		else
@@ -217,8 +223,9 @@ public class RepairerScript : MonoBehaviour {
 			//If we haven't started the lerp yet.
 			oldLerpPos = objToLerp.transform;
 		}
-        else if (currentLerpTime / lerpTime < 0.1)
+        else if (currentLerpTime / lerpTime < 1)
         {
+			Debug.Log("Currently Lerping");
 			//If we haven't reached our goal.
 			currentLerpTime += Time.deltaTime;
 			Debug.Log("It is" + objToLerp);
