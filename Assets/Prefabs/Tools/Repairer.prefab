@@ -442,7 +442,7 @@ GameObject:
   - 54: {fileID: 5483606}
   - 114: {fileID: 11435126}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2029,7 +2029,7 @@ MonoBehaviour:
   rightController: {fileID: 0}
   leftController: {fileID: 0}
   objectDropPoint: {fileID: 0}
-  button: {fileID: 0}
+  button: {fileID: 11435126}
   leftHand: {fileID: 0}
   rightHand: {fileID: 0}
 --- !u!114 &11498824
