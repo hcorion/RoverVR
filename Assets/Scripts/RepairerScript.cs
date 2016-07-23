@@ -8,6 +8,8 @@ public class RepairerScript : MonoBehaviour {
 	public GameObject rightController;
 	public GameObject leftController;
 
+	public GameObject objectDropPoint;
+
 	//Used for LerpObjectToSnap
 
 	private GameObject objToLerp;
@@ -120,6 +122,11 @@ public class RepairerScript : MonoBehaviour {
 		1 50% Aluminum
 		1 20% Copper
 		*/
+		if(currentTool == null)
+		{
+			Debug.Log("CurrentTool is equal to null in repairTool");
+			return;
+		}
 		int AluminumRepairValue = 0;
 		int CopperRepairValue = 0;
 		switch (toolIndex)
@@ -162,14 +169,23 @@ public class RepairerScript : MonoBehaviour {
 		}
 		if(currentAluminium >= AluminumRepairValue)
 		{
-
+			Debug.Log("You have enough Aluminum!");
+			if(currentCopper >= CopperRepairValue)
+			{
+				Debug.Log("You have enough copper!");
+				currentTool.transform.position =
+			}
+		}
+		else
+		{
+			Debug.Log("You do not have enough aluminum. You have " + currentAluminium + " and need " + AluminumRepairValue);
 		}
 	}
 	private void snapObject(GameObject obj)
 	{
 		Debug.Log("The gameobject of snapObject is: " + obj + " and is called " + obj.name);
 		Debug.Log("the right hand is currently interacting with " + rightHand.CurrentlyInteracting);
-		if(leftHand.IsInteracting != obj || rightHand.IsInteracting != obj)
+		if(leftHand.IsInteracting != obj && rightHand.IsInteracting != obj)
 		{
 			objToLerp = obj;
 			//oldLerpPos = objToLerp.transform;
@@ -177,16 +193,10 @@ public class RepairerScript : MonoBehaviour {
 			objIsSnapped = true;
 			objToLerp.GetComponent<Rigidbody>().isKinematic = true;
 		}
-		//We also should set the object to knematic
-		//if(rightController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name != obj.name &&
-		// leftController.GetComponent<NewtonVR.NVRHand>().CurrentlyInteracting.name != obj.name)
-		//{
-		
-		//}
-		//else
-		//{
-		//	Debug.Log("Looks like it's being held");
-		//
+		else
+		{
+			//Possibly enter into the Update() function to continue checking if the object is being added.
+		}
 
 	}
     private void lerpObjectToSnap()
