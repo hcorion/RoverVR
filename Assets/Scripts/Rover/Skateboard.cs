@@ -24,17 +24,22 @@ public class Skateboard : MonoBehaviour
 
 	float setSpeed ()
 	{
-		return speed = getAngle () / 100 * maxspeed;
+		return speed = (getAngle () / 100 * 5) * maxspeed;
 	}
 	// Update is called once per frame
 	void Update ()
 	{
 		setSpeed ();
-		Debug.Log ("The angle is " + getAngle ());
+		//Debug.Log ("The angle is " + getAngle ());
 		if (getAngle () != 0) {
 			Debug.Log ("The angle is not zero!");
 		}
-		this.transform.position += transform.right * Time.deltaTime * speed;
-		hinge.connectedAnchor += transform.right * Time.deltaTime * speed;
+		if (getAngle () < 90) {
+			this.transform.position += transform.right * Time.deltaTime * speed;
+			hinge.connectedAnchor += transform.right * Time.deltaTime * speed;
+		} else {
+			this.transform.position -= transform.right * Time.deltaTime * speed;
+			hinge.connectedAnchor -= transform.right * Time.deltaTime * speed;
+		}
 	}
 }

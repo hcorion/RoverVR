@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 473328}
   m_Layer: 0
   m_Name: furnace
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,6 +28,21 @@ GameObject:
   - 114: {fileID: 11409994}
   m_Layer: 0
   m_Name: Element UI
+  m_TagString: Machine
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &110912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 495252}
+  m_Layer: 0
+  m_Name: button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +61,7 @@ GameObject:
   - 23: {fileID: 2396650}
   m_Layer: 0
   m_Name: border
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +78,7 @@ GameObject:
   - 114: {fileID: 11436804}
   m_Layer: 0
   m_Name: detection
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,7 +96,7 @@ GameObject:
   - 23: {fileID: 2305000}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +113,7 @@ GameObject:
   - 114: {fileID: 11480068}
   m_Layer: 0
   m_Name: Repair Symbol
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +129,7 @@ GameObject:
   - 114: {fileID: 11497374}
   m_Layer: 0
   m_Name: Repairer
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,7 +147,7 @@ GameObject:
   - 23: {fileID: 2308596}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +164,7 @@ GameObject:
   - 114: {fileID: 11402860}
   m_Layer: 0
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,7 +179,7 @@ GameObject:
   - 4: {fileID: 496678}
   m_Layer: 0
   m_Name: spawn
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,7 +196,7 @@ GameObject:
   - 114: {fileID: 11424622}
   m_Layer: 0
   m_Name: Ingot Symbol
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,7 +230,7 @@ GameObject:
   - 114: {fileID: 11411758}
   m_Layer: 0
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,7 +248,7 @@ GameObject:
   - 114: {fileID: 11483040}
   m_Layer: 0
   m_Name: Tool UI
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -248,7 +263,7 @@ GameObject:
   - 4: {fileID: 497462}
   m_Layer: 0
   m_Name: snapPoint
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,7 +280,7 @@ GameObject:
   - 114: {fileID: 11474252}
   m_Layer: 0
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,7 +298,7 @@ GameObject:
   - 23: {fileID: 2358570}
   m_Layer: 0
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,7 +333,7 @@ GameObject:
   - 114: {fileID: 11453310}
   m_Layer: 0
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,7 +351,7 @@ GameObject:
   - 23: {fileID: 2362060}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -354,7 +369,7 @@ GameObject:
   - 23: {fileID: 2325088}
   m_Layer: 0
   m_Name: border
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -372,7 +387,7 @@ GameObject:
   - 23: {fileID: 2380136}
   m_Layer: 0
   m_Name: border
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -390,7 +405,7 @@ GameObject:
   - 23: {fileID: 2339700}
   m_Layer: 0
   m_Name: wall
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,7 +423,7 @@ GameObject:
   - 23: {fileID: 2326560}
   m_Layer: 0
   m_Name: border
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -423,14 +438,14 @@ GameObject:
   - 4: {fileID: 467094}
   m_Layer: 0
   m_Name: tray
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &177286
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -458,7 +473,7 @@ GameObject:
   - 4: {fileID: 480274}
   m_Layer: 0
   m_Name: toolPlacement
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -476,7 +491,7 @@ GameObject:
   - 23: {fileID: 2366566}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -493,7 +508,7 @@ GameObject:
   - 114: {fileID: 11436098}
   m_Layer: 0
   m_Name: detector
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -511,7 +526,7 @@ GameObject:
   - 23: {fileID: 2369584}
   m_Layer: 0
   m_Name: wall
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -529,7 +544,7 @@ GameObject:
   - 23: {fileID: 2389028}
   m_Layer: 0
   m_Name: wall
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547,7 +562,7 @@ GameObject:
   - 23: {fileID: 2340850}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -565,7 +580,7 @@ GameObject:
   - 23: {fileID: 2322284}
   m_Layer: 0
   m_Name: door
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -583,7 +598,7 @@ GameObject:
   - 23: {fileID: 2373892}
   m_Layer: 0
   m_Name: wall
-  m_TagString: Untagged
+  m_TagString: Machine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -686,13 +701,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 177286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.109, y: 0.219, z: -0.391}
+  m_LocalPosition: {x: -0.1089934, y: 0.21899986, z: -0.3910065}
   m_LocalScale: {x: 0.20018485, y: 0.029428666, z: 0.13334675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 22495838}
-  m_Father: {fileID: 488536}
-  m_RootOrder: 8
+  m_Father: {fileID: 495252}
+  m_RootOrder: 0
 --- !u!4 &451946
 Transform:
   m_ObjectHideFlags: 1
@@ -858,10 +873,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.23400003, y: 0.4230941, z: -2.339}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: 228.774, y: 13.39, z: 203.294}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_Children:
   - {fileID: 488138}
   - {fileID: 473328}
@@ -871,7 +886,7 @@ Transform:
   - {fileID: 456120}
   - {fileID: 480274}
   - {fileID: 467094}
-  - {fileID: 444024}
+  - {fileID: 495252}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &488938
@@ -900,6 +915,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 480274}
   m_RootOrder: 0
+--- !u!4 &495252
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110912}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 444024}
+  m_Father: {fileID: 488536}
+  m_RootOrder: 8
 --- !u!4 &496678
 Transform:
   m_ObjectHideFlags: 1
@@ -1467,7 +1496,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 10
   m_CollisionDetection: 0
 --- !u!65 &6508762
 BoxCollider:
@@ -2028,7 +2057,7 @@ MonoBehaviour:
   objectSnapPoint: {fileID: 497462}
   rightController: {fileID: 0}
   leftController: {fileID: 0}
-  objectDropPoint: {fileID: 0}
+  objectDropPoint: {fileID: 130214}
   button: {fileID: 11435126}
   leftHand: {fileID: 0}
   rightHand: {fileID: 0}

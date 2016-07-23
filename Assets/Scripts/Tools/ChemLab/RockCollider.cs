@@ -28,7 +28,7 @@ public class RockCollider : MonoBehaviour
 		}
 	}
 
-	void OnColliderEnter (Collider c)
+	void OnTriggerEnter (Collider c)
 	{
 		ObjectProperties objProp = c.gameObject.GetComponent<ObjectProperties> ();
 		IngotProperties ingotProp = c.gameObject.GetComponent<IngotProperties> ();
@@ -52,9 +52,7 @@ public class RockCollider : MonoBehaviour
 			}
 
 			Destroy (c.gameObject);
-		}
-
-		if (ingotProp != null) {
+		} else if (ingotProp != null) {
 			string name = ingotProp.GetName ();
 			float value = ingotProp.GetValue ();
 
