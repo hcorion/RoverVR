@@ -176,12 +176,12 @@ public class RepairerScript : MonoBehaviour {
 			{
 				Debug.Log("You have enough copper!");
 				currentTool.transform.position = objectDropPoint.transform.position;
-				int i = 0;
+				int i = ingots.Count;
 				foreach(GameObject ingot in ingots)
 				{
 					Object.Destroy(ingot);
-					ingots = null;
-					i++;
+					ingots.RemoveAt(i);
+					i--;
 				}
 				//Clean up stuff for next tool repair.
 				currentTool = null;
