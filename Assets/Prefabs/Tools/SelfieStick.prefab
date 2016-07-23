@@ -620,7 +620,6 @@ GameObject:
   - 54: {fileID: 5437324}
   - 114: {fileID: 11487262}
   - 82: {fileID: 8284806}
-  - 82: {fileID: 8204548}
   m_Layer: 0
   m_Name: SelfieStick
   m_TagString: Tool
@@ -2257,6 +2256,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
+<<<<<<< HEAD
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &8204548
@@ -2333,6 +2333,10 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+=======
+  m_Size: {x: 0.14608364, y: 0.0899494, z: 0.027699549}
+  m_Center: {x: 0.0031128686, y: 0.0019011176, z: 0.00053925585}
+>>>>>>> e846c390ac273601b6fe91d3a92f6f155e49afd7
 --- !u!82 &8284806
 AudioSource:
   m_ObjectHideFlags: 1

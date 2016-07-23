@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+<<<<<<< HEAD
 
 public class RepairerScript : MonoBehaviour
 {
+=======
+using System.Collections.Generic;
+public class RepairerScript : MonoBehaviour {
+>>>>>>> e846c390ac273601b6fe91d3a92f6f155e49afd7
 	public GameObject door;
 	public Transform objectSnapPoint;
 
@@ -25,7 +30,8 @@ public class RepairerScript : MonoBehaviour
 	public NewtonVR.NVRHand leftHand;
 	public NewtonVR.NVRHand rightHand;
 	//Used for the detection of ingots.
-	private GameObject[] ingots;
+	//private GameObject[] ingots;
+	List<GameObject> ingots = new List<GameObject>();
 	private int toolIndex;
 
 	void Start ()
@@ -100,6 +106,7 @@ public class RepairerScript : MonoBehaviour
 	public void IngotTriggerEntered (GameObject rfMaterial)
 	{
 		bool isAlreadyAdded = false;
+<<<<<<< HEAD
 		for (int i = 0; i >= ingots.Length; i++) {
 			if (rfMaterial == ingots [i]) {
 				return;
@@ -110,6 +117,16 @@ public class RepairerScript : MonoBehaviour
 		} else {
 			ingots [0] = rfMaterial;
 		}
+=======
+		for(int i = 0; i >= ingots.Count; i++)
+		{
+			if (rfMaterial == ingots[i])
+			{
+				return;
+			}
+		}
+		ingots.Add(rfMaterial);
+>>>>>>> e846c390ac273601b6fe91d3a92f6f155e49afd7
 	}
 
 	public void repairTool ()
@@ -163,11 +180,20 @@ public class RepairerScript : MonoBehaviour
 			if (currentCopper >= CopperRepairValue) {
 				Debug.Log ("You have enough copper");
 				currentTool.transform.position = objectDropPoint.transform.position;
+<<<<<<< HEAD
 				int i = 0;
 				foreach (GameObject ingot in ingots) {
 					Object.Destroy (ingot);
 					ingots [i] = null;
 					i++;
+=======
+				int i = ingots.Count;
+				foreach(GameObject ingot in ingots)
+				{
+					Object.Destroy(ingot);
+					ingots.RemoveAt(i);
+					i--;
+>>>>>>> e846c390ac273601b6fe91d3a92f6f155e49afd7
 				}
 				//Clean up stuff for next tool repair.
 				currentTool = null;
