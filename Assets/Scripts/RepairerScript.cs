@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class RepairerScript : MonoBehaviour {
 	public GameObject door;
 	public Transform objectSnapPoint;
@@ -24,7 +24,8 @@ public class RepairerScript : MonoBehaviour {
 	public NewtonVR.NVRHand leftHand;
 	public NewtonVR.NVRHand rightHand;
 	//Used for the detection of ingots.
-	private GameObject[] ingots;
+	//private GameObject[] ingots;
+	List<GameObject> ingots = new List<GameObject>();
 	private int toolIndex;
 	void Start()
 	{
@@ -105,21 +106,14 @@ public class RepairerScript : MonoBehaviour {
 	public void IngotTriggerEntered(GameObject rfMaterial)
 	{
 		bool isAlreadyAdded = false;
-		for(int i = 0; i >= ingots.Length; i++)
+		for(int i = 0; i >= ingots.Count; i++)
 		{
 			if (rfMaterial == ingots[i])
 			{
 				return;
 			}
 		}
-		if(ingots.Length != 0)
-		{
-			ingots[ingots.Length+1] = rfMaterial;
-		}
-		else
-		{
-			ingots[0] = rfMaterial;
-		}
+		ingots.Add(rfMaterial);
 	}
 	public void repairTool()
 	{
@@ -186,7 +180,7 @@ public class RepairerScript : MonoBehaviour {
 				foreach(GameObject ingot in ingots)
 				{
 					Object.Destroy(ingot);
-					ingots[i] = null;
+					ingots = null;
 					i++;
 				}
 				//Clean up stuff for next tool repair.
