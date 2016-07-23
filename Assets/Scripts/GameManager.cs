@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
 	public bool gameOver = false;
 	public GameObject wonText;
-	public string mainSceneName = "Main Scene";
+
 
 	void Awake ()
 	{
