@@ -10,6 +10,8 @@ public class RepairerScript : MonoBehaviour {
 
 	public GameObject objectDropPoint;
 
+	public NewtonVR.NVRButton button;
+
 	//Used for LerpObjectToSnap
 
 	private GameObject objToLerp;
@@ -36,6 +38,10 @@ public class RepairerScript : MonoBehaviour {
 	}
 	void Update()
 	{
+		if(button.ButtonIsPushed)
+		{
+			repairTool();
+		}
 		lerpObjectToSnap();
 		if (objIsSnapped == true)
 		{

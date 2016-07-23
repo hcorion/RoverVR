@@ -605,12 +605,25 @@ MonoBehaviour:
   DropDistance: 1
   EnableGravityOnDetach: 1
   AttachedHand: {fileID: 0}
+  Colliders: []
+  ClosestHeldPoint: {x: 0, y: 0, z: 0}
+  lastPoses: 0
+  deltaPoses: 0
   InteractionPoint: {fileID: 633514905}
+  PickupTransform: {fileID: 0}
   shootPoint: {fileID: 366294485}
+  buttonDown: 1
+  lastRock: {fileID: 0}
   laser: {fileID: 1984569238}
+  laserIntialPosition: {x: 0, y: 0, z: 0}
   laserMat: {fileID: 2100000, guid: 20bcc5a30802f954783e7459b500f263, type: 2}
   lightGameObject: {fileID: 1101731968}
   light: {fileID: 1101731969}
+  lightColourToLerp: {}
+  previousColour: {}
+  currentTime: 0
+  breakTime: 0
+  rockbreakage: 0
 --- !u!4 &623994950
 Transform:
   m_ObjectHideFlags: 0
@@ -704,7 +717,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 623994950}
   m_RootOrder: 3
---- !u!1001 &945800228
+--- !u!1001 &756467765
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -713,15 +726,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 461098, guid: be82c3492937d104087ab849a65d4a47, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.8227809
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 461098, guid: be82c3492937d104087ab849a65d4a47, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.6540927e-17
+      value: 0.81
       objectReference: {fileID: 0}
     - target: {fileID: 461098, guid: be82c3492937d104087ab849a65d4a47, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1.1952971
+      value: -7.93
       objectReference: {fileID: 0}
     - target: {fileID: 461098, guid: be82c3492937d104087ab849a65d4a47, type: 2}
       propertyPath: m_LocalRotation.x
@@ -729,7 +742,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461098, guid: be82c3492937d104087ab849a65d4a47, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 461098, guid: be82c3492937d104087ab849a65d4a47, type: 2}
       propertyPath: m_LocalRotation.z
@@ -737,11 +750,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461098, guid: be82c3492937d104087ab849a65d4a47, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.00000016292068
       objectReference: {fileID: 0}
     - target: {fileID: 461098, guid: be82c3492937d104087ab849a65d4a47, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 179470, guid: be82c3492937d104087ab849a65d4a47, type: 2}
+      propertyPath: m_Name
+      value: Binoculars (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062976, guid: be82c3492937d104087ab849a65d4a47, type: 2}
+      propertyPath: m_Depth
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5467432, guid: be82c3492937d104087ab849a65d4a47, type: 2}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062976, guid: be82c3492937d104087ab849a65d4a47, type: 2}
+      propertyPath: field of view
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be82c3492937d104087ab849a65d4a47, type: 2}
@@ -830,6 +859,7 @@ MeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: 589aac0829b7541fdb1a8f51b09ddcd3, type: 2}
+  - {fileID: 2100000, guid: 8123ad3d2227d8e4f8944621bea387aa, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1081,13 +1111,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockContent:
-  - Nil
-  - Aluminium
-  - Copper
+  - 4e696c
+  - 416c756d696e69756d
+  - 436f70706572
   rockPercentage:
   - 2
   - 90
   - 8
+  rockBreakage:
+  - 0
+  - 2
+  - 3
 --- !u!54 &1717547268
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1136,7 +1170,12 @@ MonoBehaviour:
   DropDistance: 1
   EnableGravityOnDetach: 1
   AttachedHand: {fileID: 0}
+  Colliders: []
+  ClosestHeldPoint: {x: 0, y: 0, z: 0}
+  lastPoses: 0
+  deltaPoses: 0
   InteractionPoint: {fileID: 0}
+  PickupTransform: {fileID: 0}
 --- !u!4 &1717547271
 Transform:
   m_ObjectHideFlags: 0
@@ -1411,7 +1450,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2029788491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0.85, z: -8.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
