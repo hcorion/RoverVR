@@ -10,12 +10,18 @@ public class WaterSource : MonoBehaviour
 	private Transform radiusIndicator;
 
 	public Camera cameraToLookAt;
-	public GameObject arrow;
+	public float offsetY;
+
+	GameObject arrow;
 
 	void Start ()
 	{
 		radiusIndicator = transform;
 		radiusIndicator.localScale = new Vector3 ((float)waterRadius, 0.005f, (float)waterRadius);
+
+		Vector3 arrowPosition = new Vector3 (transform.position.x, transform.position.y + offsetY, transform.position.z, Quaternion.identity);
+
+		arrow = Instantiate (GameObject.Find ("Arrow"), transform.position);
 	}
 
 	void Update ()

@@ -1,21 +1,32 @@
 fileFormatVersion: 2
-guid: 2ff4dbaac05fe4326a2ccef83ca36976
-timeCreated: 1468280140
-licenseType: Free
+guid: 784a7324c616c11409e86c156957afe6
+timeCreated: 1449962050
+licenseType: Store
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: <STL_BINARY>
-    100002: Camera
-    100004: Lamp
-    100006: //RootNode
-    400000: <STL_BINARY>
-    400002: Camera
-    400004: Lamp
-    400006: //RootNode
-    2300000: <STL_BINARY>
-    3300000: <STL_BINARY>
-    4300000: <STL_BINARY>
+    100000: Mesh1_Group2_Group1_Model
+    100002: Mesh2_Group3_Group1_Model
+    100004: Mesh3_Group4_Group1_Model
+    100006: Mesh4_Group5_Group1_Model
+    100008: //RootNode
+    400000: Mesh1_Group2_Group1_Model
+    400002: Mesh2_Group3_Group1_Model
+    400004: Mesh3_Group4_Group1_Model
+    400006: Mesh4_Group5_Group1_Model
+    400008: //RootNode
+    2300000: Mesh1_Group2_Group1_Model
+    2300002: Mesh2_Group3_Group1_Model
+    2300004: Mesh3_Group4_Group1_Model
+    2300006: Mesh4_Group5_Group1_Model
+    3300000: Mesh1_Group2_Group1_Model
+    3300002: Mesh2_Group3_Group1_Model
+    3300004: Mesh3_Group4_Group1_Model
+    3300006: Mesh4_Group5_Group1_Model
+    4300000: Mesh1_Group2_Group1_Model
+    4300002: Mesh2_Group3_Group1_Model
+    4300004: Mesh3_Group4_Group1_Model
+    4300006: Mesh4_Group5_Group1_Model
   materials:
     importMaterials: 1
     materialName: 0
@@ -40,7 +51,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.1
+    globalScale: 20
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -57,8 +68,8 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
-    tangentImportMode: 3
+    normalImportMode: 0
+    tangentImportMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

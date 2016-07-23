@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class gameStart : MonoBehaviour {
+public class gameStart : MonoBehaviour
+{
 
-	private bool S=false;
+	private bool S = false;
 
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		
 		
 
@@ -20,8 +23,8 @@ public class gameStart : MonoBehaviour {
 	}
 
 	//Co
-	void OnCollisionEnter(Collision Start) {
-				
-		}
+	void OnCollisionEnter (Collision Start)
+	{
+		
 	}
 }
