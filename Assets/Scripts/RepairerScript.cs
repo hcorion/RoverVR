@@ -173,7 +173,14 @@ public class RepairerScript : MonoBehaviour {
 			if(currentCopper >= CopperRepairValue)
 			{
 				Debug.Log("You have enough copper!");
-				currentTool.transform.position =
+				currentTool.transform.position = objectDropPoint.transform.position;
+				int i = 0;
+				foreach(GameObject ingot in ingots)
+				{
+					Object.Destroy(ingot);
+					ingots[i] = null;
+					i++;
+				}
 			}
 		}
 		else
