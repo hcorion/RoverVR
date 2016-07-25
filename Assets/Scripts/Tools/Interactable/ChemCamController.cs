@@ -6,7 +6,7 @@ namespace NewtonVR
 	public class ChemCamController : NVRInteractableItem
 	{
 		public Transform shootPoint;
-		private bool buttonDown = false;
+		private bool buttonDown = true;
 		//Is used to tell if the user has changed and is now pointing at a different rock.
 		private GameObject lastRock;
 		public GameObject laser;
@@ -22,8 +22,10 @@ namespace NewtonVR
 		private float breakTime;
 		float rockbreakage = 0.0f;
 
-		DamageUI dmgUI;
-		public float healthLossRate;
+		//Used for lerping sound.
+		private bool doLerpSound = false;
+		private AudioSource sfx;
+		private float currentLerpTime = 0;
 
 		// Use this for initialization
 		new void Start ()
@@ -33,36 +35,36 @@ namespace NewtonVR
 			//laserMat = laser.GetComponent<Renderer>().material;
 			//light = lightGameObject.GetComponent<Light>();
 			previousColour = light.color;
+			sfx = GetComponent<AudioSource> ();
 
-			dmgUI = GetComponent<DamageUI> ();
 		}
 
 		new void Update ()
 		{
 			base.Update ();
-			if (buttonDown == true && dmgUI.health > 0f) {
-				dmgUI.health -= Time.deltaTime * healthLossRate;
-
+			if (buttonDown == true) {
+				lerpColor ();
+				Vector3 forward = transform.TransformVector (Vector3.left);
+				
 				//Raycasting to ground
 				RaycastHit hit;
-				Vector3 forward = transform.TransformVector (Vector3.left);
-				//Debug.DrawRay (shootPoint.position, forward, new Color (255, 136, 0), 20, false);
-				if (Physics.Raycast (shootPoint.position, forward, out hit, 3)) {
+				bool raycast = Physics.Raycast (shootPoint.position, forward, out hit, 3);
+				
+				//Updating the position of the laser and the light
+				laser.transform.localPosition = new Vector3 ((-hit.distance) / 2 + shootPoint.transform.localPosition.x, laser.transform.localPosition.y, laser.transform.localPosition.z);
+				laser.transform.localScale = new Vector3 (laser.transform.localScale.x, hit.distance * 70, laser.transform.localScale.z);
+				lightGameObject.transform.position = new Vector3 (hit.point.x, hit.point.y, hit.point.z) + transform.right / 9.0f;
+				
+				if (raycast) {
 					//Debug.Log ("The ChemCam hit " + hit.transform.name + "At a distance of " + hit.distance);
 					ObjectProperties objectProperties = hit.transform.GetComponent<ObjectProperties> ();
 					if (objectProperties != null) {
 						string rockMaterial = objectProperties.getSimpleMaterial ();
 						Debug.Log ("The current material is:" + rockMaterial);
-
-						//Updating the position of the laser and the light
-						laser.transform.localPosition = new Vector3 ((-hit.distance) / 2 - 0.5f, 0.068f, 0) + laserIntialPosition;
-						laser.transform.localScale = new Vector3 (laser.transform.localScale.x, hit.distance * 70, laser.transform.localScale.z);
-						lightGameObject.transform.position = new Vector3 (hit.point.x, hit.point.y, hit.point.z) + transform.right / 9.0f;
 						if (lastRock == hit.transform.gameObject) {
 							//If we're still on the same rock.
                             
 							if (rockbreakage != 0.0f) {
-								GetComponent<AudioSource> ().Play ();
 								breakTime += Time.deltaTime;
 								if (breakTime >= rockbreakage) {
 									Debug.Log ("Rock has been broken");
@@ -93,17 +95,17 @@ namespace NewtonVR
 							default:
 								{
 									Debug.LogError ("Woops, the material " + rockMaterial + " is not recognized by the ChemCamController Script.");
-									lightColourToLerp = Color.red;
+									lightColourToLerp = new Color32 (100, 255, 0, 255);
 									break;
 								}
 							}
 						}
 					} else
-						Debug.Log ("This object has no ObjectProperties script.");
+					Debug.Log ("This object has no ObjectProperties script.");
 					//lastRock = null;
-					lerpColor ();
 				} else {
 					Debug.Log ("The ChemCam didn't hit anything. Move closer or something isn't working.");
+					lightColourToLerp = new Color32 (100, 255, 0, 255);
 				}
 			}
 		}
@@ -111,6 +113,9 @@ namespace NewtonVR
 		public override void UseButtonDown ()
 		{
 			buttonDown = true;
+			laser.SetActive(true);
+			lightGameObject.SetActive(true);
+			doLerpSound = true;
 		}
 
 		public override void UseButtonUp ()
@@ -118,6 +123,8 @@ namespace NewtonVR
 			buttonDown = false;
 			lastRock = null;
 			laser.SetActive (false);
+			lightGameObject.SetActive(false);
+			doLerpSound = false;
 		}
 
 		private void lerpColor ()
@@ -136,7 +143,21 @@ namespace NewtonVR
 				//If we're changing color
 				currentTime = 0.0f;
 				previousColour = light.color;
-				//Test
+			}
+		}
+		private void lerpSound ()
+		{
+			const float lerpTime = 1;
+			if(doLerpSound == true && currentLerpTime / lerpTime < 1.0f)
+			{
+				//If we're lerping.
+				currentLerpTime += Time.deltaTime;
+				sfx.volume = Mathf.Lerp(0f, 1f, currentLerpTime / lerpTime);
+			}
+			else if (doLerpSound == true && currentLerpTime / lerpTime > 1.0f)
+			{
+				//If we're supposed to be lerping but we can't yet.
+				currentLerpTime = 0;
 			}
 		}
 	}
