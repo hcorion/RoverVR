@@ -13,7 +13,7 @@ public class DamageUI : MonoBehaviour
 	void Start ()
 	{
 		slider.maxValue = maxHealth;
-		slider.minValue = 0;
+		slider.minValue = 0f;
 
 		health = startingHealth;
 

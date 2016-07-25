@@ -6,7 +6,7 @@ namespace NewtonVR
 	public class ChemCamController : NVRInteractableItem
 	{
 		public Transform shootPoint;
-		private bool buttonDown = true;
+		private bool buttonDown = false;
 		//Is used to tell if the user has changed and is now pointing at a different rock.
 		private GameObject lastRock;
 		public GameObject laser;
@@ -29,7 +29,7 @@ namespace NewtonVR
 
 		//Used for indicating damage to the player.
 		DamageUI dmgUI;
- 		public float healthLossRate;
+		public float healthLossRate;
 
 		// Use this for initialization
 		new void Start ()
@@ -108,7 +108,7 @@ namespace NewtonVR
 							}
 						}
 					} else
-					Debug.Log ("This object has no ObjectProperties script.");
+						Debug.Log ("This object has no ObjectProperties script.");
 					//lastRock = null;
 				} else {
 					Debug.Log ("The ChemCam didn't hit anything. Move closer or something isn't working.");
@@ -120,8 +120,8 @@ namespace NewtonVR
 		public override void UseButtonDown ()
 		{
 			buttonDown = true;
-			laser.SetActive(true);
-			lightGameObject.SetActive(true);
+			laser.SetActive (true);
+			lightGameObject.SetActive (true);
 			doLerpSound = true;
 		}
 
@@ -130,7 +130,7 @@ namespace NewtonVR
 			buttonDown = false;
 			lastRock = null;
 			laser.SetActive (false);
-			lightGameObject.SetActive(false);
+			lightGameObject.SetActive (false);
 			doLerpSound = false;
 		}
 
@@ -152,17 +152,15 @@ namespace NewtonVR
 				previousColour = light.color;
 			}
 		}
+
 		private void lerpSound ()
 		{
 			const float lerpTime = 1;
-			if(doLerpSound == true && currentLerpTime / lerpTime < 1.0f)
-			{
+			if (doLerpSound == true && currentLerpTime / lerpTime < 1.0f) {
 				//If we're lerping.
 				currentLerpTime += Time.deltaTime;
-				sfx.volume = Mathf.Lerp(0f, 1f, currentLerpTime / lerpTime);
-			}
-			else if (doLerpSound == true && currentLerpTime / lerpTime > 1.0f)
-			{
+				sfx.volume = Mathf.Lerp (0f, 1f, currentLerpTime / lerpTime);
+			} else if (doLerpSound == true && currentLerpTime / lerpTime > 1.0f) {
 				//If we're supposed to be lerping but we can't yet.
 				currentLerpTime = 0;
 			}
