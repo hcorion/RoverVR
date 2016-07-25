@@ -48,13 +48,13 @@ namespace NewtonVR
 		new void Update ()
 		{
 			base.Update ();
+			lerpSound();
 			if (buttonDown == true && dmgUI.health > 0f) {
 				//Dealing damage
 				dmgUI.health -= Time.deltaTime * healthLossRate;
 				//Lerping Color.
 				lerpColor ();
 				Vector3 forward = transform.TransformVector (Vector3.left);
-				
 				//Raycasting to ground
 				RaycastHit hit;
 				bool raycast = Physics.Raycast (shootPoint.position, forward, out hit);
