@@ -140,6 +140,7 @@ namespace NewtonVR
 			laser.SetActive (false);
 			lightGameObject.SetActive (false);
 			doLerpSound = false;
+			sfx.volume = 0;
 		}
 
 		private void lerpColor ()
