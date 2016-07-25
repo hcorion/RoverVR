@@ -1192,7 +1192,7 @@ MonoBehaviour:
   laserMat: {fileID: 2100000, guid: 20bcc5a30802f954783e7459b500f263, type: 2}
   lightGameObject: {fileID: 171552}
   light: {fileID: 10824294}
-  healthLossRate: 20
+  healthLossRate: 2
 --- !u!114 &11483318
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -20,8 +20,6 @@ namespace NewtonVR.Example
 		DamageUI dmgUI;
 		public float healthLossRate;
 
-		public GameObject particles;
-
 		new void Start ()
 		{
 			base.Start ();
@@ -90,7 +88,6 @@ namespace NewtonVR.Example
 					Debug.DrawLine (hit.transform.position, hit.point, Color.blue, 20f, false);
 					if (moisture >= 0) {
 						return moisture.ToString ("F2") + units;
-						Instantiate (particles, hit.transform.position, Quaternion.identity);
 					} else {
 						return ("0" + units);
 					}

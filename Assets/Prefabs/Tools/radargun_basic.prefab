@@ -840,8 +840,7 @@ MonoBehaviour:
   firePoint: {fileID: 411248}
   lineRenderer: {fileID: 12059788}
   laserWidth: 0.01
-  healthLossRate: 20
-  particleSystem: {fileID: 0}
+  healthLossRate: 2
 --- !u!114 &11486052
 MonoBehaviour:
   m_ObjectHideFlags: 1

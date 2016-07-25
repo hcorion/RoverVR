@@ -41,14 +41,15 @@ namespace NewtonVR.Example
 		{
 			if (!isLoading && dmgUI.health > 0f) {
 				GetComponent<AudioSource> ().Play ();
-				print ("Selfie Stick Condition:" + dmgUI.health);
+				print ("Selfie Stick Condition: " + +dmgUI.health);
+				print (isLife ());
 			}
 			
 		}
 
 		string isLife ()
 		{
-			dmgUI.health -= Time.deltaTime * healthLossRate;
+			dmgUI.health -= healthLossRate;
 
 			GetComponent<AudioSource> ().Play ();
 			Vector3 fwd = selfieCamera.TransformDirection (Vector3.forward); 
