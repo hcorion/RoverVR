@@ -17,11 +17,7 @@ namespace NewtonVR.Example
 		Text content;
 		bool buttonPressed;
 
-		//Aaron's Power Limit
-		public int maxPower = 100;
-		public int startingPower = 100;
-		//Has a lower limit of 0 and an upper limit of 100
-		[Range (0.0f, 100.0f)] private float currentPower;
+		DamageUI dmgUI;
 
 		new void Start ()
 		{
@@ -39,17 +35,16 @@ namespace NewtonVR.Example
 			content = textObject.GetComponent<Text> ();
 			content.text = "";
 
-			//For power limit
-			currentPower = startingPower;
+			dmgUI = GetComponent <DamageUI> ();
 		}
 
 		void Update ()
 		{
-			if (currentPower > 0) {
+			if (dmgUI.health > 0) {
 				if (buttonPressed) {
 					//To make the battery go down by time, not framerate.
-					currentPower -= Time.deltaTime / 2;
-					Debug.Log ("Current power for Neutron Detector: " + currentPower);
+					dmgUI.health -= Time.deltaTime / 2;
+					Debug.Log ("Current power for Neutron Detector: " + dmgUI.health);
 					content.text = GetMoistureContent ();
 				}
 

@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
 	void Start ()
 	{
 		//SceneManager.LoadSceneAsync(mainSceneName, LoadSceneMode.Single);
-		if(a = 0) {
-				Application.LoadLevel(0);
+		if (a == 0) {
+			Application.LoadLevel (0);
 		}
 		
 
