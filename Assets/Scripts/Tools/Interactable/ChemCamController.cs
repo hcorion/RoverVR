@@ -164,7 +164,7 @@ namespace NewtonVR
 
 		private void lerpSound ()
 		{
-			const float lerpTime = 1;
+			const float lerpTime = 3;
 			if (doLerpSound == true && currentLerpTime / lerpTime < 1.0f) {
 				//If we're lerping.
 				Debug.Log("Lerping Sound! The sfx gameobject is " + sfx);
