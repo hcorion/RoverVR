@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 	public bool gameOver = false;
 	public GameObject wonText;
 	public string mainSceneName = "Main Scene";
-	public int a = 0;
+	//public bool StartGame = false;
 
 	void Awake ()
 	{
@@ -18,12 +18,6 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
 	{
-		//SceneManager.LoadSceneAsync(mainSceneName, LoadSceneMode.Single);
-		if(a = 0) {
-				Application.LoadLevel(0);
-		}
-		
-
 	}
 
 	void Update ()
@@ -37,5 +31,11 @@ public class GameManager : MonoBehaviour
 	public void GameOver ()
 	{
 		gameOver = true;
+	}
+
+	public void StartGame ()
+	{
+		//Add a a fade effect.
+		SceneManager.LoadScene(mainSceneName);
 	}
 }
