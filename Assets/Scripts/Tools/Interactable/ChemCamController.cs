@@ -111,7 +111,7 @@ namespace NewtonVR
 						Debug.Log ("This object has no ObjectProperties script.");
 					//lastRock = null;
 				}
-				else if (dmgUI.health >= 0f)
+				else if (dmgUI.health <= 0f)
 				{
 					laser.SetActive(false);
 					lightGameObject.SetActive(false);
