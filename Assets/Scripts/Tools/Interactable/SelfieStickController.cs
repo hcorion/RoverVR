@@ -23,6 +23,9 @@ namespace NewtonVR.Example
 
 		public WaterSource waterSrc;
 
+		DamageUI dmgUI;
+		public float healthLossRate;
+
 		new void Start ()
 		{
 			base.Start ();
@@ -30,20 +33,24 @@ namespace NewtonVR.Example
 			if (noLifeImages [0] == null || LifeImages [0] == null) {
 				Debug.LogWarning ("NoLifeImages or LifeImages has no images assigned!");
 			}
+
+			dmgUI = GetComponent<DamageUI> ();
 		}
 
 		public override void UseButtonDown ()
 		{
-			if (!isLoading) {
-				GetComponent<AudioSource>().Play();
-				print (isLife ());
+			if (!isLoading && dmgUI.health > 0f) {
+				GetComponent<AudioSource> ().Play ();
+				print ("Selfie Stick Condition:" + dmgUI.health);
 			}
 			
 		}
 
 		string isLife ()
 		{
-			GetComponent<AudioSource>().Play();
+			dmgUI.health -= Time.deltaTime * healthLossRate;
+
+			GetComponent<AudioSource> ().Play ();
 			Vector3 fwd = selfieCamera.TransformDirection (Vector3.forward); 
 			RaycastHit hit;
 			Ray r = new Ray (selfieCamera.position, fwd);

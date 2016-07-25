@@ -18,6 +18,9 @@ namespace NewtonVR.Example
 		bool buttonPressed;
 
 		DamageUI dmgUI;
+		public float healthLossRate;
+
+		public GameObject particles;
 
 		new void Start ()
 		{
@@ -40,11 +43,10 @@ namespace NewtonVR.Example
 
 		void Update ()
 		{
-			if (dmgUI.health > 0) {
+			if (dmgUI.health > 0f) {
 				if (buttonPressed) {
 					//To make the battery go down by time, not framerate.
-					dmgUI.health -= Time.deltaTime / 2;
-					Debug.Log ("Current power for Neutron Detector: " + dmgUI.health);
+					dmgUI.health -= Time.deltaTime * healthLossRate;
 					content.text = GetMoistureContent ();
 				}
 
@@ -88,6 +90,7 @@ namespace NewtonVR.Example
 					Debug.DrawLine (hit.transform.position, hit.point, Color.blue, 20f, false);
 					if (moisture >= 0) {
 						return moisture.ToString ("F2") + units;
+						Instantiate (particles, hit.transform.position, Quaternion.identity);
 					} else {
 						return ("0" + units);
 					}

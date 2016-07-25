@@ -6,7 +6,7 @@ namespace NewtonVR
 	public class ChemCamController : NVRInteractableItem
 	{
 		public Transform shootPoint;
-		private bool buttonDown = true;
+		private bool buttonDown = false;
 		//Is used to tell if the user has changed and is now pointing at a different rock.
 		private GameObject lastRock;
 		public GameObject laser;
@@ -22,6 +22,9 @@ namespace NewtonVR
 		private float breakTime;
 		float rockbreakage = 0.0f;
 
+		DamageUI dmgUI;
+		public float healthLossRate;
+
 		// Use this for initialization
 		new void Start ()
 		{
@@ -31,12 +34,15 @@ namespace NewtonVR
 			//light = lightGameObject.GetComponent<Light>();
 			previousColour = light.color;
 
+			dmgUI = GetComponent<DamageUI> ();
 		}
 
 		new void Update ()
 		{
 			base.Update ();
-			if (buttonDown == true) {
+			if (buttonDown == true && dmgUI.health > 0f) {
+				dmgUI.health -= Time.deltaTime * healthLossRate;
+
 				//Raycasting to ground
 				RaycastHit hit;
 				Vector3 forward = transform.TransformVector (Vector3.left);

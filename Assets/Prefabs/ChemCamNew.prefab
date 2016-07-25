@@ -49,6 +49,7 @@ GameObject:
   - 54: {fileID: 5471320}
   - 82: {fileID: 8224838}
   - 114: {fileID: 11466380}
+  - 114: {fileID: 11461612}
   m_Layer: 0
   m_Name: ChemCamNew
   m_TagString: Tool
@@ -495,7 +496,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 111330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 228.089, y: 13.525, z: 205.919}
+  m_LocalPosition: {x: 228.089, y: 13.525, z: 205.956}
   m_LocalScale: {x: 0.74171567, y: 0.74171567, z: 0.74171567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1092,6 +1093,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Condition
+--- !u!114 &11461612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9cdb53283bf439478c005db12e4654d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  startingHealth: 100
+  health: 100
+  slider: {fileID: 11487748}
 --- !u!114 &11463554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1176,6 +1192,7 @@ MonoBehaviour:
   laserMat: {fileID: 2100000, guid: 20bcc5a30802f954783e7459b500f263, type: 2}
   lightGameObject: {fileID: 171552}
   light: {fileID: 10824294}
+  healthLossRate: 20
 --- !u!114 &11483318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1243,9 +1260,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
