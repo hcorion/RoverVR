@@ -27,6 +27,10 @@ namespace NewtonVR
 		private AudioSource sfx;
 		private float currentLerpTime = 0;
 
+		//Used for indicating damage to the player.
+		DamageUI dmgUI;
+ 		public float healthLossRate;
+
 		// Use this for initialization
 		new void Start ()
 		{
@@ -36,13 +40,16 @@ namespace NewtonVR
 			//light = lightGameObject.GetComponent<Light>();
 			previousColour = light.color;
 			sfx = GetComponent<AudioSource> ();
-
+			dmgUI = GetComponent<DamageUI> ();
 		}
 
 		new void Update ()
 		{
 			base.Update ();
-			if (buttonDown == true) {
+			if (buttonDown == true && dmgUI.health > 0f) {
+				//Dealing damage
+				dmgUI.health -= Time.deltaTime * healthLossRate;
+				//Lerping Color.
 				lerpColor ();
 				Vector3 forward = transform.TransformVector (Vector3.left);
 				
