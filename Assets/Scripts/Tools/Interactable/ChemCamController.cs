@@ -41,6 +41,7 @@ namespace NewtonVR
 			previousColour = light.color;
 			sfx = GetComponent<AudioSource> ();
 			dmgUI = GetComponent<DamageUI> ();
+			Debug.Log("The sfx gameobject is equal to: " + sfx);
 			sfx.Play();
 		}
 
@@ -92,7 +93,7 @@ namespace NewtonVR
 							}
 							switch (rockMaterial) {
 							case "nil":
-								lightColourToLerp = new Color32 (100, 255, 0, 255);
+								lightColourToLerp = new Color32 (255, 0, 0, 255);
 								break;
 							case "Aluminum":
 								lightColourToLerp = new Color32 (76, 88, 156, 255);
@@ -103,7 +104,7 @@ namespace NewtonVR
 							default:
 								{
 									Debug.LogError ("Woops, the material " + rockMaterial + " is not recognized by the ChemCamController Script.");
-									lightColourToLerp = new Color32 (100, 255, 0, 255);
+									lightColourToLerp = new Color32 (255, 0, 0, 255);
 									break;
 								}
 							}
@@ -111,7 +112,14 @@ namespace NewtonVR
 					} else
 						Debug.Log ("This object has no ObjectProperties script.");
 					//lastRock = null;
-				} else {
+				}
+				else if (dmgUI.health >= 0f)
+				{
+					laser.SetActive(false);
+					lightGameObject.SetActive(false);
+				}
+				 else 
+				 {
 					Debug.Log ("The ChemCam didn't hit anything. Move closer or something isn't working.");
 					lightColourToLerp = new Color32 (100, 255, 0, 255);
 				}
@@ -124,6 +132,7 @@ namespace NewtonVR
 			laser.SetActive (true);
 			lightGameObject.SetActive (true);
 			doLerpSound = true;
+			sfx.Play();
 		}
 
 		public override void UseButtonUp ()
@@ -159,6 +168,7 @@ namespace NewtonVR
 			const float lerpTime = 1;
 			if (doLerpSound == true && currentLerpTime / lerpTime < 1.0f) {
 				//If we're lerping.
+				Debug.Log("Lerping Sound! The sfx gameobject is " + sfx);
 				currentLerpTime += Time.deltaTime;
 				sfx.volume = Mathf.Lerp (0f, 1f, currentLerpTime / lerpTime);
 			} else if (doLerpSound == true && currentLerpTime / lerpTime > 1.0f) {
