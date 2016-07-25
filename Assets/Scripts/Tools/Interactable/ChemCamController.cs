@@ -41,6 +41,7 @@ namespace NewtonVR
 			previousColour = light.color;
 			sfx = GetComponent<AudioSource> ();
 			dmgUI = GetComponent<DamageUI> ();
+			sfx.Play();
 		}
 
 		new void Update ()
