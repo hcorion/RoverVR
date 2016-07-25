@@ -57,15 +57,13 @@ namespace NewtonVR
 				
 				//Raycasting to ground
 				RaycastHit hit;
-				bool raycast = Physics.Raycast (shootPoint.position, forward, out hit, 3);
-				
+				bool raycast = Physics.Raycast (shootPoint.position, forward, out hit);
 				//Updating the position of the laser and the light
 				laser.transform.localPosition = new Vector3 ((-hit.distance) / 2 + shootPoint.transform.localPosition.x, laser.transform.localPosition.y, laser.transform.localPosition.z);
 				laser.transform.localScale = new Vector3 (laser.transform.localScale.x, hit.distance * 70, laser.transform.localScale.z);
 				lightGameObject.transform.position = new Vector3 (hit.point.x, hit.point.y, hit.point.z) + transform.right / 9.0f;
 				
-				if (raycast) {
-					//Debug.Log ("The ChemCam hit " + hit.transform.name + "At a distance of " + hit.distance);
+				if (raycast && hit.distance <= 3) {
 					ObjectProperties objectProperties = hit.transform.GetComponent<ObjectProperties> ();
 					if (objectProperties != null) {
 						string rockMaterial = objectProperties.getSimpleMaterial ();
