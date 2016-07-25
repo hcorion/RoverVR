@@ -70,7 +70,6 @@ namespace NewtonVR
 						Debug.Log ("The current material is:" + rockMaterial);
 						if (lastRock == hit.transform.gameObject) {
 							//If we're still on the same rock.
-                            
 							if (rockbreakage != 0.0f) {
 								breakTime += Time.deltaTime;
 								if (breakTime >= rockbreakage) {
@@ -107,9 +106,10 @@ namespace NewtonVR
 								}
 							}
 						}
-					} else
+					} else{
 						Debug.Log ("This object has no ObjectProperties script.");
-					//lastRock = null;
+						lastRock = null;
+					}
 				}
 				else if (dmgUI.health <= 0f)
 				{
