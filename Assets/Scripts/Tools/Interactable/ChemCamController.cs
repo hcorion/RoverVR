@@ -78,12 +78,21 @@ namespace NewtonVR
 				if (raycast && hit.distance <= 3) {
 					ObjectProperties objectProperties = hit.transform.GetComponent<ObjectProperties> ();
 					if (objectProperties != null) {
+						Light pointLight = hit.transform.GetComponentInChildren<Light> ();
+
 						string rockMaterial = objectProperties.getSimpleMaterial ();
 						Debug.Log ("The current material is:" + rockMaterial);
 						if (lastRock == hit.transform.gameObject) {
 							//If we're still on the same rock.
 							if (rockbreakage != 0.0f) {
 								breakTime += Time.deltaTime;
+
+								if (pointLight != null) {
+									pointLight.intensity += Time.deltaTime * 8f / rockbreakage;
+								} else {
+									print ("Object does not contain a point light");
+								}
+
 								if (breakTime >= rockbreakage) {
 									Debug.Log ("Rock has been broken");
 									objectProperties.breakRock ();
@@ -95,6 +104,7 @@ namespace NewtonVR
 						} else {
 							rockbreakage = objectProperties.getSimpleRockBreakage ();
 							breakTime = 0;
+
 							if (lastRock == null) {
 								lastRock = hit.transform.gameObject;
 								//If we haven't hit anything yet.

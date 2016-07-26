@@ -37,12 +37,12 @@ public class Skateboard : MonoBehaviour
 	{
 		getAngle ();
 		setSpeed ();
-		if (getAngle () < 90) {
-			this.transform.Rotate (Vector3.right * Time.deltaTime * rotationspeed);
+		if (getRotation () < 90) {
+			this.transform.Rotate (Vector3.up * Time.deltaTime * rotationspeed);
 			hinge.connectedAnchor += transform.forward * Time.deltaTime * speed;
 			wheelhinge.connectedAnchor += transform.forward * Time.deltaTime * rotationspeed;
 		} else {
-			this.transform.Rotate (Vector3.right * Time.deltaTime * rotationspeed * -1);
+			this.transform.Rotate (Vector3.down * Time.deltaTime * rotationspeed);
 			hinge.connectedAnchor -= transform.forward * Time.deltaTime * speed;
 			wheelhinge.connectedAnchor -= transform.forward * Time.deltaTime * rotationspeed;
 		}
