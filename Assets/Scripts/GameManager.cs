@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 		//SceneManager.LoadSceneAsync(mainSceneName, LoadSceneMode.Single);
 		if(SceneManager.GetActiveScene().ToString() == mainSceneName)
 		{
-			firstState();
+			StartCoroutine(firstState());
 		}
 	}
 
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 		{
 			if(hasStartedGame == false)
 			{
-				firstState();
+				StartCoroutine(firstState());
 				hasStartedGame = true;
 			}
 		}
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 	{
 		gameOver = true;
 	}
-	private void firstState()
+	private IEnumerator firstState()
 	{
 		/*
 		So here the plan.
@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
 		We then give them text/speech guidence to pick up the tools
 		*/
 		stateIndex = 1;
+		yield return new WaitForSeconds(0.5f);
 	}
 	public string getMainSceneName()
 	{
