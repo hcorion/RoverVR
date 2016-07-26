@@ -10,8 +10,11 @@ public class RepairerScript : MonoBehaviour {
 	public GameObject leftController;
 
 	public GameObject objectDropPoint;
+	//Used for the Repair Button
 
 	public NewtonVR.NVRButton button;
+
+	private bool ButtonHasPushed = false;
 
 	//Used for LerpObjectToSnap
 
@@ -41,8 +44,9 @@ public class RepairerScript : MonoBehaviour {
 
 	void Update ()
 	{
-		if (button.ButtonIsPushed) {
+		if (button.ButtonIsPushed && ButtonHasPushed == false) {
 			repairTool ();
+			ButtonHasPushed = true;
 		}
 		lerpObjectToSnap ();
 		if (objIsSnapped == true) {
@@ -173,20 +177,22 @@ public class RepairerScript : MonoBehaviour {
 			if (currentCopper >= CopperRepairValue) {
 				Debug.Log ("You have enough copper");
 				currentTool.transform.position = objectDropPoint.transform.position;
-				int i = ingots.Count;
+				//int i = ingots.Count;
 				foreach(GameObject ingot in ingots)
 				{
 					Object.Destroy(ingot);
-					ingots.RemoveAt(i);
-					i--;
+					//ingots.RemoveAt(i);
+					//i--;
 				}
 				//Clean up stuff for next tool repair.
 				currentTool = null;
 				objIsSnapped = false;
 				currentTool.GetComponent<Rigidbody> ().isKinematic = false;
+				ButtonHasPushed = false;
 			}
 		} else {
 			Debug.Log ("You do not have enough aluminum. You have " + currentAluminium + " and need " + AluminumRepairValue);
+			ButtonHasPushed = false;
 		}
 	}
 
