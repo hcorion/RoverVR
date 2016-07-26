@@ -4,42 +4,56 @@ using System.Collections;
 public class Skateboard : MonoBehaviour
 {
 	public float speed = 0;
-	public float maxspeed = 100;
-	public int gear = 1;
-	public int gearCount = 5;
-	public HingeJoint hinge;
-	int[] maxSpeedsperGear = new int[]{ 40, 70, 100, 130, 170 };
+	public float maxspeed;
+	public float rotationspeed;
 	public GameObject axle;
-	public Vector3 eulerAngles;
+	public GameObject low6;
+	public HingeJoint hinge;
+	public HingeJoint wheelhinge;
 
 	void Start ()
 	{
 		hinge = axle.GetComponent<HingeJoint> ();
+		wheelhinge = low6.GetComponent<HingeJoint> ();
+	}
+
+	float getRotation ()
+	{
+		return low6.transform.localRotation.eulerAngles.z;
 	}
 
 	float getAngle ()
 	{
+		
 		return axle.transform.localRotation.eulerAngles.z;
 	}
 
 	float setSpeed ()
 	{
-		return speed = (getAngle () / 100 * 5) * maxspeed;
+		return speed = (getAngle () / 100 * 2) * maxspeed;
 	}
-	// Update is called once per frame
+
 	void Update ()
 	{
+		getAngle ();
 		setSpeed ();
-		//Debug.Log ("The angle is " + getAngle ());
-		if (getAngle () != 0) {
-			Debug.Log ("The angle is not zero!");
+		if (getAngle () < 90) {
+			this.transform.Rotate (Vector3.right * Time.deltaTime * rotationspeed);
+			hinge.connectedAnchor += transform.forward * Time.deltaTime * speed;
+			wheelhinge.connectedAnchor += transform.forward * Time.deltaTime * rotationspeed;
+		} else {
+			this.transform.Rotate (Vector3.right * Time.deltaTime * rotationspeed * -1);
+			hinge.connectedAnchor -= transform.forward * Time.deltaTime * speed;
+			wheelhinge.connectedAnchor -= transform.forward * Time.deltaTime * rotationspeed;
 		}
 		if (getAngle () < 90) {
 			this.transform.position += transform.right * Time.deltaTime * speed;
 			hinge.connectedAnchor += transform.right * Time.deltaTime * speed;
+			wheelhinge.connectedAnchor += transform.right * Time.deltaTime * speed;
 		} else {
 			this.transform.position -= transform.right * Time.deltaTime * speed;
 			hinge.connectedAnchor -= transform.right * Time.deltaTime * speed;
+			wheelhinge.connectedAnchor -= transform.right * Time.deltaTime * speed;
 		}
 	}
 }

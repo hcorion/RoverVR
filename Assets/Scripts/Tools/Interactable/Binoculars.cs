@@ -9,7 +9,7 @@ namespace NewtonVR.Example
 		public float distance;
 		public Camera viewCamera;
 
-		void Update ()
+		void Start ()
 		{
 			viewCamera.fieldOfView = distance;
 		}

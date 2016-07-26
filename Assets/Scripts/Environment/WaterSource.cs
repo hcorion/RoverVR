@@ -15,6 +15,8 @@ public class WaterSource : MonoBehaviour
 
 	GameObject arrow;
 
+	public Transform player;
+
 	void Start ()
 	{
 		radiusIndicator = transform;
