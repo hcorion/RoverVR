@@ -158,11 +158,12 @@ public class RepairerScript : MonoBehaviour {
 		int currentAluminium = 0;
 		int currentCopper = 0;
 		foreach (GameObject ingot in ingots) {
-			string name = ingot.GetComponent<IngotProperties> ().GetName ();
+			IngotProperties ingotProperties = ingot.GetComponent<IngotProperties>();
+			string name = ingotProperties.GetName ();
 			if (name == "Aluminum") {
-				currentAluminium = Mathf.RoundToInt ((ingot.transform.localScale.x) * 100);
+				currentAluminium = Mathf.RoundToInt (ingotProperties.GetValue() * 100);
 			} else if (name == "Copper") {
-				currentCopper = Mathf.RoundToInt ((ingot.transform.localScale.x) * 100);
+				currentCopper = Mathf.RoundToInt (ingotProperties.GetValue() * 100);
 			} else {
 				Debug.Log ("Woops, RepairerScript doesn't recognize the material of type: " + name);
 			}
