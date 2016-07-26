@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour {
 
-
+								        
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +13,17 @@ public class GameStart : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		SceneManager.LoadScene("Main Scene");
+		
 	}
-}
+
+	void OnTriggerEnter(Collider other) {
+		if(other.CompareTag("Blocks") ){
+			new WaitForSeconds(1);
+			Application.LoadLevel("Main Scene");
+
+		}
+
+
+	}
+	}
+

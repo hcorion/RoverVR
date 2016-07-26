@@ -11,6 +11,7 @@ TagManager:
   - Storm
   - Rock
   - Wood
+  - Blocks
   layers:
   - Default
   - TransparentFX
