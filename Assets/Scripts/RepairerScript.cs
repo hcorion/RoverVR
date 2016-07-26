@@ -160,9 +160,9 @@ public class RepairerScript : MonoBehaviour {
 		foreach (GameObject ingot in ingots) {
 			string name = ingot.GetComponent<IngotProperties> ().GetName ();
 			if (name == "Aluminum") {
-				currentAluminium = Mathf.FloorToInt ((ingot.transform.localScale.x) * 100);
+				currentAluminium = Mathf.RoundToInt ((ingot.transform.localScale.x) * 100);
 			} else if (name == "Copper") {
-				currentCopper = Mathf.FloorToInt ((ingot.transform.localScale.x) * 100);
+				currentCopper = Mathf.RoundToInt ((ingot.transform.localScale.x) * 100);
 			} else {
 				Debug.Log ("Woops, RepairerScript doesn't recognize the material of type: " + name);
 			}
