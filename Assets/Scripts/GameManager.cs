@@ -19,10 +19,6 @@ public class GameManager : MonoBehaviour
 	void Start ()
 	{
 		//SceneManager.LoadSceneAsync(mainSceneName, LoadSceneMode.Single);
-	
-		}
-		
-
 	}
 
 	void Update ()
