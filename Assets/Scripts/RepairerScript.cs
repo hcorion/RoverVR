@@ -208,7 +208,7 @@ public class RepairerScript : MonoBehaviour {
 			Debug.Log ("Currently Lerping");
 			//If we haven't reached our goal.
 			currentLerpTime += Time.deltaTime;
-			Debug.Log ("It is" + objToLerp);
+			Debug.Log ("It is " + objToLerp);
 			objToLerp.transform.position = Vector3.Lerp (oldLerpPos.position, objectSnapPoint.position, currentLerpTime / lerpTime);
 		} else {
 			//If we have reached our goal and are waiting for new instructions.
