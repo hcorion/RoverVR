@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 public class RepairerScript : MonoBehaviour {
 	public GameObject door;
 	public Transform objectSnapPoint;
@@ -97,23 +98,30 @@ public class RepairerScript : MonoBehaviour {
 		}
 	}
 
-	public void IngotTriggerEntered (GameObject rfMaterial)
-	{
-		bool isAlreadyAdded = false;
-		foreach(GameObject ingot in ingots)
-		{
-			if(ingot == rfMaterial)
-			{
-				isAlreadyAdded = true;
-			}
-		}
-		if(isAlreadyAdded != true)
-		{
-			ingots.Add(rfMaterial);
-		}
-	}
+    public void IngotTriggerEntered(GameObject rfMaterial)
+    {
+        bool isAlreadyAdded = false;
+        if ((ingots != null) && (ingots.Any()))
+        {
+            ingots.Add(rfMaterial);
+        }
+        else
+        {
+            foreach (GameObject ingot in ingots)
+            {
+                if (ingot == rfMaterial)
+                {
+                    isAlreadyAdded = true;
+                }
+            }
+            if (isAlreadyAdded != true)
+            {
+                ingots.Add(rfMaterial);
+            }
+        }
+    }
 
-	public void repairTool ()
+    public void repairTool ()
 	{
 		/*Selfie Stick takes: 
 		2 100% Aluminum
