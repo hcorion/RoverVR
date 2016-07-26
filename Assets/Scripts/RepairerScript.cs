@@ -100,14 +100,17 @@ public class RepairerScript : MonoBehaviour {
 	public void IngotTriggerEntered (GameObject rfMaterial)
 	{
 		bool isAlreadyAdded = false;
-		for(int i = 0; i >= ingots.Count; i++)
+		foreach(GameObject ingot in ingots)
 		{
-			if (rfMaterial == ingots[i])
+			if(ingot == rfMaterial)
 			{
-				return;
+				isAlreadyAdded = true;
 			}
 		}
-		ingots.Add(rfMaterial);
+		if(isAlreadyAdded != true)
+		{
+			ingots.Add(rfMaterial);
+		}
 	}
 
 	public void repairTool ()
