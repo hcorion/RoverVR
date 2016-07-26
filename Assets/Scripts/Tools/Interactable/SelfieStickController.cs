@@ -24,6 +24,7 @@ namespace NewtonVR.Example
 		public WaterSource waterSrc;
 
 		DamageUI dmgUI;
+		public GameObject canvas;
 		public float healthLossRate;
 
 		new void Start ()
@@ -35,6 +36,16 @@ namespace NewtonVR.Example
 			}
 
 			dmgUI = GetComponent<DamageUI> ();
+			canvas.SetActive (false);
+		}
+
+		void Update ()
+		{
+			if (AttachedHand == null) {
+				canvas.SetActive (false);
+			} else if (AttachedHand != null) {
+				canvas.SetActive (true);
+			}
 		}
 
 		public override void UseButtonDown ()

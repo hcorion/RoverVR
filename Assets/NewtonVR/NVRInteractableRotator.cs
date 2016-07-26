@@ -3,66 +3,64 @@ using System.Collections;
 
 namespace NewtonVR
 {
-    public class NVRInteractableRotator : NVRInteractable
-    {
-        public float CurrentAngle;
+	public class NVRInteractableRotator : NVRInteractable
+	{
+		public float CurrentAngle;
 
-        protected virtual float DeltaMagic { get { return 1f; } }
-        protected Transform InitialAttachPoint;
+		protected virtual float DeltaMagic { get { return 1f; } }
 
-        protected override void Awake()
-        {
-            base.Awake();
-            this.Rigidbody.maxAngularVelocity = 100f;
-        }
+		protected Transform InitialAttachPoint;
 
-        public override void OnNewPosesApplied()
-        {
-            base.OnNewPosesApplied();
+		protected override void Awake ()
+		{
+			base.Awake ();
+			this.Rigidbody.maxAngularVelocity = 100f;
+		}
 
-            if (IsAttached == true)
-            {
-                Vector3 PositionDelta = (AttachedHand.transform.position - InitialAttachPoint.position) * DeltaMagic;
+		public override void OnNewPosesApplied ()
+		{
+			base.OnNewPosesApplied ();
 
-                this.Rigidbody.AddForceAtPosition(PositionDelta, InitialAttachPoint.position, ForceMode.VelocityChange);
-            }
+			if (IsAttached == true) {
+				Vector3 PositionDelta = (AttachedHand.transform.position - InitialAttachPoint.position) * DeltaMagic;
 
-            CurrentAngle = this.transform.localEulerAngles.z;
-        }
+				this.Rigidbody.AddForceAtPosition (PositionDelta, InitialAttachPoint.position, ForceMode.VelocityChange);
+			}
 
-        public override void BeginInteraction(NVRHand hand)
-        {
-            base.BeginInteraction(hand);
+			CurrentAngle = this.transform.localEulerAngles.x;
+		}
 
-            Vector3 closestPoint = Vector3.zero;
-            float shortestDistance = float.MaxValue;
-            for (int index = 0; index < Colliders.Length; index++)
-            {
-                Vector3 closest = Colliders[index].bounds.ClosestPoint(AttachedHand.transform.position);
-                float distance = Vector3.Distance(AttachedHand.transform.position, closest);
+		public override void BeginInteraction (NVRHand hand)
+		{
+			base.BeginInteraction (hand);
 
-                if (distance < shortestDistance)
-                {
-                    shortestDistance = distance;
-                    closestPoint = closest;
-                }
-            }
+			Vector3 closestPoint = Vector3.zero;
+			float shortestDistance = float.MaxValue;
+			for (int index = 0; index < Colliders.Length; index++) {
+				Vector3 closest = Colliders [index].bounds.ClosestPoint (AttachedHand.transform.position);
+				float distance = Vector3.Distance (AttachedHand.transform.position, closest);
 
-            InitialAttachPoint = new GameObject(string.Format("[{0}] InitialAttachPoint", this.gameObject.name)).transform;
-            //InitialAttachPoint = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
-            InitialAttachPoint.position = hand.transform.position;
-            InitialAttachPoint.rotation = hand.transform.rotation;
-            InitialAttachPoint.localScale = Vector3.one * 0.25f;
-            InitialAttachPoint.parent = this.transform;
-        }
+				if (distance < shortestDistance) {
+					shortestDistance = distance;
+					closestPoint = closest;
+				}
+			}
 
-        public override void EndInteraction()
-        {
-            base.EndInteraction();
+			InitialAttachPoint = new GameObject (string.Format ("[{0}] InitialAttachPoint", this.gameObject.name)).transform;
+			//InitialAttachPoint = GameObject.CreatePrimitive(PrimitiveType.Cube).transform;
+			InitialAttachPoint.position = hand.transform.position;
+			InitialAttachPoint.rotation = hand.transform.rotation;
+			InitialAttachPoint.localScale = Vector3.one * 0.25f;
+			InitialAttachPoint.parent = this.transform;
+		}
 
-            if (InitialAttachPoint != null)
-                Destroy(InitialAttachPoint.gameObject);
-        }
+		public override void EndInteraction ()
+		{
+			base.EndInteraction ();
 
-    }
+			if (InitialAttachPoint != null)
+				Destroy (InitialAttachPoint.gameObject);
+		}
+
+	}
 }

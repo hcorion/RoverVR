@@ -29,6 +29,7 @@ namespace NewtonVR
 
 		//Used for indicating damage to the player.
 		DamageUI dmgUI;
+		public GameObject canvas;
 		public float healthLossRate;
 
 		// Use this for initialization
@@ -40,15 +41,25 @@ namespace NewtonVR
 			//light = lightGameObject.GetComponent<Light>();
 			previousColour = light.color;
 			sfx = GetComponent<AudioSource> ();
+
 			dmgUI = GetComponent<DamageUI> ();
-			Debug.Log("The sfx gameobject is equal to: " + sfx);
-			sfx.Play();
+			canvas.SetActive (false);
+
+			Debug.Log ("The sfx gameobject is equal to: " + sfx);
+			sfx.Play ();
 		}
 
 		new void Update ()
 		{
 			base.Update ();
-			lerpSound();
+
+			if (AttachedHand == null) {
+				canvas.SetActive (false);
+			} else if (AttachedHand != null) {
+				canvas.SetActive (true);
+			}
+
+			lerpSound ();
 			if (buttonDown == true && dmgUI.health > 0f) {
 				//Dealing damage
 				dmgUI.health -= Time.deltaTime * healthLossRate;
@@ -106,21 +117,17 @@ namespace NewtonVR
 								}
 							}
 						}
-					} else{
+					} else {
 						Debug.Log ("This object has no ObjectProperties script.");
 						lastRock = null;
 					}
-				}
-				 else 
-				 {
+				} else {
 					Debug.Log ("The ChemCam didn't hit anything. Move closer or something isn't working.");
 					lightColourToLerp = new Color32 (100, 255, 0, 255);
 				}
-			}
-			else if (dmgUI.health <= 0f)
-			{
-					laser.SetActive(false);
-					lightGameObject.SetActive(false);
+			} else if (dmgUI.health <= 0f) {
+				laser.SetActive (false);
+				lightGameObject.SetActive (false);
 			}
 		}
 
@@ -130,7 +137,7 @@ namespace NewtonVR
 			laser.SetActive (true);
 			lightGameObject.SetActive (true);
 			doLerpSound = true;
-			sfx.Play();
+			sfx.Play ();
 		}
 
 		public override void UseButtonUp ()
@@ -167,7 +174,7 @@ namespace NewtonVR
 			const float lerpTime = 3;
 			if (doLerpSound == true && currentLerpTime / lerpTime < 1.0f) {
 				//If we're lerping.
-				Debug.Log("Lerping Sound! The sfx gameobject is " + sfx);
+				Debug.Log ("Lerping Sound! The sfx gameobject is " + sfx);
 				currentLerpTime += Time.deltaTime;
 				sfx.volume = Mathf.Lerp (0f, 1f, currentLerpTime / lerpTime);
 			} else if (currentLerpTime / lerpTime > 1.0f) {

@@ -11,9 +11,10 @@ GameObject:
   - 114: {fileID: 11461734}
   - 136: {fileID: 13634076}
   - 54: {fileID: 5470314}
+  - 114: {fileID: 11479030}
   m_Layer: 0
   m_Name: Rock01
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +32,7 @@ GameObject:
   - 23: {fileID: 2359344}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +49,7 @@ GameObject:
   - 23: {fileID: 2387656}
   m_Layer: 0
   m_Name: <STL_BINARY>
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +64,7 @@ GameObject:
   - 4: {fileID: 434612}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +79,7 @@ GameObject:
   - 4: {fileID: 442404}
   m_Layer: 0
   m_Name: Lamp
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,6 +265,25 @@ MonoBehaviour:
   EnableGravityOnDetach: 1
   AttachedHand: {fileID: 0}
   InteractionPoint: {fileID: 0}
+--- !u!114 &11479030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: effe783476466ab4f88db63fdae5bc5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockContent:
+  - Unusable
+  - Aluminum
+  - Copper
+  rockPercentage:
+  - 10
+  - 0
+  - 90
 --- !u!136 &13634076
 CapsuleCollider:
   m_ObjectHideFlags: 1

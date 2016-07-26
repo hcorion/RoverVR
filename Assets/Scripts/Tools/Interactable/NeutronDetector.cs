@@ -18,6 +18,7 @@ namespace NewtonVR.Example
 		bool buttonPressed;
 
 		DamageUI dmgUI;
+		public GameObject canvas;
 		public float healthLossRate;
 
 		new void Start ()
@@ -37,6 +38,7 @@ namespace NewtonVR.Example
 			content.text = "";
 
 			dmgUI = GetComponent <DamageUI> ();
+			canvas.SetActive (false);
 		}
 
 		void Update ()
@@ -55,6 +57,10 @@ namespace NewtonVR.Example
 				if (AttachedHand == null) {
 					buttonPressed = false;
 					lineRenderer.enabled = false;
+
+					canvas.SetActive (false);
+				} else if (AttachedHand != null) {
+					canvas.SetActive (true);
 				}
 			} else {
 				lineRenderer.enabled = false;
@@ -87,14 +93,18 @@ namespace NewtonVR.Example
 					float moisture = 1 / Vector3.Distance (hit.point, hit.transform.position);
 					Debug.DrawLine (hit.transform.position, hit.point, Color.blue, 20f, false);
 					if (moisture >= 0) {
+						content.fontSize = 50;
 						return moisture.ToString ("F2") + units;
 					} else {
+						content.fontSize = 50;
 						return ("0" + units);
 					}
 				} else {
+					content.fontSize = 35;
 					return ("Object Contains No Moisture");
 				}
 			} else {
+				content.fontSize = 35;
 				return ("No Soil Found");
 			}
 		}

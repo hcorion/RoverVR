@@ -15,9 +15,11 @@ public class RockCollider : MonoBehaviour
 
 	public GameObject[] refinedElements;
 	public string[] refinedElementNames;
+	public Material[] refinedElementColors;
 
 	private Dictionary<string, GameObject> elements = new Dictionary<string, GameObject> ();
 	private Dictionary<string, float> materialDictionary;
+	private Dictionary<string, Material> materialColors;
 
 	private ArrayList materialNames;
 
@@ -25,6 +27,7 @@ public class RockCollider : MonoBehaviour
 	{
 		for (int i = 0; i < refinedElements.Length; ++i) {
 			elements.Add (refinedElementNames [i], refinedElements [i]);
+			materialColors.Add (refinedElementNames [i], refinedElementColors [i]);
 		}
 	}
 
@@ -34,6 +37,8 @@ public class RockCollider : MonoBehaviour
 		IngotProperties ingotProp = c.gameObject.GetComponent<IngotProperties> ();
 
 		if (objProp != null) {
+			element = "";
+
 			materialDictionary = objProp.getMaterialDictionary ();
 			materialNames = objProp.getMaterialNames ();
 

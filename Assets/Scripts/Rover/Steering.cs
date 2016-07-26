@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace NewtonVR
 {
-	public class Steering : NVRInteractable
+	public class Steering : NVRInteractableRotator
 	{
 		public GameObject wheel;
 		public float maximumSteeringAngle = 200f;
@@ -17,20 +17,14 @@ namespace NewtonVR
 		protected Transform InitialAttachPoint;
 
 		// Use this for initialization
-		protected override void Start ()
+		protected override void Awake ()
 		{
-	
+			base.Awake ();
 		}
 
 		public override void OnNewPosesApplied ()
 		{
 			base.OnNewPosesApplied ();
-
-			if (IsAttached == true) {
-				Vector3 PositionDelta = (AttachedHand.transform.position - InitialAttachPoint.position) * DeltaMagic;
-
-				this.Rigidbody.AddForceAtPosition (PositionDelta, InitialAttachPoint.position, ForceMode.VelocityChange);
-			}
 		}
 	
 		// Update is called once per frame
@@ -52,19 +46,7 @@ namespace NewtonVR
 		public override void BeginInteraction (NVRHand hand)
 		{
 			base.BeginInteraction (hand);
-			InitialAttachPoint = new GameObject (string.Format ("[{0}] InitialAttachPoint", this.gameObject.name)).transform;
-			InitialAttachPoint.position = hand.transform.position;
-			InitialAttachPoint.rotation = hand.transform.rotation;
-			InitialAttachPoint.localScale = Vector3.one * 0.25f;
-			InitialAttachPoint.parent = this.transform;
-			wheelHeld = true;
-		}
-
-		public override void EndInteraction ()
-		{
-			base.EndInteraction ();
-			if (InitialAttachPoint != null)
-				Destroy (InitialAttachPoint.gameObject);
+			this.Rigidbody.isKinematic = false;
 		}
 	}
 }
