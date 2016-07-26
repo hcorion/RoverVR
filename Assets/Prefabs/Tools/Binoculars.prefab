@@ -747,7 +747,7 @@ MonoBehaviour:
   EnableGravityOnDetach: 1
   AttachedHand: {fileID: 0}
   InteractionPoint: {fileID: 491442}
-  distance: 3
+  distance: 2
   viewCamera: {fileID: 2062976}
 --- !u!124 &12449824
 Behaviour:
