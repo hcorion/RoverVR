@@ -9,13 +9,13 @@ public class WaterSource : MonoBehaviour
 
 	private Transform radiusIndicator;
 
-	public Camera cameraToLookAt;
 	public float offsetY;
 	public GameObject arrowPrefab;
 
 	GameObject arrow;
 
 	public Transform player;
+	public float playerDisplacementBuffer;
 
 	void Start ()
 	{
@@ -29,9 +29,20 @@ public class WaterSource : MonoBehaviour
 
 	void Update ()
 	{
-		Vector3 vector = cameraToLookAt.transform.position - arrow.transform.position;
+		Vector3 vector = player.position - arrow.transform.position;
 		vector.x = vector.z = 0.0f;
-		arrow.transform.LookAt (cameraToLookAt.transform.position - vector);
+		arrow.transform.LookAt (player.position - vector);
 		arrow.transform.Rotate (90, 90, 90);
+
+		Vector3 arrowLocation = gameObject.transform.position + player.position.normalized * waterRadius / 2f;
+		arrow.transform.position = new Vector3 (arrowLocation.x, arrow.transform.position.y, arrowLocation.z);
+
+		Vector3 playerDisplacement = player.position - arrowLocation;
+
+		if (playerDisplacement.magnitude <= playerDisplacementBuffer) {
+			arrow.layer = LayerMask.NameToLayer ("Water");
+		} else if (playerDisplacement.magnitude > playerDisplacementBuffer) {
+			arrow.layer = LayerMask.NameToLayer ("Arrow");
+		}
 	}
 }

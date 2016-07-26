@@ -53,7 +53,9 @@ public class RockCollider : MonoBehaviour
 				spawned.transform.localScale = new Vector3 (scale.x / (100 / value), scale.y / (100 / value), scale.z / (100 / value));
 			}
 
-			Destroy (c.gameObject);
+			//c.gameObject.transform.root.gameObject.GetComponent<NewtonVR.NVRInteractableItem> ().AttachedHand = null;
+			//Destroy (c.gameObject.transform.root.gameObject.GetComponent<NewtonVR.NVRInteractableItem> ());
+			//Destroy (c.gameObject);
 		} else if (ingotProp != null) {
 			string name = ingotProp.GetName ();
 			float value = ingotProp.GetValue ();

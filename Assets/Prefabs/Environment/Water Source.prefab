@@ -92,7 +92,10 @@ MonoBehaviour:
   minWaterForLife: 5
   moistureContent: 5
   cameraToLookAt: {fileID: 0}
-  arrow: {fileID: 0}
+  offsetY: 10
+  arrowPrefab: {fileID: 166350, guid: c89ce1453920158459485a581a21ea06, type: 2}
+  player: {fileID: 0}
+  playerDisplacementBuffer: 23
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
