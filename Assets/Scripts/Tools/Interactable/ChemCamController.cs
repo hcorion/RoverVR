@@ -111,16 +111,16 @@ namespace NewtonVR
 						lastRock = null;
 					}
 				}
-				else if (dmgUI.health <= 0f)
-				{
-					laser.SetActive(false);
-					lightGameObject.SetActive(false);
-				}
 				 else 
 				 {
 					Debug.Log ("The ChemCam didn't hit anything. Move closer or something isn't working.");
 					lightColourToLerp = new Color32 (100, 255, 0, 255);
 				}
+			}
+			else if (dmgUI.health <= 0f)
+			{
+					laser.SetActive(false);
+					lightGameObject.SetActive(false);
 			}
 		}
 
@@ -170,8 +170,9 @@ namespace NewtonVR
 				Debug.Log("Lerping Sound! The sfx gameobject is " + sfx);
 				currentLerpTime += Time.deltaTime;
 				sfx.volume = Mathf.Lerp (0f, 1f, currentLerpTime / lerpTime);
-			} else if (doLerpSound == true && currentLerpTime / lerpTime > 1.0f) {
+			} else if (currentLerpTime / lerpTime > 1.0f) {
 				//If we're supposed to be lerping but we can't yet.
+				doLerpSound = false;
 				currentLerpTime = 0;
 			}
 		}
