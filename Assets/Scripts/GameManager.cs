@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
 	public int a = 0;
 	private bool hasStartedGame = false;
 
+	private bool hasThrownTool = false;
+	private int stateIndex = 0;
+
 	void Awake ()
 	{
 		DontDestroyOnLoad (transform.gameObject);
@@ -32,7 +35,18 @@ public class GameManager : MonoBehaviour
 			//Application.Quit();
 			wonText.SetActive (true);
 		}
-		if(SceneManager.GetActiveScene().ToString() == mainSceneName)
+		if(hasStartedGame == true)
+		{
+			if(stateIndex == 1)
+			{
+
+			}
+			if(hasThrownTool == false && stateIndex <= 1)
+			{
+
+			}
+		}
+		 else if(SceneManager.GetActiveScene().ToString() == mainSceneName)
 		{
 			if(hasStartedGame == false)
 			{
@@ -41,14 +55,19 @@ public class GameManager : MonoBehaviour
 			}
 		}
 	}
-
 	public void GameOver ()
 	{
 		gameOver = true;
 	}
 	private void firstState()
 	{
-
+		/*
+		So here the plan.
+		We drop the user (not literally) into the world. 
+		The user will have already figured out how to use trigger on the controller.
+		We then give them text/speech guidence to pick up the tools
+		*/
+		stateIndex = 1;
 	}
 	public string getMainSceneName()
 	{
