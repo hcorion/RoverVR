@@ -32,6 +32,8 @@ namespace NewtonVR
 		public GameObject canvas;
 		public float healthLossRate;
 
+		public float laserScale = 50f;
+
 		// Use this for initialization
 		new void Start ()
 		{
@@ -71,7 +73,7 @@ namespace NewtonVR
 				bool raycast = Physics.Raycast (shootPoint.position, forward, out hit);
 				//Updating the position of the laser and the light
 				laser.transform.localPosition = new Vector3 ((-hit.distance) / 2 + shootPoint.transform.localPosition.x, laser.transform.localPosition.y, laser.transform.localPosition.z);
-				laser.transform.localScale = new Vector3 (laser.transform.localScale.x, hit.distance/transform.root.localScale.y * 6.793509f, laser.transform.localScale.z);
+				laser.transform.localScale = new Vector3 (laser.transform.localScale.x, hit.distance / transform.root.localScale.y * laserScale, laser.transform.localScale.z);
 				lightGameObject.transform.position = new Vector3 (hit.point.x, hit.point.y, hit.point.z) + transform.right / 9.0f;
 				if (raycast && hit.distance <= 3) {
 					ObjectProperties objectProperties = hit.transform.GetComponent<ObjectProperties> ();
