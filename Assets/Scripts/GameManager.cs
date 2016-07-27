@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
 			}
 			if(stateIndex == 2)
 			{
-				if ()
+				//if ()
 			}
 			if(hasThrownTool == false && stateIndex == 1)
 			{
