@@ -25,6 +25,7 @@ public class toolDetector : MonoBehaviour {
      }
 	 void OnTriggerExit(Collider other)
 	 {
+		 Debug.Log("The object " + other.transform.root.gameObject + "has been removed from an OnTriggerEnter.");
 		 GameObject parent = other.transform.root.gameObject;
 		 if(isToolDetector == true && other.transform.parent.GetComponent<ToolProperties>() != null)
 		 {
