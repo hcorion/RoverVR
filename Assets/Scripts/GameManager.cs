@@ -16,14 +16,23 @@ public class GameManager : MonoBehaviour
 
 	private bool hasWonFirstState = false;
 	//All of the tools to instantiate.
+	
+	//Selfie Stick
 	public GameObject selfieStick;
 	private GameObject newSS;
+	//Neutron Detector
 	public GameObject neutronDetector;
 	private GameObject newND;
+	//Chem Cam
 	public GameObject ChemCam;
 	private GameObject newCC;
+	private NewtonVR.ChemCamController newCCcontroller;
+	//Binoculars
 	public GameObject Binoculars;
 	private GameObject newB;
+	//Camera slash Rover
+	private GameObject CameraRig;
+	public GameObject Rover;
 
 	//The points at which to drop the tool. Should be all just empty gameObjects
 	//Drops the Selfie Stick and NeutronDetector
@@ -37,6 +46,9 @@ public class GameManager : MonoBehaviour
 	public GameObject Player;
 	public GameObject EasyObjectSpawn;
 	public float toolResetRadius = 2;
+	//For the second state
+	private bool hasStartedSecondState = false;
+	private bool hasPickedUpChemCam = false;
 
 
 	void Awake ()
@@ -50,7 +62,7 @@ public class GameManager : MonoBehaviour
 		//SceneManager.LoadSceneAsync(mainSceneName, LoadSceneMode.Single);
 		if(SceneManager.GetActiveScene().ToString() == mainSceneName)
 		{
-			StartCoroutine(firstState());
+			StartCoroutine(FirstState());
 		}
 	}
 
@@ -71,7 +83,21 @@ public class GameManager : MonoBehaviour
 			}
 			if(stateIndex == 2)
 			{
-				//if ()
+				if (hasStartedSecondState == false)
+				{
+					StartCoroutine(SecondState());
+					hasStartedSecondState = true;	
+				} 
+				else
+				{
+                    if (newCCcontroller.AttachedHand != null && hasPickedUpChemCam == false)
+                    {
+						//Spawn the rover in.
+						hasPickedUpChemCam = true;
+						Rover.transform.position = CameraRig.transform.position;
+						CameraRig.transform.parent = Rover.transform.parent;
+                    }
+                }
 			}
 			if(hasThrownTool == false && stateIndex == 1)
 			{
@@ -112,8 +138,13 @@ public class GameManager : MonoBehaviour
 		{
 			if(hasStartedGame == false)
 			{
-				StartCoroutine(firstState());
+				StartCoroutine(FirstState());
 				hasStartedGame = true;
+				CameraRig = GameObject.Find("NVRCameraRig");
+				if (CameraRig == null)
+				{
+					Debug.Log("The object NVRCameraRig has not been found in the Main Scene.");
+				}
 			}
 		}
 	}
@@ -123,10 +154,10 @@ public class GameManager : MonoBehaviour
 	}
 
 
-	private IEnumerator firstState()
+	private IEnumerator FirstState()
 	{
 		/*
-		So here the plan.
+		So here's the plan.
 		We drop the user (not literally) into the world. 
 		The user will have already figured out how to use trigger on the controller.
 		We then give them text/speech guidence to pick up the tools
@@ -144,6 +175,25 @@ public class GameManager : MonoBehaviour
 
 		yield return new WaitForSeconds(1f);
 		//More sound / text introducing the water Source.
+	}
+
+	private IEnumerator SecondState()
+	{
+		/*
+		So here's the plan.
+		The user now knows how to use the tools and how to find life.
+		We'll spawn in the chemcam in a corner, when the user goes to pick it up, we'll spawn the Rover.
+		*/
+		yield return new WaitForSeconds(1f);
+		//tell the player the ChemCam has just been dropped in.
+		//
+		//
+		newCC = (GameObject)Object.Instantiate(ChemCam, secondDropPoint.transform.position, Quaternion.identity);
+		newCCcontroller = newCC.GetComponent<NewtonVR.ChemCamController>();
+		if (newCCcontroller == null)
+		{
+			Debug.LogError("The instantiated ChemCam doesn't have a ChemCamController script");
+		}
 	}
 
 	public void wonFirstState()
