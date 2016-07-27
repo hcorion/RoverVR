@@ -127,7 +127,7 @@ Prefab:
     - target: {fileID: 3392232, guid: b0047dd65ff208349bf3a5aaaeae24d0, type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1469928026}
+      objectReference: {fileID: 1469283694}
     - target: {fileID: 11456042, guid: b0047dd65ff208349bf3a5aaaeae24d0, type: 2}
       propertyPath: drawWireframeWhenSelectedOnly
       value: 0
@@ -200,6 +200,14 @@ Prefab:
       propertyPath: vertices.Array.data[7].z
       value: 1.275
       objectReference: {fileID: 0}
+    - target: {fileID: 2036778, guid: b0047dd65ff208349bf3a5aaaeae24d0, type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967023
+      objectReference: {fileID: 0}
+    - target: {fileID: 11439526, guid: b0047dd65ff208349bf3a5aaaeae24d0, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0047dd65ff208349bf3a5aaaeae24d0, type: 2}
   m_IsPrefabParent: 0
@@ -207,6 +215,34 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 478642, guid: b0047dd65ff208349bf3a5aaaeae24d0, type: 2}
   m_PrefabInternal: {fileID: 290317779}
+--- !u!1 &580262278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 580262279}
+  m_Layer: 0
+  m_Name: Won Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &580262279
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 580262278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 118.43979, y: 3.8242812, z: 335.33694}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1001 &676338064
 Prefab:
   m_ObjectHideFlags: 0
@@ -254,6 +290,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11432730, guid: f093a08973665374bb9c2a105857eac0, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2062785150}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f093a08973665374bb9c2a105857eac0, type: 2}
   m_IsPrefabParent: 0
@@ -313,10 +353,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: 0
-  wonText: {fileID: 0}
-  mainSceneName: Main Scene
+  wonText: {fileID: 580262278}
+  mainSceneName: Tutorial
   selfieStick: {fileID: 191186, guid: 2e24c158efb5fea41906caa2f637a8ac, type: 2}
-  neutronDetector: {fileID: 146700, guid: 6ff02cc0068783a44b5fa4c0e61151bd, type: 2}
+  neutronDetector: {fileID: 113772, guid: e02248c702b21d147b183e62d312b28f, type: 2}
   ChemCam: {fileID: 111330, guid: 5878ecbb2c7344897a50731557327a41, type: 2}
   Binoculars: {fileID: 179470, guid: be82c3492937d104087ab849a65d4a47, type: 2}
   Rover: {fileID: 0}
@@ -502,7 +542,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
---- !u!43 &1469928026
+--- !u!43 &1469283694
 Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -773,3 +813,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
+--- !u!4 &2062785150 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 455908, guid: b0047dd65ff208349bf3a5aaaeae24d0, type: 2}
+  m_PrefabInternal: {fileID: 290317779}
