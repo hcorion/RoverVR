@@ -34,6 +34,8 @@ namespace NewtonVR
 
 		public float laserScale = 50f;
 
+		Light pointLight;
+
 		// Use this for initialization
 		new void Start ()
 		{
@@ -67,18 +69,20 @@ namespace NewtonVR
 				dmgUI.health -= Time.deltaTime * healthLossRate;
 				//Lerping Color.
 				lerpColor ();
-				Vector3 forward = transform.TransformVector (Vector3.left);
-				//Raycasting to ground
+
 				RaycastHit hit;
+				Vector3 forward = transform.TransformVector (Vector3.left);
 				bool raycast = Physics.Raycast (shootPoint.position, forward, out hit);
+
 				//Updating the position of the laser and the light
 				laser.transform.localPosition = new Vector3 ((-hit.distance) / 2 + shootPoint.transform.localPosition.x, laser.transform.localPosition.y, laser.transform.localPosition.z);
 				laser.transform.localScale = new Vector3 (laser.transform.localScale.x, hit.distance / transform.root.localScale.y * laserScale, laser.transform.localScale.z);
 				lightGameObject.transform.position = new Vector3 (hit.point.x, hit.point.y, hit.point.z) + transform.right / 9.0f;
+
 				if (raycast && hit.distance <= 3) {
 					ObjectProperties objectProperties = hit.transform.GetComponent<ObjectProperties> ();
 					if (objectProperties != null) {
-						Light pointLight = hit.transform.GetComponentInChildren<Light> ();
+						pointLight = hit.transform.GetComponentInChildren<Light> ();
 
 						string rockMaterial = objectProperties.getSimpleMaterial ();
 						Debug.Log ("The current material is:" + rockMaterial);
@@ -88,7 +92,7 @@ namespace NewtonVR
 								breakTime += Time.deltaTime;
 
 								if (pointLight != null) {
-									pointLight.intensity += Time.deltaTime * 8f / rockbreakage;
+									pointLight.intensity += Time.deltaTime * 16f;
 								} else {
 									print ("Object does not contain a point light");
 								}
@@ -102,10 +106,12 @@ namespace NewtonVR
 							}
                                 
 						} else {
+							//If 
 							rockbreakage = objectProperties.getSimpleRockBreakage ();
 							breakTime = 0;
 
 							if (lastRock == null) {
+								//
 								lastRock = hit.transform.gameObject;
 								//If we haven't hit anything yet.
 								laser.SetActive (true);
