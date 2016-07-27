@@ -20,6 +20,20 @@ public class ObjectProperties : MonoBehaviour
 		3.0f
 	};
 
+	Light pointLight;
+
+	void Start ()
+	{
+		pointLight = GetComponentInChildren<Light> ();
+	}
+
+	void Update ()
+	{
+		if (pointLight.intensity != 0f) {
+			pointLight.intensity -= Time.deltaTime * 8f;
+		}
+	}
+
 	public string getSimpleMaterial ()
 	{
 		float maxValue = 0;
