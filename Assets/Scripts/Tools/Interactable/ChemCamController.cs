@@ -140,7 +140,7 @@ namespace NewtonVR
 					}
 				} else {
 					Debug.Log ("The ChemCam didn't hit anything. Move closer or something isn't working.");
-					lightColourToLerp = new Color32 (100, 255, 0, 255);
+					lightColourToLerp = new Color32 (255, 0, 0, 255);
 				}
 			} else if (dmgUI.health <= 0f) {
 				laser.SetActive (false);

@@ -63,6 +63,7 @@ public class RepairerScript : MonoBehaviour {
 				currentTool = null;
 				toolIndex = 23;
 				objIsSnapped = false;
+				objToLerp = null;
 			}
 		} else {
 			Debug.Log ("Object is not snapped.");
@@ -185,9 +186,9 @@ public class RepairerScript : MonoBehaviour {
 					//i--;
 				}
 				//Clean up stuff for next tool repair.
-				currentTool = null;
 				objIsSnapped = false;
 				currentTool.GetComponent<Rigidbody> ().isKinematic = false;
+				currentTool = null;
 				ButtonHasPushed = false;
 			}
 		} else {
@@ -227,6 +228,17 @@ public class RepairerScript : MonoBehaviour {
 			objToLerp.transform.position = Vector3.Lerp (oldLerpPos.position, objectSnapPoint.position, currentLerpTime / lerpTime);
 		} else {
 			//If we have reached our goal and are waiting for new instructions.
+		}
+	}
+	public void toolRemoved(GameObject tool)
+	{
+		if ( currentTool != null && objToLerp != null && objIsSnapped != false)
+		{
+			if (tool == currentTool){
+				currentTool = null;
+				objToLerp = null;
+				objIsSnapped = false;
+			}
 		}
 	}
 }

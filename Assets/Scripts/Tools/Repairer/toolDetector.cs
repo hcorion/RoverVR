@@ -20,16 +20,17 @@ public class toolDetector : MonoBehaviour {
 		 }
 		 else
 		 {
-			 Debug.Log("This object doesn't have toolProperties or isn't an ingot");
-			 Debug.Log("The object " + parent.name + " doesn't work.");
+			 Debug.Log("The object " + parent.name + " isn't a tool or an ingot.");
 		 }
      }
 	 void OnTriggerExit(Collider other)
 	 {
 		 GameObject parent = other.transform.root.gameObject;
-		 if(isToolDetector == true)
+		 if(isToolDetector == true && other.transform.parent.GetComponent<ToolProperties>() != null)
 		 {
 			 //tool has exited.
+			 repairerScript.toolRemoved(other.transform.parent.gameObject);
+			 Debug.Log(other.transform.parent.name + " has been removed from the toolDetector.");
 		 }
 	 }
 }
