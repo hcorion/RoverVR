@@ -150,8 +150,8 @@ public class GameManager : MonoBehaviour
 		yield return new WaitForSeconds (3f);
 		
 		//Drop tools.
-		newND = (GameObject)Object.Instantiate (neutronDetector, firstDropPoint.transform.position + new Vector3 (2, 0, 0), Quaternion.identity);
-		newSS = (GameObject)Object.Instantiate (selfieStick, firstDropPoint.transform.position + new Vector3 (-2, 0, 0), Quaternion.identity);
+		newND = (GameObject)Object.Instantiate (neutronDetector, firstDropPoint.transform.position + new Vector3 (0, 0, 0.1f), Quaternion.identity);
+		newSS = (GameObject)Object.Instantiate (selfieStick, firstDropPoint.transform.position + new Vector3 (0, 0, -0.1f), Quaternion.identity);
 
 		yield return new WaitForSeconds (1f);
 		//More sound / text introducing the water Source.

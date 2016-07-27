@@ -18,7 +18,7 @@ namespace NewtonVR.Example
 		bool buttonPressed;
 
 		DamageUI dmgUI;
-		public GameObject canvas;
+		public GameObject damagecCanvas;
 		public float healthLossRate;
 
 		new void Start ()
@@ -38,7 +38,7 @@ namespace NewtonVR.Example
 			content.text = "";
 
 			dmgUI = GetComponent <DamageUI> ();
-			canvas.SetActive (false);
+			damagecCanvas.SetActive (false);
 		}
 
 		void Update ()
@@ -58,9 +58,9 @@ namespace NewtonVR.Example
 					buttonPressed = false;
 					lineRenderer.enabled = false;
 
-					canvas.SetActive (false);
+					damagecCanvas.SetActive (false);
 				} else if (AttachedHand != null) {
-					canvas.SetActive (true);
+					damagecCanvas.SetActive (true);
 				}
 			} else {
 				lineRenderer.enabled = false;

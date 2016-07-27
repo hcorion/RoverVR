@@ -21,7 +21,7 @@ namespace NewtonVR.Example
 
 		private bool isLoading = false;
 
-		public WaterSource waterSrc;
+		private WaterSource waterSrc;
 
 		DamageUI dmgUI;
 		public GameObject canvas;
@@ -50,9 +50,8 @@ namespace NewtonVR.Example
 			} else if (AttachedHand != null) {
 				canvas.SetActive (true);
 			}
-			if(wonTimes == 1)
-			{
-				gameController.GetComponent<GameManager>().wonFirstState();
+			if (wonTimes == 1) {
+				gameController.GetComponent<GameManager> ().wonFirstState ();
 			}
 		}
 

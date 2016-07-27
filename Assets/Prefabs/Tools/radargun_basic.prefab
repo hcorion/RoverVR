@@ -151,7 +151,7 @@ GameObject:
   - 114: {fileID: 11487118}
   - 114: {fileID: 11461008}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Damage Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,6 +840,7 @@ MonoBehaviour:
   firePoint: {fileID: 411248}
   lineRenderer: {fileID: 12059788}
   laserWidth: 0.01
+  damagecCanvas: {fileID: 142406}
   healthLossRate: 2
 --- !u!114 &11486052
 MonoBehaviour:
