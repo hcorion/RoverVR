@@ -27,6 +27,9 @@ namespace NewtonVR.Example
 		public GameObject canvas;
 		public float healthLossRate;
 
+		//Used for the GameManager Script
+		private int wonTimes = 0;
+
 		new void Start ()
 		{
 			base.Start ();
@@ -39,12 +42,17 @@ namespace NewtonVR.Example
 			canvas.SetActive (false);
 		}
 
-		void Update ()
+		new void Update ()
 		{
+			base.Update ();
 			if (AttachedHand == null) {
 				canvas.SetActive (false);
 			} else if (AttachedHand != null) {
 				canvas.SetActive (true);
+			}
+			if(wonTimes == 1)
+			{
+				gameController.GetComponent<GameManager>().wonFirstState();
 			}
 		}
 
@@ -79,6 +87,7 @@ namespace NewtonVR.Example
 					if (moisture >= waterSrc.minWaterForLife) {
 						StartCoroutine (loadOnScreen (LifeImages [Random.Range (0, LifeImages.Length)], true));
 						Debug.DrawLine (hit.transform.position, hit.point, Color.green, 20, false);
+						wonTimes++;
 						return "Life found";
 					} else {
 						StartCoroutine (loadOnScreen (noLifeImages [Random.Range (0, noLifeImages.Length)], false));
