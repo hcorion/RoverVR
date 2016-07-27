@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
 			{
 				bool notthrownTool = false;
 				int toolIndex = 0;
-				foreach (Collider col in Physics.OverlapSphere(Player.transform.position, toolResetRadius))
+				foreach (Collider col in Physics.OverlapSphere(CameraRig.transform.position, toolResetRadius))
 				{
 					if (col.gameObject == neutronDetector)
 					{
