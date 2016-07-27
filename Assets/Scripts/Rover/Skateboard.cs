@@ -8,7 +8,7 @@ public class Skateboard : MonoBehaviour
 	public float rotationspeed;
 
 	public GameObject axle;
-	public GameObject low6;
+	public GameObject wheel;
 	public HingeJoint hinge;
 	public HingeJoint wheelhinge;
 
@@ -17,12 +17,12 @@ public class Skateboard : MonoBehaviour
 	void Start ()
 	{
 		hinge = axle.GetComponent<HingeJoint> ();
-		wheelhinge = low6.GetComponent<HingeJoint> ();
+		wheelhinge = wheel.GetComponent<HingeJoint> ();
 	}
 
 	float getRotation ()
 	{
-		return low6.transform.localRotation.eulerAngles.z;
+		return wheel.transform.localRotation.eulerAngles.z;
 	}
 
 	float getAngle ()
@@ -41,28 +41,18 @@ public class Skateboard : MonoBehaviour
 		getAngle ();
 		setSpeed ();
 
-		if ((getAngle () < 360f - rotationBuffer && getAngle () > 270f) || (getAngle () > rotationBuffer && getAngle () < 90f)) {
-			if (getRotation () > 20f && getRotation () < 90f) {
-				this.transform.Rotate (Vector3.up * Time.deltaTime * rotationspeed);
-				hinge.connectedAnchor += transform.forward * Time.deltaTime * speed;
-				wheelhinge.connectedAnchor += transform.forward * Time.deltaTime * rotationspeed;
-			} else if (getRotation () < 360f - rotationBuffer && getRotation () > 270f) {
-				this.transform.Rotate (Vector3.down * Time.deltaTime * rotationspeed);
-				hinge.connectedAnchor -= transform.forward * Time.deltaTime * speed;
-				wheelhinge.connectedAnchor -= transform.forward * Time.deltaTime * rotationspeed;
-			}
+		if (getRotation () > 20f && getRotation () < 90f) {
+			this.transform.Rotate (Vector3.up * Time.deltaTime * rotationspeed);
+		} else if (getRotation () < 360f - rotationBuffer && getRotation () > 270f) {
+			this.transform.Rotate (Vector3.down * Time.deltaTime * rotationspeed);
 		}
 
 		//print ("Rotation: " + getRotation ());
 
 		if (getAngle () < 360f - rotationBuffer && getAngle () > 270f) {
 			this.transform.position += transform.right * speed / (Time.deltaTime * 1000f);
-			hinge.connectedAnchor += transform.right * speed / (Time.deltaTime * 1000f);
-			wheelhinge.connectedAnchor += transform.right * speed / (Time.deltaTime * 1000f);
 		} else if (getAngle () > rotationBuffer && getAngle () < 90f) {
 			this.transform.position -= transform.right * speed / (Time.deltaTime * 1000f);
-			hinge.connectedAnchor -= transform.right * speed / (Time.deltaTime * 1000f);
-			wheelhinge.connectedAnchor -= transform.right * speed / (Time.deltaTime * 1000f);
 		}
 
 		//print ("Angle: " + getAngle ());
