@@ -117,7 +117,7 @@ namespace NewtonVR
 								laser.SetActive (true);
 							}
 							switch (rockMaterial) {
-							case "nil":
+							case "Unusable":
 								lightColourToLerp = new Color32 (255, 0, 0, 255);
 								break;
 							case "Aluminum":
