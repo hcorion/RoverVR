@@ -195,6 +195,7 @@ public class RepairerScript : MonoBehaviour
 					//ingots.RemoveAt(i);
 					//i--;
 				}
+				currentTool.GetComponent<ToolProperties>().Repair();
 				//Clean up stuff for next tool repair.
 				toolRemoved (currentTool);
 				objIsSnapped = false;
