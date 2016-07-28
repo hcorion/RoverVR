@@ -203,11 +203,17 @@ public class RepairerScript : MonoBehaviour {
 					//i--;
 				}
 				//Clean up stuff for next tool repair.
+				toolRemoved(currentTool);
 				objIsSnapped = false;
 				currentTool.GetComponent<Rigidbody> ().isKinematic = false;
 				currentTool = null;
 				ButtonHasPushed = false;
 				objToLerp = null;
+			}
+			else
+			{
+				Debug.Log("You do not have enough copper.");
+				ButtonHasPushed = false;
 			}
 		} else {
 			Debug.Log ("You do not have enough aluminum. You have " + currentAluminium + " and need " + AluminumRepairValue);
@@ -266,7 +272,7 @@ public class RepairerScript : MonoBehaviour {
 			}
 			else 
 			{
-				Debug.Log("We've already a new tool, " + currentTool.name + " as the currentTool.");
+				Debug.Log("We've already got a new tool, " + currentTool.name + " as the currentTool.");
 			}
 
 		}
