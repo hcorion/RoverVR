@@ -27,11 +27,17 @@ namespace NewtonVR.Example
 		public GameObject damageCanvas;
 		public float healthLossRate;
 
-		public Canvas canvasUI;
+		public GameObject canvasUI;
+		public GameObject textObjectNumber;
+		public GameObject textObject;
+		public GameObject panelObject;
 		Text lifeNumber;
+		Text lifeStatus;
+		Image panel;
 
 		//Used for the GameManager Script
 		private int wonTimes = 0;
+		public int totalLife;
 
 		new void Start ()
 		{
@@ -43,6 +49,11 @@ namespace NewtonVR.Example
 
 			dmgUI = GetComponent<DamageUI> ();
 			damageCanvas.SetActive (false);
+
+			lifeStatus = textObject.GetComponent<Text> ();
+			lifeNumber = textObjectNumber.GetComponent<Text> ();
+			panel = panelObject.GetComponent<Image> ();
+			canvasUI.SetActive (false);
 		}
 
 		new void Update ()
@@ -84,14 +95,14 @@ namespace NewtonVR.Example
 					float moisture = 1 / Vector3.Distance (hit.point, hit.transform.position);
 
 					if (moisture >= waterSrc.minWaterForLife) {
-						StartCoroutine (loadOnScreen (LifeImages [Random.Range (0, LifeImages.Length)], true));
 						Debug.DrawLine (hit.transform.position, hit.point, Color.green, 20, false);
-						wonTimes++;
 
 						if (hit.transform.gameObject.GetComponent<WaterSource> ().found == false) {
 							hit.transform.gameObject.GetComponent<WaterSource> ().found = true;
 							wonTimes++;
 						}
+
+						StartCoroutine (loadOnScreen (LifeImages [Random.Range (0, LifeImages.Length)], true));
 
 						return "Life found";
 					} else {
@@ -122,8 +133,28 @@ namespace NewtonVR.Example
 				gameController.GetComponent<GameManager> ().GameOver ();
 			}
 			isLoading = false;
+
+			StartCoroutine (loadLifeUI (hasWon));
+
 			yield return null;
 		}
 
+		IEnumerator loadLifeUI (bool life)
+		{
+			if (life) {
+				lifeNumber.text = wonTimes + " of " + totalLife;
+				panel.color = Color.green;
+				lifeStatus.text = "Life Found:";
+			} else {
+				panel.color = Color.red;
+				lifeNumber.text = "";
+				lifeStatus.text = "Life Not Found";
+			}
+
+			canvasUI.SetActive (true);
+			yield return new WaitForSeconds (waitTime);
+			canvasUI.SetActive (false);
+			yield return null;
+		}
 	}
 }
