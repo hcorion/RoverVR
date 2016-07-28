@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class RockSpawning : MonoBehaviour {
-	public Vector3 positionOne;
-	public Vector3 positionTwo;
+	public Transform positionOne;
+	public Transform positionTwo;
 	private float minTerrainHeight;
 
 	public GameObject cameraRig;
@@ -11,6 +11,8 @@ public class RockSpawning : MonoBehaviour {
 	public Terrain terrain;
 
 	public GameObject[] rocks;
+
+	public float maxRockPercentage = 100;
 	public int rocksToSpawn = 500;
 	void Awake()
 	{
@@ -26,6 +28,23 @@ public class RockSpawning : MonoBehaviour {
 			{
 				GameObject rock = (GameObject)Instantiate(rocks[Random.Range(0, rocks.Length)],randomPos, Quaternion.identity);
 				rock.GetComponent<Rigidbody>().detectCollisions = false;
+				rock.GetComponent<Rigidbody>().Sleep();
+				ObjectProperties objectProperties = rock.GetComponent<ObjectProperties>();
+				if (objectProperties == null)
+				{
+					Debug.Log("The rock " + rock.name + "Doesn't have objectProperties! I'll add it.");
+					objectProperties = rock.AddComponent<ObjectProperties>();
+				}
+				float rockValues = maxRockPercentage + 30;
+				//objectProperties.rockPercentage[0] = Random.Range(10, 50);
+				//Debug.Log(objectProperties.rockPercentage.Length);
+				for (i = 0; i <= objectProperties.rockPercentage.Length; i++)
+				{
+					//float rockValue = Random.Range(10, rockValues);
+					//objectProperties.rockPercentage[i] = rockValue;
+					//rockValues -= rockValue;
+				}
+				objectProperties.enabled = false;
 			}
 			//Instantiate(rocks[Random.Range(0, rocks.Length)], new Vector3(Random.Range(positionOne.x, positionTwo.x), Random.Range(positionOne.y, positionTwo.y), Random.Range(positionOne.z, positionTwo.z)), Quaternion.identity);
 		}
@@ -34,7 +53,7 @@ public class RockSpawning : MonoBehaviour {
 	// Update is called once per frame
 	Vector3 createRandomPos()
 	{
-		return new Vector3(Random.Range(positionOne.x, positionTwo.x), minTerrainHeight + 1f, Random.Range(positionOne.x, positionTwo.x));
+		return new Vector3(Random.Range(positionOne.position.x, positionTwo.position.x), minTerrainHeight + 1f, Random.Range(positionOne.position.x, positionTwo.position.x));
 	}
 	IEnumerator waitForIt(GameObject rock)
 	{
