@@ -14,7 +14,7 @@ public class WaterSource : MonoBehaviour
 
 	GameObject arrow;
 
-	GameObject player;
+	public GameObject player;
 	public float playerDisplacementBuffer;
 
 	public bool found = false;
@@ -27,7 +27,6 @@ public class WaterSource : MonoBehaviour
 		Vector3 arrowPosition = new Vector3 (transform.position.x, transform.position.y + offsetY, transform.position.z);
 
 		arrow = (GameObject)Instantiate (arrowPrefab, arrowPosition, Quaternion.identity);
-		player = GameObject.Find ("Camera (head)");
 	}
 
 	void Update ()

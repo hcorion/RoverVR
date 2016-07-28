@@ -12,6 +12,7 @@ TagManager:
   - Rock
   - Wood
   - Blocks
+  - Player Head
   layers:
   - Default
   - TransparentFX
