@@ -5,6 +5,13 @@ using System.Collections.Generic;
 
 public class ObjectProperties : MonoBehaviour
 {
+	/*If you add rocks. You need to change the following scripts:
+	ChemCamController
+	RepairerScript
+	ChemLab
+	RockSpawning
+	
+	*/
 	private string[] rockContent = new string [] {"Unusable",
 		"Aluminum", 
 		"Copper"

@@ -32,18 +32,13 @@ public class RockSpawning : MonoBehaviour {
 				ObjectProperties objectProperties = rock.GetComponent<ObjectProperties>();
 				if (objectProperties == null)
 				{
-					Debug.Log("The rock " + rock.name + "Doesn't have objectProperties! I'll add it.");
+					Debug.Log("The rock " + rock.name + " Doesn't have objectProperties! I'll add it.");
 					objectProperties = rock.AddComponent<ObjectProperties>();
 				}
 				float rockValues = maxRockPercentage + 30;
-				//objectProperties.rockPercentage[0] = Random.Range(10, 50);
-				//Debug.Log(objectProperties.rockPercentage.Length);
-				for (i = 0; i <= objectProperties.rockPercentage.Length; i++)
-				{
-					//float rockValue = Random.Range(10, rockValues);
-					//objectProperties.rockPercentage[i] = rockValue;
-					//rockValues -= rockValue;
-				}
+				objectProperties.rockPercentage[0] = Random.Range(10, 50);
+				objectProperties.rockPercentage[1] = Random.Range(10, 50);
+				objectProperties.rockPercentage[2] = Random.Range(10, 50);
 				objectProperties.enabled = false;
 			}
 			//Instantiate(rocks[Random.Range(0, rocks.Length)], new Vector3(Random.Range(positionOne.x, positionTwo.x), Random.Range(positionOne.y, positionTwo.y), Random.Range(positionOne.z, positionTwo.z)), Quaternion.identity);
