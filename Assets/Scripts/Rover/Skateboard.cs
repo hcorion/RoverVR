@@ -3,14 +3,14 @@ using System.Collections;
 
 public class Skateboard : MonoBehaviour
 {
-	public float speed = 0;
-	public float maxspeed;
+	public float speed;
 	public float rotationspeed;
 
 	public GameObject axle;
 	public GameObject wheel;
-	public HingeJoint hinge;
-	public HingeJoint wheelhinge;
+
+	HingeJoint hinge;
+	HingeJoint wheelhinge;
 
 	public float rotationBuffer;
 
@@ -31,30 +31,20 @@ public class Skateboard : MonoBehaviour
 		return axle.transform.localRotation.eulerAngles.z;
 	}
 
-	float setSpeed ()
-	{
-		return speed = maxspeed;
-	}
-
 	void Update ()
 	{
-		getAngle ();
-		setSpeed ();
-
-		if (getRotation () > 20f && getRotation () < 90f) {
-			this.transform.Rotate (Vector3.up * Time.deltaTime * rotationspeed);
-		} else if (getRotation () < 360f - rotationBuffer && getRotation () > 270f) {
-			this.transform.Rotate (Vector3.down * Time.deltaTime * rotationspeed);
-		}
-
-		//print ("Rotation: " + getRotation ());
-
-		if (getAngle () < 360f - rotationBuffer && getAngle () > 270f) {
-			this.transform.position += transform.right * speed / (Time.deltaTime * 1000f);
+		if ((getAngle () < 360f - rotationBuffer && getAngle () > 270f) || (getAngle () > 360f - rotationBuffer && getAngle () < rotationBuffer)) {
+			if (getRotation () > rotationBuffer && getRotation () < 90f) {
+				this.transform.Rotate (Vector3.up * Time.deltaTime * rotationspeed);
+			} else if (getRotation () < 360f - rotationBuffer && getRotation () > 270f) {
+				this.transform.Rotate (Vector3.down * Time.deltaTime * rotationspeed);
+			}
 		} else if (getAngle () > rotationBuffer && getAngle () < 90f) {
-			this.transform.position -= transform.right * speed / (Time.deltaTime * 1000f);
+			if (getAngle () < 360f - rotationBuffer && getAngle () > 270f) {
+				this.transform.position += transform.right * speed / (Time.deltaTime * 10000f);
+			} else if (getAngle () > rotationBuffer && getAngle () < 90f) {
+				this.transform.position -= transform.right * speed / (Time.deltaTime * 10000f);
+			}
 		}
-
-		//print ("Angle: " + getAngle ());
 	}
 }

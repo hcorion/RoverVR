@@ -24,8 +24,11 @@ namespace NewtonVR.Example
 		private WaterSource waterSrc;
 
 		DamageUI dmgUI;
-		public GameObject canvas;
+		public GameObject damageCanvas;
 		public float healthLossRate;
+
+		public Canvas canvasUI;
+		Text lifeNumber;
 
 		//Used for the GameManager Script
 		private int wonTimes = 0;
@@ -39,16 +42,16 @@ namespace NewtonVR.Example
 			}
 
 			dmgUI = GetComponent<DamageUI> ();
-			canvas.SetActive (false);
+			damageCanvas.SetActive (false);
 		}
 
 		new void Update ()
 		{
 			base.Update ();
 			if (AttachedHand == null) {
-				canvas.SetActive (false);
+				damageCanvas.SetActive (false);
 			} else if (AttachedHand != null) {
-				canvas.SetActive (true);
+				damageCanvas.SetActive (true);
 			}
 			if (wonTimes == 1) {
 				gameController.GetComponent<GameManager> ().wonFirstState ();
@@ -58,8 +61,7 @@ namespace NewtonVR.Example
 		public override void UseButtonDown ()
 		{
 			if (!isLoading && dmgUI.health > 0f) {
-				GetComponent<AudioSource> ().Play ();
-				print ("Selfie Stick Condition: " + +dmgUI.health);
+				print ("Selfie Stick Condition: " + dmgUI.health);
 				print (isLife ());
 			}
 			
@@ -67,15 +69,13 @@ namespace NewtonVR.Example
 
 		string isLife ()
 		{
-			dmgUI.health -= healthLossRate;
-
-			GetComponent<AudioSource> ().Play ();
 			Vector3 fwd = selfieCamera.TransformDirection (Vector3.forward); 
 			RaycastHit hit;
 			Ray r = new Ray (selfieCamera.position, fwd);
 
 			if (Physics.Raycast (r, out hit, scanDistance)) {
-				
+				dmgUI.health -= healthLossRate;
+
 				Debug.DrawRay (selfieCamera.position, fwd, Color.yellow, 1, false);
 				WaterSource waterSrc = hit.collider.GetComponent<WaterSource> ();
 
@@ -87,6 +87,12 @@ namespace NewtonVR.Example
 						StartCoroutine (loadOnScreen (LifeImages [Random.Range (0, LifeImages.Length)], true));
 						Debug.DrawLine (hit.transform.position, hit.point, Color.green, 20, false);
 						wonTimes++;
+
+						if (hit.transform.gameObject.GetComponent<WaterSource> ().found == false) {
+							hit.transform.gameObject.GetComponent<WaterSource> ().found = true;
+							wonTimes++;
+						}
+
 						return "Life found";
 					} else {
 						StartCoroutine (loadOnScreen (noLifeImages [Random.Range (0, noLifeImages.Length)], false));

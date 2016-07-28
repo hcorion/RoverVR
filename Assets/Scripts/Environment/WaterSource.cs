@@ -17,6 +17,8 @@ public class WaterSource : MonoBehaviour
 	public Transform player;
 	public float playerDisplacementBuffer;
 
+	public bool found = false;
+
 	void Start ()
 	{
 		radiusIndicator = transform;
