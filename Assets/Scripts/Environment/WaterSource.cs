@@ -14,7 +14,7 @@ public class WaterSource : MonoBehaviour
 
 	GameObject arrow;
 
-	public Transform player;
+	GameObject player;
 	public float playerDisplacementBuffer;
 
 	public bool found = false;
@@ -27,19 +27,20 @@ public class WaterSource : MonoBehaviour
 		Vector3 arrowPosition = new Vector3 (transform.position.x, transform.position.y + offsetY, transform.position.z);
 
 		arrow = (GameObject)Instantiate (arrowPrefab, arrowPosition, Quaternion.identity);
+		player = GameObject.Find ("Camera (head)");
 	}
 
 	void Update ()
 	{
-		Vector3 vector = player.position - arrow.transform.position;
+		Vector3 vector = player.transform.position - arrow.transform.position;
 		vector.x = vector.z = 0.0f;
-		arrow.transform.LookAt (player.position - vector);
+		arrow.transform.LookAt (player.transform.position - vector);
 		arrow.transform.Rotate (90, 90, 90);
 
-		Vector3 arrowLocation = gameObject.transform.position + player.position.normalized * waterRadius / 2f;
+		Vector3 arrowLocation = gameObject.transform.position + player.transform.position.normalized * waterRadius / 2f;
 		arrow.transform.position = new Vector3 (arrowLocation.x, arrow.transform.position.y, arrowLocation.z);
 
-		Vector3 playerDisplacement = player.position - arrowLocation;
+		Vector3 playerDisplacement = player.transform.position - arrowLocation;
 
 		if (playerDisplacement.magnitude <= playerDisplacementBuffer) {
 			arrow.layer = LayerMask.NameToLayer ("Water");

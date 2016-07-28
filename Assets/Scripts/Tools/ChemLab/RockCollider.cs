@@ -32,9 +32,8 @@ public class RockCollider : MonoBehaviour
 	{
 		ObjectProperties objProp = c.gameObject.transform.root.gameObject.GetComponent<ObjectProperties> ();
 		IngotProperties ingotProp = c.gameObject.GetComponent<IngotProperties> ();
-		NewtonVR.NVRInteractableItem item = c.gameObject.transform.root.gameObject.GetComponent<NewtonVR.NVRInteractableItem> ();
 
-		if (objProp != null && item == null) {
+		if (objProp != null) {
 			element = "";
 
 			materialDictionary = objProp.getMaterialDictionary ();
@@ -55,7 +54,7 @@ public class RockCollider : MonoBehaviour
 			}
 
 			Destroy (c.gameObject);
-		} else if (ingotProp != null && item == null) {
+		} else if (ingotProp != null) {
 			string name = ingotProp.GetName ();
 			float value = ingotProp.GetValue ();
 

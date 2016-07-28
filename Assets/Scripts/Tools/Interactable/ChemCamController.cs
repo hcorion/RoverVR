@@ -65,8 +65,6 @@ namespace NewtonVR
 
 			lerpSound ();
 			if (buttonDown == true && dmgUI.health > 0f) {
-				//Dealing damage
-				dmgUI.health -= Time.deltaTime * healthLossRate;
 				//Lerping Color.
 				lerpColor ();
 
@@ -80,6 +78,9 @@ namespace NewtonVR
 				lightGameObject.transform.position = new Vector3 (hit.point.x, hit.point.y, hit.point.z) + transform.right / 9.0f;
 
 				if (raycast && hit.distance <= 3) {
+					//Dealing damage
+					dmgUI.health -= Time.deltaTime * healthLossRate;
+
 					ObjectProperties objectProperties = hit.transform.GetComponent<ObjectProperties> ();
 					if (objectProperties != null) {
 						pointLight = hit.transform.GetComponentInChildren<Light> ();

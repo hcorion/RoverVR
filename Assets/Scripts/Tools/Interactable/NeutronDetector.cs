@@ -54,13 +54,15 @@ namespace NewtonVR.Example
 					lineRenderer.enabled = false;
 				}
 
+				if (AttachedHand != null) {
+					damagecCanvas.SetActive (true);
+				}
+
 				if (AttachedHand == null) {
 					buttonPressed = false;
 					lineRenderer.enabled = false;
 
 					damagecCanvas.SetActive (false);
-				} else if (AttachedHand != null) {
-					damagecCanvas.SetActive (true);
 				}
 			} else {
 				lineRenderer.enabled = false;
