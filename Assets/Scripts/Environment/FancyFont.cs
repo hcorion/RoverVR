@@ -28,13 +28,20 @@ public class FancyFont : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
 		foreach(string word in words)
 		{
+			if (word == "\\n")
+			{
+				text.text += System.Environment.NewLine;
+			}
+			else
+			{
 			foreach(char c in word)
 			{
 				text.text += c;
 				yield return new WaitForSeconds(Random.Range(0.01f, 0.1f));
 			}
 			text.text += " ";
-			yield return new WaitForSeconds(Random.Range(0.1f, 0.4f));
+			yield return new WaitForSeconds(Random.Range(0.1f, 0.4f));	
+			}
 		}
     }
 }

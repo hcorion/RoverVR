@@ -190,6 +190,7 @@ public class RepairerScript : MonoBehaviour {
 				currentTool.GetComponent<Rigidbody> ().isKinematic = false;
 				currentTool = null;
 				ButtonHasPushed = false;
+				objToLerp = null;
 			}
 		} else {
 			Debug.Log ("You do not have enough aluminum. You have " + currentAluminium + " and need " + AluminumRepairValue);
@@ -206,7 +207,7 @@ public class RepairerScript : MonoBehaviour {
 			//oldLerpPos = objToLerp.transform;
 			currentTool = obj;
 			objIsSnapped = true;
-			objToLerp.GetComponent<Rigidbody> ().isKinematic = true;
+			obj.GetComponent<Rigidbody> ().isKinematic = true;
 		} else {
 			//Possibly enter into the Update() function to continue checking if the object is being added.
 		}
