@@ -74,7 +74,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &117786
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -107,7 +107,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &124654
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -620,13 +620,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117786}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -0.09622986, y: 0.5439331, z: 0.0460068}
-  m_LocalScale: {x: 4.1839643, y: 4.1839643, z: 4.183964}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.11300659, y: 0.45199966, z: 0.8639984}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 435870}
-  m_RootOrder: 2
+  m_Father: {fileID: 465356}
+  m_RootOrder: 11
 --- !u!4 &435348
 Transform:
   m_ObjectHideFlags: 1
@@ -653,7 +653,6 @@ Transform:
   m_Children:
   - {fileID: 468386}
   - {fileID: 459462}
-  - {fileID: 434506}
   m_Father: {fileID: 465356}
   m_RootOrder: 8
 --- !u!4 &436640
@@ -788,13 +787,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124654}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -0.031995714, y: -0.50300026, z: -0.042180352}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.33999634, y: 0.47000027, z: 0.27000427}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 487154}
-  m_RootOrder: 1
+  m_Father: {fileID: 465356}
+  m_RootOrder: 12
 --- !u!4 &464114
 Transform:
   m_ObjectHideFlags: 1
@@ -830,6 +829,8 @@ Transform:
   - {fileID: 435870}
   - {fileID: 487154}
   - {fileID: 438646}
+  - {fileID: 434506}
+  - {fileID: 462686}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &466904
@@ -913,7 +914,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_Children:
   - {fileID: 496754}
-  - {fileID: 462686}
   m_Father: {fileID: 465356}
   m_RootOrder: 9
 --- !u!4 &495044
@@ -1623,10 +1623,10 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.042175286, y: 0.50300026, z: 0.031997673}
+  m_ConnectedAnchor: {x: -0.042175293, y: 0.50300026, z: 0.03199768}
   m_UseSpring: 1
   m_Spring:
-    spring: 1
+    spring: 5
     damper: 0.2
     targetPosition: 0
   m_UseMotor: 0
@@ -1655,7 +1655,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.010495708, y: -0.022999756, z: -0.010999143}
+  m_ConnectedAnchor: {x: -0.010498047, y: -0.022999763, z: -0.1018219}
   m_UseSpring: 1
   m_Spring:
     spring: 20
@@ -1668,8 +1668,8 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 1
   m_Limits:
-    min: -90
-    max: 90
+    min: -45
+    max: 45
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -1821,7 +1821,7 @@ MonoBehaviour:
   DisableKinematicOnAttach: 1
   EnableKinematicOnDetach: 0
   DropDistance: 1
-  EnableGravityOnDetach: 1
+  EnableGravityOnDetach: 0
   AttachedHand: {fileID: 0}
   CurrentAngle: 0
   wheel: {fileID: 0}

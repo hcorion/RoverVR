@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-public class RepairerScript : MonoBehaviour {
+
+public class RepairerScript : MonoBehaviour
+{
 	public GameObject door;
 	public Transform objectSnapPoint;
 
@@ -33,7 +35,7 @@ public class RepairerScript : MonoBehaviour {
 	private GameObject objStillInHand = null;
 	//Used for the detection of ingots.
 	//private GameObject[] ingots;
-	List<GameObject> ingots = new List<GameObject>();
+	List<GameObject> ingots = new List<GameObject> ();
 	private int toolIndex;
 
 	void Start ()
@@ -75,11 +77,9 @@ public class RepairerScript : MonoBehaviour {
 			//currentTool.GetComponent<Rigidbody>().isKinematic = true;
 			////You need to add the removal of the elements from inside the 'furnace'
 		}
-		if (checkIfAdded)
-		{
-			if (rightHand.IsInteracting != objStillInHand && leftHand.IsInteracting != objStillInHand)
-			{
-				Debug.Log("The user has let go of the object.");
+		if (checkIfAdded) {
+			if (rightHand.IsInteracting != objStillInHand && leftHand.IsInteracting != objStillInHand) {
+				Debug.Log ("The user has let go of the object.");
 				checkIfAdded = false;
 				objToLerp = objStillInHand;
 				//oldLerpPos = objToLerp.transform;
@@ -94,7 +94,7 @@ public class RepairerScript : MonoBehaviour {
 	{
 		Debug.Log ("We made it to ToolTriggerEntered. The tool is: " + tool);
 		if (currentTool != null) {
-			Debug.Log ("We already have a tool that's being used.");
+			Debug.Log ("We already have a tool, " + currentTool + " that's being used.");
 			return;
 		}
 		switch (tool) {
@@ -120,30 +120,24 @@ public class RepairerScript : MonoBehaviour {
 		}
 	}
 
-    public void IngotTriggerEntered(GameObject rfMaterial)
-    {
-        bool isAlreadyAdded = false;
-        if ((ingots != null) && (ingots.Any()))
-        {
-            ingots.Add(rfMaterial);
-        }
-        else
-        {
-            foreach (GameObject ingot in ingots)
-            {
-                if (ingot == rfMaterial)
-                {
-                    isAlreadyAdded = true;
-                }
-            }
-            if (isAlreadyAdded != true)
-            {
-                ingots.Add(rfMaterial);
-            }
-        }
-    }
+	public void IngotTriggerEntered (GameObject rfMaterial)
+	{
+		bool isAlreadyAdded = false;
+		if ((ingots != null) && (ingots.Any ())) {
+			ingots.Add (rfMaterial);
+		} else {
+			foreach (GameObject ingot in ingots) {
+				if (ingot == rfMaterial) {
+					isAlreadyAdded = true;
+				}
+			}
+			if (isAlreadyAdded != true) {
+				ingots.Add (rfMaterial);
+			}
+		}
+	}
 
-    public void repairTool ()
+	public void repairTool ()
 	{
 		/*Selfie Stick takes: 
 		2 100% Aluminum
@@ -180,12 +174,12 @@ public class RepairerScript : MonoBehaviour {
 		int currentAluminium = 0;
 		int currentCopper = 0;
 		foreach (GameObject ingot in ingots) {
-			IngotProperties ingotProperties = ingot.GetComponent<IngotProperties>();
+			IngotProperties ingotProperties = ingot.GetComponent<IngotProperties> ();
 			string name = ingotProperties.GetName ();
 			if (name == "Aluminum") {
-				currentAluminium = Mathf.RoundToInt (ingotProperties.GetValue() * 100);
+				currentAluminium = Mathf.RoundToInt (ingotProperties.GetValue () * 100);
 			} else if (name == "Copper") {
-				currentCopper = Mathf.RoundToInt (ingotProperties.GetValue() * 100);
+				currentCopper = Mathf.RoundToInt (ingotProperties.GetValue () * 100);
 			} else {
 				Debug.Log ("Woops, RepairerScript doesn't recognize the material of type: " + name);
 			}
@@ -196,23 +190,20 @@ public class RepairerScript : MonoBehaviour {
 				Debug.Log ("You have enough copper");
 				currentTool.transform.position = objectDropPoint.transform.position;
 				//int i = ingots.Count;
-				foreach(GameObject ingot in ingots)
-				{
-					Object.Destroy(ingot);
+				foreach (GameObject ingot in ingots) {
+					Object.Destroy (ingot);
 					//ingots.RemoveAt(i);
 					//i--;
 				}
 				//Clean up stuff for next tool repair.
-				toolRemoved(currentTool);
+				toolRemoved (currentTool);
 				objIsSnapped = false;
 				currentTool.GetComponent<Rigidbody> ().isKinematic = false;
 				currentTool = null;
 				ButtonHasPushed = false;
 				objToLerp = null;
-			}
-			else
-			{
-				Debug.Log("You do not have enough copper.");
+			} else {
+				Debug.Log ("You do not have enough copper.");
 				ButtonHasPushed = false;
 			}
 		} else {
@@ -233,7 +224,7 @@ public class RepairerScript : MonoBehaviour {
 			currentTool.GetComponent<Rigidbody> ().isKinematic = true;
 		} else {
 			//Possibly enter into the Update() function to continue checking if the object is being added.
-			Debug.Log("The object " + obj.name + " is still in the users hand.");
+			Debug.Log ("The object " + obj.name + " is still in the users hand.");
 			checkIfAdded = true;
 			objStillInHand = obj;
 		}
@@ -257,28 +248,23 @@ public class RepairerScript : MonoBehaviour {
 			//If we have reached our goal and are waiting for new instructions.
 		}
 	}
-	public void toolRemoved(GameObject tool)
+
+	public void toolRemoved (GameObject tool)
 	{
-		if (checkIfAdded)
-		{
-			Debug.Log("The user has now removed " + tool + "which never added.");
+		/*if (checkIfAdded) {
+			Debug.Log ("The user has now removed " + tool + "which never added.");
 		}
-		if ( currentTool != null) //&& objToLerp != null && objIsSnapped != false)
-		{
-			if (tool == currentTool){
+		if (currentTool != null) { //&& objToLerp != null && objIsSnapped != false)
+			if (tool == currentTool) {
 				currentTool = null;
 				objToLerp = null;
 				objIsSnapped = false;
-			}
-			else 
-			{
-				Debug.Log("We've already got a new tool, " + currentTool.name + " as the currentTool.");
+			} else {
+				Debug.Log ("We've already got a new tool, " + currentTool.name + " as the currentTool.");
 			}
 
-		}
-		else
-		{
-			Debug.Log("We've already recorded the tool as removed.");
-		}
+		} else {
+			Debug.Log ("We've already recorded the tool as removed.");
+		}*/
 	}
 }
