@@ -27,6 +27,10 @@ public class RepairerScript : MonoBehaviour {
 	private GameObject currentTool;
 	public NewtonVR.NVRHand leftHand;
 	public NewtonVR.NVRHand rightHand;
+
+	private bool checkIfAdded = false;
+
+	private GameObject objStillInHand = null;
 	//Used for the detection of ingots.
 	//private GameObject[] ingots;
 	List<GameObject> ingots = new List<GameObject>();
@@ -70,6 +74,19 @@ public class RepairerScript : MonoBehaviour {
 			door.SetActive (true);
 			//currentTool.GetComponent<Rigidbody>().isKinematic = true;
 			////You need to add the removal of the elements from inside the 'furnace'
+		}
+		if (checkIfAdded)
+		{
+			if (rightHand.IsInteracting != objStillInHand && leftHand.IsInteracting != objStillInHand)
+			{
+				Debug.Log("The user has let go of the object.");
+				checkIfAdded = false;
+				objToLerp = objStillInHand;
+				//oldLerpPos = objToLerp.transform;
+				currentTool = objStillInHand;
+				objIsSnapped = true;
+				currentTool.GetComponent<Rigidbody> ().isKinematic = true;
+			}
 		}
 	}
 
@@ -207,9 +224,12 @@ public class RepairerScript : MonoBehaviour {
 			//oldLerpPos = objToLerp.transform;
 			currentTool = obj;
 			objIsSnapped = true;
-			obj.GetComponent<Rigidbody> ().isKinematic = true;
+			currentTool.GetComponent<Rigidbody> ().isKinematic = true;
 		} else {
 			//Possibly enter into the Update() function to continue checking if the object is being added.
+			Debug.Log("The object " + obj.name + " is still in the users hand.");
+			checkIfAdded = true;
+			objStillInHand = obj;
 		}
 
 	}
@@ -233,6 +253,10 @@ public class RepairerScript : MonoBehaviour {
 	}
 	public void toolRemoved(GameObject tool)
 	{
+		if (checkIfAdded)
+		{
+			Debug.Log("The user has now removed " + tool + "which never added.");
+		}
 		if ( currentTool != null) //&& objToLerp != null && objIsSnapped != false)
 		{
 			if (tool == currentTool){
