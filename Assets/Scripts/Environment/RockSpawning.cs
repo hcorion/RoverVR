@@ -27,8 +27,9 @@ public class RockSpawning : MonoBehaviour {
 			if (terrain.SampleHeight(randomPos) == minTerrainHeight)
 			{
 				GameObject rock = (GameObject)Instantiate(rocks[Random.Range(0, rocks.Length)],randomPos, Quaternion.identity);
-				rock.GetComponent<Rigidbody>().detectCollisions = false;
-				rock.GetComponent<Rigidbody>().Sleep();
+				//rock.GetComponent<Rigidbody>().detectCollisions = false;
+				//rock.GetComponent<Rigidbody>().Sleep();
+				StartCoroutine(waitForIt(rock));
 				ObjectProperties objectProperties = rock.GetComponent<ObjectProperties>();
 				if (objectProperties == null)
 				{
@@ -48,11 +49,12 @@ public class RockSpawning : MonoBehaviour {
 	// Update is called once per frame
 	Vector3 createRandomPos()
 	{
-		return new Vector3(Random.Range(positionOne.position.x, positionTwo.position.x), minTerrainHeight + 1f, Random.Range(positionOne.position.x, positionTwo.position.x));
+		return new Vector3(Random.Range(positionOne.position.x, positionTwo.position.x), minTerrainHeight + .5f, Random.Range(positionOne.position.x, positionTwo.position.x));
 	}
 	IEnumerator waitForIt(GameObject rock)
 	{
-		yield return new WaitForSeconds(.01f);
+		yield return new WaitForSeconds(.2f);
 		rock.GetComponent<Rigidbody>().detectCollisions = false;
+		rock.GetComponent<Rigidbody>().Sleep();
 	}
 }
