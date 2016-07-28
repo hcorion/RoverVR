@@ -233,13 +233,22 @@ public class RepairerScript : MonoBehaviour {
 	}
 	public void toolRemoved(GameObject tool)
 	{
-		if ( currentTool != null && objToLerp != null && objIsSnapped != false)
+		if ( currentTool != null) //&& objToLerp != null && objIsSnapped != false)
 		{
 			if (tool == currentTool){
 				currentTool = null;
 				objToLerp = null;
 				objIsSnapped = false;
 			}
+			else 
+			{
+				Debug.Log("We've already a new tool, " + currentTool.name + " as the currentTool.");
+			}
+
+		}
+		else
+		{
+			Debug.Log("We've already recorded the tool as removed.");
 		}
 	}
 }
