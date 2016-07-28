@@ -40,11 +40,17 @@ public class Skateboard : MonoBehaviour
 				this.transform.Rotate (Vector3.down * Time.deltaTime * rotationspeed);
 			}
 		} else if (getAngle () > rotationBuffer && getAngle () < 90f) {
-			if (getAngle () < 360f - rotationBuffer && getAngle () > 270f) {
-				this.transform.position += transform.right * speed / (Time.deltaTime * 10000f);
-			} else if (getAngle () > rotationBuffer && getAngle () < 90f) {
-				this.transform.position -= transform.right * speed / (Time.deltaTime * 10000f);
+			if (getRotation () > rotationBuffer && getRotation () < 90f) {
+				this.transform.Rotate (Vector3.down * Time.deltaTime * rotationspeed);
+			} else if (getRotation () < 360f - rotationBuffer && getRotation () > 270f) {
+				this.transform.Rotate (Vector3.up * Time.deltaTime * rotationspeed);
 			}
+		}
+
+		if (getAngle () < 360f - rotationBuffer && getAngle () > 270f) {
+			this.transform.position += transform.right * speed / (Time.deltaTime * 10000f);
+		} else if (getAngle () > rotationBuffer && getAngle () < 90f) {
+			this.transform.position -= transform.right * speed / (Time.deltaTime * 10000f);
 		}
 	}
 }
