@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
+	
 	public bool gameOver = false;
 	public GameObject wonText;
 	public string mainSceneName = "Tutorial";
@@ -88,10 +88,10 @@ public class GameManager : MonoBehaviour
 					if (newCCcontroller.AttachedHand != null && hasPickedUpChemCam == false) {
 						//Spawn the rover in.
 						hasPickedUpChemCam = true;
-						newRV = (GameObject)GameObject.Instantiate (Rover, CameraRig.transform.position - Vector3.up / 5, Quaternion.identity);
+						//newRV = (GameObject)GameObject.Instantiate (Rover, (CameraRig.transform.position - Vector3.up / 5), Quaternion.identity);
 						//Rover.transform.position = CameraRig.transform.position;
 						//CameraRig.SetActive (false);
-						fakeRover.transform.parent = newRV.transform;
+						//fakeRover.transform.parent = newRV.transform;
 
 					}
 				}
@@ -141,10 +141,14 @@ public class GameManager : MonoBehaviour
 		gameOver = true;
 	}
 
-
+	public AudioClip line3;
+	public AudioClip line4;
 	private IEnumerator FirstState ()
 	{
 		print ("First State");
+		AudioSource audio = GetComponent<AudioSource>();
+		audio.Play();
+		
 		/*
 		So here's the plan.
 		We drop the user (not literally) into the world. 
@@ -161,6 +165,13 @@ public class GameManager : MonoBehaviour
 		//Drop tools.
 		newND = (GameObject)Object.Instantiate (neutronDetector, firstDropPoint.transform.position + new Vector3 (0, 0, 0.1f), Quaternion.identity);
 		newSS = (GameObject)Object.Instantiate (selfieStick, firstDropPoint.transform.position + new Vector3 (0, 0, -0.1f), Quaternion.identity);
+		yield return new WaitForSeconds(audio.clip.length);
+		audio.clip = line3;
+		audio.Play();
+		yield return new WaitForSeconds(audio.clip.length);
+		audio.clip = line4;
+		audio.Play();
+
 
 		yield return new WaitForSeconds (1f);
 		//More sound / text introducing the water Source.
@@ -179,6 +190,7 @@ public class GameManager : MonoBehaviour
 		//
 		newCC = (GameObject)Object.Instantiate (ChemCam, secondDropPoint.transform.position, Quaternion.identity);
 		newCCcontroller = newCC.GetComponent<NewtonVR.ChemCamController> ();
+		GetComponent<AudioSource>().Play();
 		if (newCCcontroller == null) {
 			Debug.LogError ("The instantiated ChemCam doesn't have a ChemCamController script");
 		}
@@ -188,9 +200,12 @@ public class GameManager : MonoBehaviour
 	{
 		hasWonFirstState = true;
 	}
-	public void wonGame(){
+
+	public void wonGame ()
+	{
 		hasWonGame = true;
 	}
+
 	public string getMainSceneName ()
 	{
 		return mainSceneName;
