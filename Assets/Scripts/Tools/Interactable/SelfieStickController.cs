@@ -102,6 +102,7 @@ namespace NewtonVR
 
 						if (hit.transform.gameObject.GetComponent<WaterSource> ().found == false) {
 							hit.transform.gameObject.GetComponent<WaterSource> ().found = true;
+							GetComponent<AudioSource>().Play();
 							wonTimes++;
 						}
 
