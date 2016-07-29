@@ -58,6 +58,7 @@ namespace NewtonVR
 			base.Update ();
 
 			if (AttachedHand == null) {
+				buttonDown = false;
 				canvas.SetActive (false);
 			} else if (AttachedHand != null) {
 				canvas.SetActive (true);
