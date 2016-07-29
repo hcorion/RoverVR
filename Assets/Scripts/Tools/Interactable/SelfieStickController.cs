@@ -149,7 +149,6 @@ namespace NewtonVR
 				wonTimes++;
 				lifeNumber.text = wonTimes + " of " + totalLife;
 				panel.color = Color.green;
-				GetComponent<AudioSource>().Play();
 				lifeStatus.text = "Life Found:";
 			} else {
 				panel.color = Color.red;
