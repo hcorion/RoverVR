@@ -30,18 +30,23 @@ public class ObjectProperties : MonoBehaviour
 	Light pointLight;
 
 	public static bool isBroken = false;
+	private bool isRockBreak = false;
 
 	void Start ()
 	{
 		pointLight = GetComponentInChildren<Light> ();
 	}
 
-	void Update ()
-	{
-		if (pointLight.intensity != 0f) {
-			pointLight.intensity -= Time.deltaTime * 8f;
-		}
-	}
+    void Update()
+    {
+        if (isRockBreak ==false)
+        {
+            if (pointLight.intensity != 0f)
+            {
+                pointLight.intensity -= Time.deltaTime * 8f;
+            }
+        }
+    }
 
 	public string getSimpleMaterial ()
 	{
@@ -104,36 +109,43 @@ public class ObjectProperties : MonoBehaviour
 			//gameObject.SetActive (false);
 			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-01-f"), transform.position, transform.rotation);
 			obj.GetComponent<ObjectProperties> ().rockPercentage = rockPercentage;
+			obj.GetComponent<ObjectProperties> ().isRockBreak = true;
 			Destroy (gameObject);
 		} else if (gameObject.name.StartsWith ("rock_d_02")) {
 			gameObject.SetActive (false);
 			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-02-f"), transform.position, transform.rotation);
 			obj.GetComponent<ObjectProperties> ().rockPercentage = rockPercentage;
+			obj.GetComponent<ObjectProperties> ().isRockBreak = true;
 			Destroy (gameObject);
 		} else if (gameObject.name.StartsWith ("rock_d_03")) {
 			gameObject.SetActive (false);
 			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-03-f"), transform.position, transform.rotation);
 			obj.GetComponent<ObjectProperties> ().rockPercentage = rockPercentage;
+			obj.GetComponent<ObjectProperties> ().isRockBreak = true;
 			Destroy (gameObject);
 		} else if (gameObject.name.StartsWith ("rock_d_05")) {
 			gameObject.SetActive (false);
 			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-05-f"), transform.position, transform.rotation);
 			obj.GetComponent<ObjectProperties> ().rockPercentage = rockPercentage;
+			obj.GetComponent<ObjectProperties> ().isRockBreak = true;
 			Destroy (gameObject);
 		} else if (gameObject.name.StartsWith ("rock_d_06")) {
 			gameObject.SetActive (false);
 			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-06-f"), transform.position, transform.rotation);
 			obj.GetComponent<ObjectProperties> ().rockPercentage = rockPercentage;
+			obj.GetComponent<ObjectProperties> ().isRockBreak = true;
 			Destroy (gameObject);
 		} else if (gameObject.name.StartsWith ("Rock01")) {
 			gameObject.SetActive (false);
 			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock01-f"), transform.position, transform.rotation);
 			obj.GetComponent<ObjectProperties> ().rockPercentage = rockPercentage;
+			obj.GetComponent<ObjectProperties> ().isRockBreak = true;
 			Destroy (gameObject);
 		} else if (gameObject.name.StartsWith ("Rock02")) {
 			gameObject.SetActive (false);
 			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock02-f"), transform.position, transform.rotation);
 			obj.GetComponent<ObjectProperties> ().rockPercentage = rockPercentage;
+			obj.GetComponent<ObjectProperties> ().isRockBreak = true;
 			Destroy (gameObject);
 		} else {
 			Debug.Log ("That object doesn't yet have a fancy breaking animation.");

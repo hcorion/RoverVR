@@ -4,14 +4,22 @@ using System.Collections;
 public class RoverFrontCollider : MonoBehaviour
 {
 	public static bool canMoveForward = true;
+	private float time;
+	public float maxTime = 0;
 
-	void OnTriggerEnter (Collider c)
+	void OnTriggerStay (Collider c)
 	{
 		canMoveForward = false;
+		time = 0;
+		Debug.Log("I can move forward!");
 	}
 
-	void OnTriggerExit (Collider c)
+	void Update()
 	{
-		canMoveForward = true;
+		time += Time.deltaTime;
+		if (time > 0.4f)
+		{
+			canMoveForward = true;
+		}
 	}
 }
