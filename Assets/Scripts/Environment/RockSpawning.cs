@@ -54,7 +54,7 @@ public class RockSpawning : MonoBehaviour
 	IEnumerator waitForIt (GameObject rock)
 	{
 		yield return new WaitForSeconds (.5f);
-		rock.GetComponent<Rigidbody> ().detectCollisions = false;
+		//rock.GetComponent<Rigidbody> ().detectCollisions = false;
 		rock.GetComponent<Rigidbody> ().Sleep ();
 	}
 }
