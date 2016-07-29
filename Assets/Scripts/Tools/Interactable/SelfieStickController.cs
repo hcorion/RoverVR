@@ -146,6 +146,7 @@ namespace NewtonVR
 		IEnumerator loadLifeUI (bool life)
 		{
 			if (life) {
+				wonTimes++;
 				lifeNumber.text = wonTimes + " of " + totalLife;
 				panel.color = Color.green;
 				lifeStatus.text = "Life Found:";
