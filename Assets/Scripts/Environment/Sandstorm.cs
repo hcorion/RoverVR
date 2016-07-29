@@ -8,19 +8,19 @@ public class Sandstorm : MonoBehaviour {
 	float y;
 	float z;
 	ParticleSystem.MinMaxCurve rate;
-	float unit = 20/3;
+	//change unit to change how fast box expands
+	float unit = 4/3;
 	float c;
 	bool i = true;
 	// Use this for initialization
 	//terrain is 500 by 500, height doesn't matter
-	//currently reaches 500 by 500 in 1 minute
+	//currently reaches 500 by 500 in 5 minutes
 	void Start () {
 		system = GetComponent<ParticleSystem>();
 		x = system.shape.box.x;
 		y = system.shape.box.y;
 		z = system.shape.box.z;
 		c = system.startSize;
-		Debug.Log (c);
 	}
 	
 	// Update is called once per frame
