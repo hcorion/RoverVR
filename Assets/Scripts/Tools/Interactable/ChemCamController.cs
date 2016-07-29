@@ -28,7 +28,7 @@ namespace NewtonVR
 		private float currentLerpTime = 0;
 
 		//Used for indicating damage to the player.
-		DamageUI dmgUI;
+		public DamageUI dmgUI;
 		public GameObject canvas;
 		public float healthLossRate;
 
