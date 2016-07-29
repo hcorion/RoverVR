@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-namespace NewtonVR.Example
+namespace NewtonVR
 {
 	public class SelfieStickController : NVRInteractableItem
 	{
@@ -23,7 +23,7 @@ namespace NewtonVR.Example
 
 		private WaterSource waterSrc;
 
-		DamageUI dmgUI;
+		public DamageUI dmgUI;
 		public GameObject damageCanvas;
 		public float healthLossRate;
 

@@ -17,7 +17,7 @@ public class ToolProperties : MonoBehaviour {
         {
             case "SelfieStick":
                 Debug.Log("Selfie Stick has been repaired");
-				gameObject.GetComponent<NewtonVR.NeutronDetector>().dmgUI.health = gameObject.GetComponent<NewtonVR.NeutronDetector>().dmgUI.maxHealth;
+				gameObject.GetComponent<NewtonVR.SelfieStickController>().dmgUI.health = gameObject.GetComponent<NewtonVR.SelfieStickController>().dmgUI.maxHealth;
                 break;
             case "NeutronDetector":
 				gameObject.GetComponent<NewtonVR.NeutronDetector>().dmgUI.health = gameObject.GetComponent<NewtonVR.NeutronDetector>().dmgUI.maxHealth;
