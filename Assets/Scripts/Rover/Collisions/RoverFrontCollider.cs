@@ -9,9 +9,10 @@ public class RoverFrontCollider : MonoBehaviour
 
 	void OnTriggerStay (Collider c)
 	{
+		Debug.Log("I've hit " + c);
 		canMoveForward = false;
 		time = 0;
-		Debug.Log("I can move forward!");
+		Debug.Log("I can't move forward!");
 	}
 
 	void Update()
@@ -20,6 +21,7 @@ public class RoverFrontCollider : MonoBehaviour
 		if (time > 0.4f)
 		{
 			canMoveForward = true;
+			Debug.Log("I can move forward!");
 		}
 	}
 }
