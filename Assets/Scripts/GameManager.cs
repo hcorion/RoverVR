@@ -202,10 +202,10 @@ public class GameManager : MonoBehaviour
 
 		yield return new WaitForSeconds (7f);
 
-		newRV = (GameObject)GameObject.Instantiate (Rover, (CameraRig.transform.position - Vector3.up / 5), Quaternion.identity);
+		//newRV = (GameObject)GameObject.Instantiate (Rover, (CameraRig.transform.position - Vector3.up / 5), Quaternion.identity);
 		//Rover.transform.position = CameraRig.transform.position;
 		//CameraRig.SetActive (false);
-		fakeRover.transform.parent = newRV.transform;
+		//fakeRover.transform.parent = newRV.transform;
 	}
 
 	public void wonFirstState ()
