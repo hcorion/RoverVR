@@ -105,6 +105,7 @@ public class RepairerScript : MonoBehaviour
 			break;
 		case "NeutronDetector":
 			toolIndex = 1;
+			snapObject (toolObj);
 			break;
 		case "Binoculars":
 			toolIndex = 2;
@@ -155,9 +156,13 @@ public class RepairerScript : MonoBehaviour
 		switch (toolIndex) {
 		case 0:
 			Debug.Log ("The Selfie Stick can't yet be repaired");
+			AluminumRepairValue = 50;
+			CopperRepairValue = 20;
 			break;
 		case 1:
 			Debug.Log ("The Selfie Stick can't yet be repaired");
+			AluminumRepairValue = 50;
+			CopperRepairValue = 20;
 			break;
 		case 3:
 			Debug.Log ("I'm going to repair the ChemCam.");
@@ -166,9 +171,13 @@ public class RepairerScript : MonoBehaviour
 			break;
 		case 23:
 			Debug.Log ("No tool is present, or it has been removed.");
+			AluminumRepairValue = 50;
+			CopperRepairValue = 20;
 			break;
 		default:
 			Debug.Log ("That tool isn't yet added to the RepairerScript");
+			AluminumRepairValue = 50;
+			CopperRepairValue = 20;
 			break;
 		}
 		int currentAluminium = 0;
@@ -195,7 +204,7 @@ public class RepairerScript : MonoBehaviour
 					//ingots.RemoveAt(i);
 					//i--;
 				}
-				currentTool.GetComponent<ToolProperties>().Repair();
+				currentTool.GetComponent<ToolProperties> ().Repair ();
 				//Clean up stuff for next tool repair.
 				toolRemoved (currentTool);
 				objIsSnapped = false;
