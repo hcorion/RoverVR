@@ -10,7 +10,7 @@ public class ObjectProperties : MonoBehaviour
 	RepairerScript
 	ChemLab
 	RockSpawning
-	
+
 	*/
 	private string[] rockContent = new string [] {"Unusable",
 		"Aluminum", 
@@ -99,8 +99,39 @@ public class ObjectProperties : MonoBehaviour
 	public void breakRock ()
 	{
 		if (gameObject.name.StartsWith ("rock_d_01")) {
+			//gameObject.SetActive (false);
+			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-01-f"), transform.position, transform.rotation);
+			obj.GetComponent<ObjectProperties>().rockPercentage = rockPercentage;
+			Destroy (gameObject);
+		} else if (gameObject.name.StartsWith ("rock_d_02")) {
 			gameObject.SetActive (false);
-			Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-01-f"), transform.position, transform.rotation);
+			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-02-f"), transform.position, transform.rotation);
+			obj.GetComponent<ObjectProperties>().rockPercentage = rockPercentage;
+			Destroy (gameObject);
+		} else if (gameObject.name.StartsWith ("rock_d_03")) {
+			gameObject.SetActive (false);
+			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-03-f"), transform.position, transform.rotation);
+			obj.GetComponent<ObjectProperties>().rockPercentage = rockPercentage;
+			Destroy (gameObject);
+		} else if (gameObject.name.StartsWith ("rock_d_05")) {
+			gameObject.SetActive (false);
+			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-05-f"), transform.position, transform.rotation);
+			obj.GetComponent<ObjectProperties>().rockPercentage = rockPercentage;
+			Destroy (gameObject);
+		} else if (gameObject.name.StartsWith ("rock_d_06")) {
+			gameObject.SetActive (false);
+			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-06-f"), transform.position, transform.rotation);
+			obj.GetComponent<ObjectProperties>().rockPercentage = rockPercentage;
+			Destroy (gameObject);
+		} else if (gameObject.name.StartsWith ("Rock01")) {
+			gameObject.SetActive (false);
+			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock01-f"), transform.position, transform.rotation);
+			obj.GetComponent<ObjectProperties>().rockPercentage = rockPercentage;
+			Destroy (gameObject);
+		} else if (gameObject.name.StartsWith ("Rock02")) {
+			gameObject.SetActive (false);
+			GameObject obj = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock02-f"), transform.position, transform.rotation);
+			obj.GetComponent<ObjectProperties>().rockPercentage = rockPercentage;
 			Destroy (gameObject);
 		} else {
 			Debug.Log ("That object doesn't yet have a fancy breaking animation.");
