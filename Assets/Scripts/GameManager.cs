@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 	//Camera slash Rover
 	private GameObject CameraRig;
 	public GameObject Rover;
+	private GameObject newRV;
 
 	//The points at which to drop the tool. Should be all just empty gameObjects
 	//Drops the Selfie Stick and NeutronDetector
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
 	{
 		DontDestroyOnLoad (transform.gameObject);
 		wonText.SetActive (false);
+		CameraRig = GameObject.Find ("NVRCameraRig");
 	}
 
 	void Start ()
@@ -81,11 +83,12 @@ public class GameManager : MonoBehaviour
 				if (hasStartedSecondState == false) {
 					StartCoroutine (SecondState ());
 					hasStartedSecondState = true;	
-				} else {
+				} else if (newCCcontroller != null) {
 					if (newCCcontroller.AttachedHand != null && hasPickedUpChemCam == false) {
 						//Spawn the rover in.
 						hasPickedUpChemCam = true;
-						Rover.transform.position = CameraRig.transform.position;
+						newRV = (GameObject)GameObject.Instantiate (Rover, CameraRig.transform.position, Quaternion.identity);
+						//Rover.transform.position = CameraRig.transform.position;
 						CameraRig.transform.parent = Rover.transform.parent;
 					}
 				}
@@ -93,7 +96,8 @@ public class GameManager : MonoBehaviour
 			if (hasThrownTool == false && stateIndex == 1) {
 				bool notthrownTool = false;
 				int toolIndex = 0;
-				foreach (Collider col in Physics.OverlapSphere(CameraRig.transform.position, toolResetRadius)) {
+				/*foreach (Collider col in Physics.OverlapSphere(CameraRig.transform.position, toolResetRadius)) {
+					Debug.Log ("The object " + col.gameObject.name + "Is in range of the player");
 					if (col.gameObject == neutronDetector) {
 						notthrownTool = true;
 						toolIndex = 1;
@@ -101,7 +105,7 @@ public class GameManager : MonoBehaviour
 						notthrownTool = true;
 						toolIndex = 2;
 					}
-				}
+				}*/
 				if (notthrownTool == false) {
 					if (toolIndex == 1) {
 						//That's the neutron detector.
@@ -119,7 +123,6 @@ public class GameManager : MonoBehaviour
 			if (hasStartedGame == false) {
 				StartCoroutine (FirstState ());
 				hasStartedGame = true;
-				CameraRig = GameObject.Find ("NVRCameraRig");
 				if (CameraRig == null) {
 					Debug.Log ("The object NVRCameraRig has not been found in the Main Scene.");
 				}

@@ -82,11 +82,11 @@ namespace NewtonVR
 
 		private IEnumerator HoldPosition (float time)
 		{
-			HingeJoint.useMotor = false;
+			//HingeJoint.useMotor = false;
 
 			yield return new WaitForSeconds (time);
 
-			HingeJoint.useMotor = true;
+			//HingeJoint.useMotor = true;
 			CanAttach = true;
 		}
 
@@ -100,14 +100,14 @@ namespace NewtonVR
 			InitialAttachPoint.localScale = Vector3.one * 0.25f;
 			InitialAttachPoint.parent = this.transform;
             
-			HingeJoint.useMotor = false;
+			//HingeJoint.useMotor = false;
 		}
 
 		public override void EndInteraction ()
 		{
 			base.EndInteraction ();
 
-			HingeJoint.useMotor = true;
+			//HingeJoint.useMotor = true;
 
 			if (InitialAttachPoint != null)
 				Destroy (InitialAttachPoint.gameObject);
