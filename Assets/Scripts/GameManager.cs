@@ -88,10 +88,9 @@ public class GameManager : MonoBehaviour
 					if (newCCcontroller.AttachedHand != null && hasPickedUpChemCam == false) {
 						//Spawn the rover in.
 						hasPickedUpChemCam = true;
-						newRV = (GameObject)GameObject.Instantiate (Rover, (CameraRig.transform.position - Vector3.up / 5), Quaternion.identity);
-						//Rover.transform.position = CameraRig.transform.position;
-						//CameraRig.SetActive (false);
-						fakeRover.transform.parent = newRV.transform;
+						if (ObjectProperties.isBroken) {
+							
+						}
 
 					}
 				}
@@ -166,8 +165,8 @@ public class GameManager : MonoBehaviour
 		//Drop tools.
 		newND = (GameObject)Object.Instantiate (neutronDetector, firstDropPoint.transform.position + new Vector3 (0, 0, 0.1f), Quaternion.identity);
 		newSS = (GameObject)Object.Instantiate (selfieStick, firstDropPoint.transform.position + new Vector3 (0, 0, -0.1f), Quaternion.identity);
-		yield return new WaitForSeconds (audio.clip.length);
 		audio.clip = line3;
+		yield return new WaitForSeconds (audio.clip.length);
 		audio.Play ();
 		yield return new WaitForSeconds (audio.clip.length);
 		audio.clip = line4;
@@ -195,6 +194,18 @@ public class GameManager : MonoBehaviour
 		if (newCCcontroller == null) {
 			Debug.LogError ("The instantiated ChemCam doesn't have a ChemCamController script");
 		}
+	}
+
+	private IEnumerable ThirdState ()
+	{
+		newB = (GameObject)GameObject.Instantiate (Binoculars, (CameraRig.transform.position - Vector3.up / 5), Quaternion.identity);
+
+		yield return new WaitForSeconds (7f);
+
+		newRV = (GameObject)GameObject.Instantiate (Rover, (CameraRig.transform.position - Vector3.up / 5), Quaternion.identity);
+		//Rover.transform.position = CameraRig.transform.position;
+		//CameraRig.SetActive (false);
+		fakeRover.transform.parent = newRV.transform;
 	}
 
 	public void wonFirstState ()

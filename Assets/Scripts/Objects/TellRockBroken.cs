@@ -1,15 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TellRockBroken : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+public class TellRockBroken : MonoBehaviour
+{
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
