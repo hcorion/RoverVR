@@ -67,6 +67,9 @@ namespace NewtonVR
 			if (wonTimes == 1) {
 				gameController.GetComponent<GameManager> ().wonFirstState ();
 			}
+			if (wonTimes == 6) {
+				gameController.GetComponent<GameManager> ().wonGame ();
+			}
 		}
 
 		public override void UseButtonDown ()

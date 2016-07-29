@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
 	private bool hasThrownTool = false;
 	private int stateIndex = 0;
-
+	private bool hasWonGame = false;
 	private bool hasWonFirstState = false;
 	//All of the tools to instantiate.
 	
@@ -131,6 +131,9 @@ public class GameManager : MonoBehaviour
 				}
 			}
 		}
+		if (hasWonGame) {
+			Application.Quit ();
+		}
 	}
 
 	public void GameOver ()
@@ -185,7 +188,9 @@ public class GameManager : MonoBehaviour
 	{
 		hasWonFirstState = true;
 	}
-
+	public void wonGame(){
+		hasWonGame = true;
+	}
 	public string getMainSceneName ()
 	{
 		return mainSceneName;
