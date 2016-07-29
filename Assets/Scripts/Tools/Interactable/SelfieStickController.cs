@@ -102,7 +102,7 @@ namespace NewtonVR
 
 						if (hit.transform.gameObject.GetComponent<WaterSource> ().found == false) {
 							hit.transform.gameObject.GetComponent<WaterSource> ().found = true;
-							GetComponent<AudioSource>().Play();
+							
 							wonTimes++;
 						}
 
@@ -149,6 +149,7 @@ namespace NewtonVR
 				wonTimes++;
 				lifeNumber.text = wonTimes + " of " + totalLife;
 				panel.color = Color.green;
+				GetComponent<AudioSource>().Play();
 				lifeStatus.text = "Life Found:";
 			} else {
 				panel.color = Color.red;
