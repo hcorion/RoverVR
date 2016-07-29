@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 	//Camera slash Rover
 	private GameObject CameraRig;
 	public GameObject Rover;
+	public GameObject fakeRover;
 	private GameObject newRV;
 
 	//The points at which to drop the tool. Should be all just empty gameObjects
@@ -87,9 +88,11 @@ public class GameManager : MonoBehaviour
 					if (newCCcontroller.AttachedHand != null && hasPickedUpChemCam == false) {
 						//Spawn the rover in.
 						hasPickedUpChemCam = true;
-						newRV = (GameObject)GameObject.Instantiate (Rover, CameraRig.transform.position, Quaternion.identity);
+						newRV = (GameObject)GameObject.Instantiate (Rover, CameraRig.transform.position - Vector3.up / 5, Quaternion.identity);
 						//Rover.transform.position = CameraRig.transform.position;
-						CameraRig.transform.parent = Rover.transform.parent;
+						CameraRig.SetActive (false);
+						fakeRover.transform.parent = Rover.transform.parent;
+
 					}
 				}
 			}
