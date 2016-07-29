@@ -1029,7 +1029,6 @@ Prefab:
         type: 2}
       propertyPath: m_Mesh
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 367947819}
     - target: {fileID: 442220, guid: f9e8219ce3481a040bbd80c2c216ec2b, type: 2}
       propertyPath: m_LocalScale.y
@@ -1051,18 +1050,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
-=======
-      objectReference: {fileID: 1698603007}
-    - target: {fileID: 23000012941999442, guid: f9e8219ce3481a040bbd80c2c216ec2b,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2043024287}
-    - target: {fileID: 1000010192976670, guid: f9e8219ce3481a040bbd80c2c216ec2b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
->>>>>>> 84a5a2785c1f406df05fe3c50dc471715f8832b4
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9e8219ce3481a040bbd80c2c216ec2b, type: 2}
   m_IsPrefabParent: 0
