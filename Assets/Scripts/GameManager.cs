@@ -156,21 +156,23 @@ public class GameManager : MonoBehaviour
 		We then give them text/speech guidence to pick up the tools
 		*/
 		stateIndex = 1;
-		yield return new WaitForSeconds (2f);
+		yield return new WaitForSeconds (audio.clip.length);
 		//Play sound
 		//Show text? Possibly?
 		//
-		yield return new WaitForSeconds (3f);
+		//yield return new WaitForSeconds (3f);
 		
 		//Drop tools.
 		newND = (GameObject)Object.Instantiate (neutronDetector, firstDropPoint.transform.position + new Vector3 (0, 0, 0.1f), Quaternion.identity);
 		newSS = (GameObject)Object.Instantiate (selfieStick, firstDropPoint.transform.position + new Vector3 (0, 0, -0.1f), Quaternion.identity);
 		audio.clip = line3;
-		yield return new WaitForSeconds (audio.clip.length);
 		audio.Play ();
 		yield return new WaitForSeconds (audio.clip.length);
+		
 		audio.clip = line4;
 		audio.Play ();
+		yield return new WaitForSeconds (audio.clip.length);
+		
 
 
 		yield return new WaitForSeconds (1f);
