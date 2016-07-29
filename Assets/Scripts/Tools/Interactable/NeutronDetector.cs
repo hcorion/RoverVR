@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-namespace NewtonVR.Example
+namespace NewtonVR
 {
 	public class NeutronDetector : NVRInteractableItem
 	{
@@ -17,7 +17,7 @@ namespace NewtonVR.Example
 		Text content;
 		bool buttonPressed;
 
-		DamageUI dmgUI;
+		public DamageUI dmgUI;
 		public GameObject damagecCanvas;
 		public float healthLossRate;
 
