@@ -88,10 +88,10 @@ public class GameManager : MonoBehaviour
 					if (newCCcontroller.AttachedHand != null && hasPickedUpChemCam == false) {
 						//Spawn the rover in.
 						hasPickedUpChemCam = true;
-						newRV = (GameObject)GameObject.Instantiate (Rover, CameraRig.transform.position - Vector3.up / 5, Quaternion.identity);
+						//newRV = (GameObject)GameObject.Instantiate (Rover, (CameraRig.transform.position - Vector3.up / 5), Quaternion.identity);
 						//Rover.transform.position = CameraRig.transform.position;
 						//CameraRig.SetActive (false);
-						fakeRover.transform.parent = newRV.transform;
+						//fakeRover.transform.parent = newRV.transform;
 
 					}
 				}
@@ -188,9 +188,12 @@ public class GameManager : MonoBehaviour
 	{
 		hasWonFirstState = true;
 	}
-	public void wonGame(){
+
+	public void wonGame ()
+	{
 		hasWonGame = true;
 	}
+
 	public string getMainSceneName ()
 	{
 		return mainSceneName;
