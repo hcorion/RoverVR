@@ -12,12 +12,18 @@ public class Skateboard : MonoBehaviour
 	HingeJoint hinge;
 	HingeJoint wheelhinge;
 
+	bool canMoveForward;
+	bool canMoveBackward;
+
 	public float rotationBuffer;
 
 	void Start ()
 	{
 		hinge = axle.GetComponent<HingeJoint> ();
 		wheelhinge = wheel.GetComponent<HingeJoint> ();
+
+		canMoveForward = RoverFrontCollider.canMoveForward;
+		canMoveBackward = RoverBackCollider.canMoveBackward;
 	}
 
 	float getRotation ()
@@ -47,10 +53,17 @@ public class Skateboard : MonoBehaviour
 			}
 		}
 
-		if (getAngle () < 360f - rotationBuffer && getAngle () > 270f) {
-			this.transform.position += transform.right * speed / (Time.deltaTime * 10000f);
-		} else if (getAngle () > rotationBuffer && getAngle () < 90f) {
-			this.transform.position -= transform.right * speed / (Time.deltaTime * 10000f);
+
+		if (canMoveForward) {
+			if (getAngle () < 360f - rotationBuffer && getAngle () > 270f) {
+				this.transform.position += transform.right * speed / (Time.deltaTime * 10000f);
+			}
+		}
+
+		if (canMoveBackward) {
+			if (getAngle () > rotationBuffer && getAngle () < 90f) {
+				this.transform.position -= transform.right * speed / (Time.deltaTime * 10000f);
+			}
 		}
 	}
 }

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class Sandstorm : MonoBehaviour {
+public class Sandstorm : MonoBehaviour
+{
 	public ParticleSystem system;
 	public float time = 0;
 	float x;
@@ -9,14 +10,15 @@ public class Sandstorm : MonoBehaviour {
 	float z;
 	ParticleSystem.MinMaxCurve rate;
 	//change unit to change how fast box expands
-	float unit = 4/3;
+	float unit = 4 / 3;
 	float c;
 	bool i = true;
 	// Use this for initialization
 	//terrain is 500 by 500, height doesn't matter
 	//currently reaches 500 by 500 in 5 minutes
-	void Start () {
-		system = GetComponent<ParticleSystem>();
+	void Start ()
+	{
+		system = GetComponent<ParticleSystem> ();
 		x = system.shape.box.x;
 		y = system.shape.box.y;
 		z = system.shape.box.z;
@@ -25,7 +27,8 @@ public class Sandstorm : MonoBehaviour {
 	
 	// Update is called once per frame
 
-	void Update () {
+	void Update ()
+	{
 		if (i) {
 			var a = system.shape;
 			var b = system.emission;
@@ -39,7 +42,7 @@ public class Sandstorm : MonoBehaviour {
 			c += 0.05f;
 			a.box = new Vector3 (x, y, z);
 		}
-		if (x > 500) {
+		if (x > 600) {
 			i = false;
 		}
 	}
