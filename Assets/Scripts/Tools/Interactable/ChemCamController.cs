@@ -6,7 +6,12 @@ namespace NewtonVR
 	public class ChemCamController : NVRInteractableItem
 	{
 		public Transform shootPoint;
+		#if UNITY_EDITOR_OSX
+		private bool buttonDown = true;
+		#else
 		private bool buttonDown = false;
+		#endif
+
 		//Is used to tell if the user has changed and is now pointing at a different rock.
 		private GameObject lastRock;
 		public GameObject laser;
@@ -34,7 +39,8 @@ namespace NewtonVR
 
 		public float laserScale = 50f;
 
-		Light pointLight;
+		private Light rockLight;
+		public GameObject rockLightPrefab;
 
 		// Use this for initialization
 		new void Start ()
@@ -58,7 +64,7 @@ namespace NewtonVR
 			base.Update ();
 
 			if (AttachedHand == null) {
-				buttonDown = false;
+				//buttonDown = false;
 				canvas.SetActive (false);
 			} else if (AttachedHand != null) {
 				canvas.SetActive (true);
@@ -84,8 +90,8 @@ namespace NewtonVR
 
 					ObjectProperties objectProperties = hit.transform.GetComponent<ObjectProperties> ();
 					if (objectProperties != null) {
-						pointLight = hit.transform.GetComponentInChildren<Light> ();
-
+						rockLight = hit.transform.GetComponentInChildren<Light> ();
+						Debug.Log(rockLight);
 						string rockMaterial = objectProperties.getSimpleMaterial ();
 						Debug.Log ("The current material is:" + rockMaterial);
 						if (lastRock == hit.transform.gameObject) {
@@ -93,9 +99,12 @@ namespace NewtonVR
 							if (rockbreakage != 0.0f) {
 								breakTime += Time.deltaTime;
 
-								if (pointLight != null) {
-									pointLight.intensity += Time.deltaTime * 16f;
-								} else {
+								if (rockLight != null) {
+									rockLight.intensity += Time.deltaTime * 16f;
+								} else if (objectProperties.isRockBreak == false){
+									GameObject newLight = (GameObject)GameObject.Instantiate(rockLightPrefab, hit.transform.position, Quaternion.identity);
+									newLight.transform.parent = hit.transform.root;
+									rockLight = newLight.GetComponent<Light>();
 									print ("Object does not contain a point light");
 								}
 

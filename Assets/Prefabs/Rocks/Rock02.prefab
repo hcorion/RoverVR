@@ -78,7 +78,7 @@ Transform:
   m_GameObject: {fileID: 152610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 230.05, y: 13.299, z: 205.61}
-  m_LocalScale: {x: 0.1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 438398}
@@ -273,6 +273,8 @@ MonoBehaviour:
   - 25
   - 50
   - 25
+  isRockBreak: 0
+  lightIntensity: 2
 --- !u!114 &11470378
 MonoBehaviour:
   m_ObjectHideFlags: 1
