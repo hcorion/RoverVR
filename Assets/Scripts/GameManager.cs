@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
 					//Talk to the player.
 				}
 			}
-		} else if (mainSceneName == mainSceneName) {
+		} else if (mainSceneName == SceneManager.GetActiveScene().name) {
 			if (hasStartedGame == false) {
 				StartCoroutine (FirstState ());
 				hasStartedGame = true;
@@ -130,6 +130,10 @@ public class GameManager : MonoBehaviour
 				}
 			}
 		}
+        else
+        {
+            Debug.Log("The current scene name is: " + SceneManager.GetActiveScene().name);
+        }
 		if (hasWonGame) {
 			Application.Quit ();
 		}

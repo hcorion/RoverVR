@@ -20,7 +20,7 @@ public class rockDetector : MonoBehaviour {
 		}
 	}
 	IEnumerator lazyUpdate() {
-		Debug.Log("Entering lazyUpdate");
+		//Debug.Log("Entering lazyUpdate");
         yield return new WaitForSeconds(.5f);
 		List<GameObject> addedColliders = new List<GameObject>();
 		foreach(Collider col in Physics.OverlapSphere(transform.position, detectionRadius))
@@ -31,7 +31,7 @@ public class rockDetector : MonoBehaviour {
 			{
 				if (obj.GetComponent<ObjectProperties>() == null)
 				{
-					Debug.Log("ObjectProperties is equal to null");
+					//Debug.Log("ObjectProperties is equal to null");
 				}
 				else
 				{
@@ -41,7 +41,7 @@ public class rockDetector : MonoBehaviour {
 				///.enabled = true;
 				//obj.AddComponent<ObjectProperties>();
 				//obj.GetComponent<ObjectProperties>();
-				Debug.Log("We have the object " + obj.name + " in the sphere");
+				//Debug.Log("We have the object " + obj.name + " in the sphere");
 				//We've got a rock.
 				if (rocks.Contains(obj) == false)
 				{

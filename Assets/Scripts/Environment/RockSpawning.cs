@@ -32,7 +32,7 @@ public class RockSpawning : MonoBehaviour
 				StartCoroutine (waitForIt (rock));
 				ObjectProperties objectProperties = rock.GetComponent<ObjectProperties> ();
 				if (objectProperties == null) {
-					Debug.Log ("The rock " + rock.name + " Doesn't have objectProperties! I'll add it.");
+					//Debug.Log ("The rock " + rock.name + " Doesn't have objectProperties! I'll add it.");
 					objectProperties = rock.AddComponent<ObjectProperties> ();
 				}
 				float rockValues = maxRockPercentage + 30;
@@ -55,6 +55,6 @@ public class RockSpawning : MonoBehaviour
 	{
 		yield return new WaitForSeconds (.5f);
 		//rock.GetComponent<Rigidbody> ().detectCollisions = false;
-		rock.GetComponent<Rigidbody> ().Sleep ();
+		rock.GetComponent<Rigidbody> ().isKinematic  = true;
 	}
 }

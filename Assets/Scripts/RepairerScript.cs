@@ -41,7 +41,7 @@ public class RepairerScript : MonoBehaviour
 	void Start ()
 	{
 		if (rightController.GetComponent<NewtonVR.NVRHand> () == null) {
-			Debug.Log ("Error, the right Controller doesn't have NVRHand as a script");
+			//Debug.Log ("Error, the right Controller doesn't have NVRHand as a script");
 		}
 		//NewtonVR.NVRHand rightHand = rightController.GetComponent<NewtonVR.NVRHand>();
 		//rightHand = rightController.GetComponent<NewtonVR.NVRHand>();
@@ -57,13 +57,13 @@ public class RepairerScript : MonoBehaviour
 		lerpObjectToSnap ();
 		if (objIsSnapped == true) {
 			door.SetActive (false);
-			Debug.Log ("The left hand is currently interacting with: " + leftHand.CurrentlyInteracting);
-			Debug.Log ("The right hand is currently interacting with: " + rightHand.CurrentlyInteracting);
+			//Debug.Log ("The left hand is currently interacting with: " + leftHand.CurrentlyInteracting);
+			//Debug.Log ("The right hand is currently interacting with: " + rightHand.CurrentlyInteracting);
 			if (leftHand.CurrentlyInteracting == currentTool || rightHand.CurrentlyInteracting == currentTool) {
-				Debug.Log ("We've removed the tool.");
+				//Debug.Log ("We've removed the tool.");
 				//If we're picking up the tool again.
 				if (currentTool.GetComponent<Rigidbody> () == null) {
-					Debug.Log ("Hmm, this tool doesn't have a rigidbody.");
+					//Debug.Log ("Hmm, this tool doesn't have a rigidbody.");
 				}
 				currentTool.GetComponent<Rigidbody> ().isKinematic = false;
 				currentTool = null;
@@ -72,14 +72,14 @@ public class RepairerScript : MonoBehaviour
 				objToLerp = null;
 			}
 		} else {
-			Debug.Log ("Object is not snapped.");
+			//Debug.Log ("Object is not snapped.");
 			door.SetActive (true);
 			//currentTool.GetComponent<Rigidbody>().isKinematic = true;
 			////You need to add the removal of the elements from inside the 'furnace'
 		}
 		if (checkIfAdded) {
 			if (rightHand.IsInteracting != objStillInHand && leftHand.IsInteracting != objStillInHand) {
-				Debug.Log ("The user has let go of the object.");
+				//Debug.Log ("The user has let go of the object.");
 				checkIfAdded = false;
 				objToLerp = objStillInHand;
 				//oldLerpPos = objToLerp.transform;
@@ -92,14 +92,14 @@ public class RepairerScript : MonoBehaviour
 
 	public void ToolTriggerEntered (string tool, GameObject toolObj)
 	{
-		Debug.Log ("We made it to ToolTriggerEntered. The tool is: " + tool);
+		//Debug.Log ("We made it to ToolTriggerEntered. The tool is: " + tool);
 		if (currentTool != null) {
-			Debug.Log ("We already have a tool, " + currentTool + " that's being used.");
+			//Debug.Log ("We already have a tool, " + currentTool + " that's being used.");
 			return;
 		}
 		switch (tool) {
 		case "SelfieStick":
-			Debug.Log ("Selfie Stick has been added");
+			//Debug.Log ("Selfie Stick has been added");
 			toolIndex = 0;
 			snapObject (toolObj);
 			break;
@@ -112,11 +112,11 @@ public class RepairerScript : MonoBehaviour
 			break;
 		case "ChemCam":
 			toolIndex = 3;
-			Debug.Log ("The ChemCam has been added.");
+			//Debug.Log ("The ChemCam has been added.");
 			snapObject (toolObj);
 			break;
 		default:
-			Debug.Log ("The object " + tool + " is not supported for input.");
+			//Debug.Log ("The object " + tool + " is not supported for input.");
 			break;
 		}
 	}
@@ -148,34 +148,34 @@ public class RepairerScript : MonoBehaviour
 		1 20% Copper
 		*/
 		if (currentTool == null) {
-			Debug.Log ("CurrentTool is equal to null in repairTool");
+			//Debug.Log ("CurrentTool is equal to null in repairTool");
 			return;
 		}
 		int AluminumRepairValue = 0;
 		int CopperRepairValue = 0;
 		switch (toolIndex) {
 		case 0:
-			Debug.Log ("The Selfie Stick can't yet be repaired");
+			//Debug.Log ("The Selfie Stick can't yet be repaired");
 			AluminumRepairValue = 50;
 			CopperRepairValue = 20;
 			break;
 		case 1:
-			Debug.Log ("The Selfie Stick can't yet be repaired");
+			//Debug.Log ("The Selfie Stick can't yet be repaired");
 			AluminumRepairValue = 50;
 			CopperRepairValue = 20;
 			break;
 		case 3:
-			Debug.Log ("I'm going to repair the ChemCam.");
+			//Debug.Log ("I'm going to repair the ChemCam.");
 			AluminumRepairValue = 50;
 			CopperRepairValue = 20;
 			break;
 		case 23:
-			Debug.Log ("No tool is present, or it has been removed.");
+			//Debug.Log ("No tool is present, or it has been removed.");
 			AluminumRepairValue = 50;
 			CopperRepairValue = 20;
 			break;
 		default:
-			Debug.Log ("That tool isn't yet added to the RepairerScript");
+			//Debug.Log ("That tool isn't yet added to the RepairerScript");
 			AluminumRepairValue = 50;
 			CopperRepairValue = 20;
 			break;
@@ -190,13 +190,13 @@ public class RepairerScript : MonoBehaviour
 			} else if (name == "Copper") {
 				currentCopper = Mathf.RoundToInt (ingotProperties.GetValue () * 100);
 			} else {
-				Debug.Log ("Woops, RepairerScript doesn't recognize the material of type: " + name);
+				//Debug.Log ("Woops, RepairerScript doesn't recognize the material of type: " + name);
 			}
 		}
 		if (currentAluminium >= AluminumRepairValue) {
-			Debug.Log ("You have enough Aluminum");
+			//Debug.Log ("You have enough Aluminum");
 			if (currentCopper >= CopperRepairValue) {
-				Debug.Log ("You have enough copper");
+				//Debug.Log ("You have enough copper");
 				currentTool.transform.position = objectDropPoint.transform.position;
 				//int i = ingots.Count;
 				foreach (GameObject ingot in ingots) {
@@ -213,19 +213,19 @@ public class RepairerScript : MonoBehaviour
 				ButtonHasPushed = false;
 				objToLerp = null;
 			} else {
-				Debug.Log ("You do not have enough copper.");
+				//Debug.Log ("You do not have enough copper.");
 				ButtonHasPushed = false;
 			}
 		} else {
-			Debug.Log ("You do not have enough aluminum. You have " + currentAluminium + " and need " + AluminumRepairValue);
+			//Debug.Log ("You do not have enough aluminum. You have " + currentAluminium + " and need " + AluminumRepairValue);
 			ButtonHasPushed = false;
 		}
 	}
 
 	private void snapObject (GameObject obj)
 	{
-		Debug.Log ("The gameobject of snapObject is: " + obj + " and is called " + obj.name);
-		Debug.Log ("the right hand is currently interacting with " + rightHand.CurrentlyInteracting);
+		//Debug.Log ("The gameobject of snapObject is: " + obj + " and is called " + obj.name);
+		//Debug.Log ("the right hand is currently interacting with " + rightHand.CurrentlyInteracting);
 		if (leftHand.IsInteracting != obj && rightHand.IsInteracting != obj) {
 			objToLerp = obj;
 			//oldLerpPos = objToLerp.transform;
@@ -234,7 +234,7 @@ public class RepairerScript : MonoBehaviour
 			currentTool.GetComponent<Rigidbody> ().isKinematic = true;
 		} else {
 			//Possibly enter into the Update() function to continue checking if the object is being added.
-			Debug.Log ("The object " + obj.name + " is still in the users hand.");
+			//Debug.Log ("The object " + obj.name + " is still in the users hand.");
 			checkIfAdded = true;
 			objStillInHand = obj;
 		}
@@ -249,10 +249,10 @@ public class RepairerScript : MonoBehaviour
 			//If we haven't started the lerp yet.
 			oldLerpPos = objToLerp.transform;
 		} else if (currentLerpTime / lerpTime < 1) {
-			Debug.Log ("Currently Lerping");
+			//Debug.Log ("Currently Lerping");
 			//If we haven't reached our goal.
 			currentLerpTime += Time.deltaTime;
-			Debug.Log ("It is " + objToLerp);
+			//Debug.Log ("It is " + objToLerp);
 			objToLerp.transform.position = Vector3.Lerp (oldLerpPos.position, objectSnapPoint.position, currentLerpTime / lerpTime);
 		} else {
 			//If we have reached our goal and are waiting for new instructions.

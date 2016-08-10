@@ -11,7 +11,7 @@ public class RoverBackCollider : MonoBehaviour
 	{
 		canMoveBackwards = false;
 		time = 0;
-		Debug.Log("I can move forward!");
+		//Debug.Log("I can move forward!");
 	}
 
 	void Update()
