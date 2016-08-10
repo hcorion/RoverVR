@@ -130,10 +130,6 @@ public class GameManager : MonoBehaviour
 				}
 			}
 		}
-        else
-        {
-            Debug.Log("The current scene name is: " + SceneManager.GetActiveScene().name);
-        }
 		if (hasWonGame) {
 			Application.Quit ();
 		}

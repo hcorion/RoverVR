@@ -46,10 +46,11 @@ public class rockDetector : MonoBehaviour {
 				if (rocks.Contains(obj) == false)
 				{
 					addedColliders.Add(obj);
-					//If we haven't added that rock.
-					obj.GetComponent<Rigidbody>().WakeUp();
-					//obj.GetComponent<Rigidbody>().detectCollisions = true;
-				}
+                    //If we haven't added that rock.
+                    //obj.GetComponent<Rigidbody>().WakeUp();
+                    obj.GetComponent<Rigidbody>().isKinematic = false;
+                    //obj.GetComponent<Rigidbody>().detectCollisions = true;
+                }
 			}
 			
 			//if(obj.GetComponent<ObjectProperties>() != null)
