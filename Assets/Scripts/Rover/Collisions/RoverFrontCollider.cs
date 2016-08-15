@@ -21,7 +21,6 @@ public class RoverFrontCollider : MonoBehaviour
 		if (time > 0.4f)
 		{
 			canMoveForward = true;
-			Debug.Log("I can move forward!");
 		}
 	}
 }
