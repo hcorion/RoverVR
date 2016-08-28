@@ -52,8 +52,14 @@ public class GameManager : MonoBehaviour
 	private bool hasStartedSecondState = false;
 	private bool hasPickedUpChemCam = false;
 
+    //Used for triggering the audio.
 
-	void Awake ()
+    //Tells the user how to pick up the tools.
+    public AudioClip line2_4;
+    public AudioClip line3;
+    public AudioClip line4;
+
+    void Awake ()
 	{
 		DontDestroyOnLoad (transform.gameObject);
 		wonText.SetActive (false);
@@ -140,12 +146,9 @@ public class GameManager : MonoBehaviour
 		gameOver = true;
 	}
 
-	public AudioClip line3;
-	public AudioClip line4;
-
 	private IEnumerator FirstState ()
 	{
-		print ("First State");
+		//print ("First State");
 		AudioSource audio = GetComponent<AudioSource> ();
 		audio.Play ();
 		
@@ -156,7 +159,7 @@ public class GameManager : MonoBehaviour
 		We then give them text/speech guidence to pick up the tools
 		*/
 		stateIndex = 1;
-		yield return new WaitForSeconds (audio.clip.length);
+		yield return new WaitForSeconds (audio.clip.length + 3);
 		//Play sound
 		//Show text? Possibly?
 		//
@@ -165,13 +168,19 @@ public class GameManager : MonoBehaviour
 		//Drop tools.
 		newND = (GameObject)Object.Instantiate (neutronDetector, firstDropPoint.transform.position + new Vector3 (0, 0, 0.1f), Quaternion.identity);
 		newSS = (GameObject)Object.Instantiate (selfieStick, firstDropPoint.transform.position + new Vector3 (0, 0, -0.1f), Quaternion.identity);
-		audio.clip = line3;
+        yield return new WaitForSeconds(2);
+        //Tells the player how to pick up the tool
+        audio.clip = line2_4;
+        audio.Play();
+        yield return new WaitForSeconds(audio.clip.length + 0.5f);
+        //
+        audio.clip = line3;
 		audio.Play ();
-		yield return new WaitForSeconds (audio.clip.length);
+		yield return new WaitForSeconds (audio.clip.length + 2);
 		
 		audio.clip = line4;
 		audio.Play ();
-		yield return new WaitForSeconds (audio.clip.length);
+		yield return new WaitForSeconds (audio.clip.length + 5);
 		
 
 

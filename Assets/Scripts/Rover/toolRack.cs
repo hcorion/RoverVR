@@ -31,18 +31,35 @@ public class toolRack : MonoBehaviour
     {
         if (curObject != null)
         {
-            if (leftHand.CurrentlyInteracting == curObject || rightHand.CurrentlyInteracting == curObject)
+            if (leftHand.CurrentlyInteracting == null && rightHand.CurrentlyInteracting == null)
             {
-                curObject.GetComponent<Rigidbody>().isKinematic = false;
-                curObjectToolProps = null;
-                curObject = null;
-
+                //if (leftHand.CurrentlyInteracting == null)
+                lerpTool();
             }
             else
             {
-                lerpTool();
+                bool hasGrabbed = false;
+                if (leftHand.CurrentlyInteracting != null)
+                {
+                    if (leftHand.CurrentlyInteracting.gameObject == curObject)
+                        hasGrabbed = true;
+                }
+                if (rightHand.CurrentlyInteracting != null)
+                {
+                    if (rightHand.CurrentlyInteracting.gameObject == curObject)
+                        hasGrabbed = true;
+                }
+                if (hasGrabbed)
+                {
+                    curObject.GetComponent<Rigidbody>().isKinematic = false;
+                    curObjectToolProps = null;
+                    curObject = null;
+                }
+                else
+                {
+                    lerpTool();
+                }
             }
-
         }
     }
 
@@ -53,7 +70,27 @@ public class toolRack : MonoBehaviour
             GameObject newObj = other.transform.root.gameObject;
             if (newObj.GetComponent<ToolProperties>() != null)
             {
-                if (leftHand.CurrentlyInteracting != newObj && rightHand.CurrentlyInteracting != newObj)
+                bool itsGood = false;
+                //We have to use this complicated logic because unity doesn't like if leftHand.currentlyInteracting is equal to null
+                if (leftHand.CurrentlyInteracting != null)
+                {
+                    if (leftHand.CurrentlyInteracting.Rigidbody.gameObject != newObj)
+                        itsGood = true;
+                    else
+                        itsGood = false;
+                }
+                else
+                    itsGood = true;
+                if (rightHand.CurrentlyInteracting != null && itsGood == true)
+                {
+                    if (rightHand.CurrentlyInteracting.Rigidbody.gameObject != newObj)
+                        itsGood = true;
+                    else
+                        itsGood = false;
+                }
+                else if (itsGood != false)
+                    itsGood = true;
+                if (itsGood)
                 {
                     //Used to check if it is already in another tool Rack.
                     if (newObj.GetComponent<Rigidbody>().isKinematic == true)
@@ -101,17 +138,19 @@ public class toolRack : MonoBehaviour
             if (realLerpTime / maxLerpTime < 1)
             {
                 curObject.transform.position = Vector3.Lerp(initialLerpPos, toolLerpPoint.position + toolOffset, realLerpTime / maxLerpTime);
-                curObject.transform.rotation = Quaternion.Lerp(initialLerpRot, snapRotation, realLerpTime / maxLerpTime);
+                curObject.transform.localRotation = Quaternion.Lerp(initialLerpRot, snapRotation, realLerpTime / maxLerpTime);
             }
             else
             {
                 isLerpingTool = false;
+                realLerpTime = 0;
                 //curObject.transform.parent = transform.parent;
             }
         }
         else
         {
             curObject.transform.position = toolLerpPoint.position + toolOffset;
+            curObject.transform.localRotation = snapRotation;
         }
     }
 }

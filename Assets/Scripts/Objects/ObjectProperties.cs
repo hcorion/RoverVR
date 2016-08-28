@@ -113,22 +113,22 @@ public class ObjectProperties : MonoBehaviour
 			newRockName = "rock-d-01-f";
 		} else if (gameObject.name.StartsWith ("rock_d_02")) {
 			newRockName = "rock-d-02-f";
-			newRock = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-02-f"), transform.position, transform.rotation);
+			//newRock = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-02-f"), transform.position, transform.rotation);
 		} else if (gameObject.name.StartsWith ("rock_d_03")) {
 			newRockName = "rock-d-03-f";
-			newRock = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-03-f"), transform.position, transform.rotation);
+			//newRock = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-03-f"), transform.position, transform.rotation);
 		} else if (gameObject.name.StartsWith ("rock_d_05")) {
 			newRockName = "rock-d-05-f";
-			newRock = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-05-f"), transform.position, transform.rotation);
+			//newRock = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-05-f"), transform.position, transform.rotation);
 		} else if (gameObject.name.StartsWith ("rock_d_06")) {
 			newRockName = "rock-d-06-f";
-			newRock = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-06-f"), transform.position, transform.rotation);
+			//newRock = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock-d-06-f"), transform.position, transform.rotation);
 		} else if (gameObject.name.StartsWith ("Rock01")) {
 			newRockName = "rock01-f";
-			newRock = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock01-f"), transform.position, transform.rotation);
+			//newRock = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock01-f"), transform.position, transform.rotation);
 		} else if (gameObject.name.StartsWith ("Rock02")) {
 			newRockName = "rock02-f";
-			newRock = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock02-f"), transform.position, transform.rotation);
+			//newRock = (GameObject)Instantiate (Resources.Load ("Prefabs/Rocks/rock02-f"), transform.position, transform.rotation);
 		} else {
 			Debug.Log ("That object doesn't yet have a fancy breaking animation.");
 			return;

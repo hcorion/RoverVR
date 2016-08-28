@@ -41,7 +41,7 @@ namespace NewtonVR
 			damagecCanvas.SetActive (false);
 		}
 
-		void Update ()
+		new void Update ()
 		{
 			if (dmgUI.health > 0f) {
 				if (buttonPressed) {

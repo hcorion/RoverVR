@@ -12,9 +12,9 @@ namespace NewtonVR
 		public float wheelPrevAngle = 0f;
 		public bool wheelHeld = false;
 
-		protected virtual float DeltaMagic { get { return 2f; } }
+		//protected virtual float DeltaMagic { get { return 2f; } }
 
-		protected Transform InitialAttachPoint;
+		//protected Transform InitialAttachPoint;
 
 		// Use this for initialization
 		protected override void Awake ()

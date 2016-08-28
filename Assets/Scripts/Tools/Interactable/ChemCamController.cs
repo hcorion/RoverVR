@@ -19,7 +19,7 @@ namespace NewtonVR
 		public Material laserMat;
 		public GameObject lightGameObject;
 		//For the manipulation of the color of light.
-		public Light light;
+		new public Light light;
 		private Color32 lightColourToLerp;
 		private Color32 previousColour;
 		private float currentTime;
@@ -55,7 +55,7 @@ namespace NewtonVR
 			dmgUI = GetComponent<DamageUI> ();
 			canvas.SetActive (false);
 
-			Debug.Log ("The sfx gameobject is equal to: " + sfx);
+			//Debug.Log ("The sfx gameobject is equal to: " + sfx);
 			sfx.Play ();
 		}
 
@@ -91,9 +91,9 @@ namespace NewtonVR
 					ObjectProperties objectProperties = hit.transform.GetComponent<ObjectProperties> ();
 					if (objectProperties != null) {
 						rockLight = hit.transform.GetComponentInChildren<Light> ();
-						Debug.Log(rockLight);
+						//Debug.Log(rockLight);
 						string rockMaterial = objectProperties.getSimpleMaterial ();
-						Debug.Log ("The current material is:" + rockMaterial);
+                        //Debug.Log ("The current material is:" + rockMaterial);
 						if (lastRock == hit.transform.gameObject) {
 							//If we're still on the same rock.
 							if (rockbreakage != 0.0f) {
@@ -105,15 +105,15 @@ namespace NewtonVR
 									GameObject newLight = (GameObject)GameObject.Instantiate(rockLightPrefab, hit.transform.position, Quaternion.identity);
 									newLight.transform.parent = hit.transform.root;
 									rockLight = newLight.GetComponent<Light>();
-									print ("Object does not contain a point light");
+									//print ("Object does not contain a point light");
 								}
 
 								if (breakTime >= rockbreakage) {
-									Debug.Log ("Rock has been broken");
+									//Debug.Log ("Rock has been broken");
 									objectProperties.breakRock ();
 								}
 							} else {
-								Debug.Log ("Rock is unbreakable");
+								//Debug.Log ("Rock is unbreakable");
 							}
                                 
 						} else {
@@ -146,11 +146,11 @@ namespace NewtonVR
 							}
 						}
 					} else {
-						Debug.Log ("This object has no ObjectProperties script.");
+						//Debug.Log ("This object has no ObjectProperties script.");
 						lastRock = null;
 					}
 				} else {
-					Debug.Log ("The ChemCam didn't hit anything. Move closer or something isn't working.");
+					//Debug.Log ("The ChemCam didn't hit anything. Move closer or something isn't working.");
 					lightColourToLerp = new Color32 (255, 0, 0, 255);
 				}
 			} else if (dmgUI.health <= 0f) {
@@ -181,8 +181,8 @@ namespace NewtonVR
 		private void lerpColor ()
 		{
 			//Debug.Log("TEST");
-			Debug.Log (light);
-			Debug.Log (lightColourToLerp);
+			//Debug.Log (light);
+			//Debug.Log (lightColourToLerp);
 			const float lerpTime = 2;
 			if (currentTime / lerpTime < 1.0) {
 				//If we haven't acheived the goal.
@@ -202,7 +202,7 @@ namespace NewtonVR
 			const float lerpTime = 3;
 			if (doLerpSound == true && currentLerpTime / lerpTime < 1.0f) {
 				//If we're lerping.
-				Debug.Log ("Lerping Sound! The sfx gameobject is " + sfx);
+				//Debug.Log ("Lerping Sound! The sfx gameobject is " + sfx);
 				currentLerpTime += Time.deltaTime;
 				sfx.volume = Mathf.Lerp (0f, 1f, currentLerpTime / lerpTime);
 			} else if (currentLerpTime / lerpTime > 1.0f) {

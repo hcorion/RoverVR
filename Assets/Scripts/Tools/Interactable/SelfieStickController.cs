@@ -75,8 +75,8 @@ namespace NewtonVR
 		public override void UseButtonDown ()
 		{
 			if (!isLoading && dmgUI.health > 0f) {
-				print ("Selfie Stick Condition: " + dmgUI.health);
-				print (isLife ());
+				//print ("Selfie Stick Condition: " + dmgUI.health);
+				isLife ();
 			}
 			
 		}
