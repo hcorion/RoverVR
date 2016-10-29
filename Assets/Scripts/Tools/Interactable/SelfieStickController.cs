@@ -88,7 +88,7 @@ namespace NewtonVR
 			Ray r = new Ray (selfieCamera.position, fwd);
 
 			if (Physics.Raycast (r, out hit, scanDistance)) {
-				dmgUI.health -= healthLossRate;
+				//dmgUI.health -= healthLossRate;
 
 				Debug.DrawRay (selfieCamera.position, fwd, Color.yellow, 1, false);
 				WaterSource waterSrc = hit.collider.GetComponent<WaterSource> ();

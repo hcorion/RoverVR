@@ -22,7 +22,7 @@ public class GameStart : MonoBehaviour
 	{
 		if (other.CompareTag ("Blocks")) {
 			new WaitForSeconds (1);
-			SceneManager.LoadSceneAsync ("Tutorial", LoadSceneMode.Single);
+			SceneManager.LoadSceneAsync ("Tutorial-zion", LoadSceneMode.Single);
 		}
 
 

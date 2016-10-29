@@ -15,7 +15,7 @@ public class DamageUI : MonoBehaviour
 		slider.maxValue = maxHealth;
 		slider.minValue = 0f;
 
-		health = startingHealth;
+		//health = startingHealth;
 
 		slider.value = health;
 	}
@@ -27,7 +27,7 @@ public class DamageUI : MonoBehaviour
 		}
 
 		if (health > slider.maxValue) {
-			health = slider.maxValue;
+			//health = slider.maxValue;
 		}
 
 		slider.value = health;

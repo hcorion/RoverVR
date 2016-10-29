@@ -95,7 +95,6 @@ public class ObjectProperties : MonoBehaviour
 	{
 		int i = 0;
 		foreach (string s in rockContent) {
-			Debug.Log (rockBreakage [i]);
 			if (s == getSimpleMaterial ()) {
 				return rockBreakage [i];
 			}
@@ -139,6 +138,39 @@ public class ObjectProperties : MonoBehaviour
 		newRockProps.rockPercentage = rockPercentage;
 		newRockProps.isRockBreak = true;
 		isBroken = true;
+        /*foreach (Transform child in newRock.transform)
+        {
+            ObjectProperties childObjectProps = child.transform.GetComponent<ObjectProperties>();
+            if (child.transform.GetComponent<ObjectProperties>() != null)
+            {
+                childObjectProps.rockPercentage = newRockProps.rockPercentage;
+                childObjectProps.isRockBreak = true;
+            }
+            else
+            {
+                childObjectProps = child.gameObject.AddComponent<ObjectProperties>();
+                childObjectProps.rockPercentage = newRockProps.rockPercentage;
+                childObjectProps.isRockBreak = true;
+            }
+            child.parent = null;
+        }*/
+        for (int p = 0; p < newRock.transform.childCount; p++)
+        {
+            GameObject child = newRock.transform.GetChild(p).gameObject;
+            ObjectProperties childObjectProps = child.transform.GetComponent<ObjectProperties>();
+            if (child.transform.GetComponent<ObjectProperties>() != null)
+            {
+                childObjectProps.rockPercentage = newRockProps.rockPercentage;
+                childObjectProps.isRockBreak = true;
+            }
+            else
+            {
+                childObjectProps = child.gameObject.AddComponent<ObjectProperties>();
+                childObjectProps.rockPercentage = newRockProps.rockPercentage;
+                childObjectProps.isRockBreak = true;
+            }
+        }
+        newRock.transform.DetachChildren();
 		GameObject.Destroy(gameObject);
 	}
 }

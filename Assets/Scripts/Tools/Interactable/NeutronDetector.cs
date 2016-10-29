@@ -43,10 +43,11 @@ namespace NewtonVR
 
 		new void Update ()
 		{
-			if (dmgUI.health > 0f) {
+            base.Update();
+			if (1 > 0f) {
 				if (buttonPressed) {
 					//To make the battery go down by time, not framerate.
-					dmgUI.health -= Time.deltaTime * healthLossRate;
+					//dmgUI.health -= Time.deltaTime * healthLossRate;
 					content.text = GetMoistureContent ();
 				}
 
@@ -55,14 +56,14 @@ namespace NewtonVR
 				}
 
 				if (AttachedHand != null) {
-					damagecCanvas.SetActive (true);
+					//damagecCanvas.SetActive (true);
 				}
 
 				if (AttachedHand == null) {
 					buttonPressed = false;
 					lineRenderer.enabled = false;
 
-					damagecCanvas.SetActive (false);
+					//damagecCanvas.SetActive (false);
 				}
 			} else {
 				lineRenderer.enabled = false;

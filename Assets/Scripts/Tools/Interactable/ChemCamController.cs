@@ -86,7 +86,8 @@ namespace NewtonVR
 
 				if (raycast && hit.distance <= 3) {
 					//Dealing damage
-					dmgUI.health -= Time.deltaTime * healthLossRate;
+                    //Commenting this out because when you build the game the dmgUI is set to 0.
+					//dmgUI.health -= Time.deltaTime * healthLossRate;
 
 					ObjectProperties objectProperties = hit.transform.GetComponent<ObjectProperties> ();
 					if (objectProperties != null) {

@@ -5402,6 +5402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6f184c7a9c9ed48ae8fe4b699f6fff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxTime: 0
 --- !u!114 &114000011556977742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5809,6 +5810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0b1fae691b8cf4191ba74d4a6bc03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxTime: 0
 --- !u!114 &114000013236696826
 MonoBehaviour:
   m_ObjectHideFlags: 1

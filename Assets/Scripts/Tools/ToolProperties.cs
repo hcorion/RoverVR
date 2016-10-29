@@ -23,7 +23,7 @@ public class ToolProperties : MonoBehaviour {
 				gameObject.GetComponent<NewtonVR.NeutronDetector>().dmgUI.health = gameObject.GetComponent<NewtonVR.NeutronDetector>().dmgUI.maxHealth;
                 break;
             case "Binoculars":
-				Debug.Log("Wait, what? You can't repair the binoculars.");
+				Debug.Log("Wait, what? You can't repair the binoculars... Yet :P");
                 break;
             case "ChemCam":
 				gameObject.GetComponent<NewtonVR.ChemCamController>().dmgUI.health = gameObject.GetComponent<NewtonVR.ChemCamController>().dmgUI.maxHealth;

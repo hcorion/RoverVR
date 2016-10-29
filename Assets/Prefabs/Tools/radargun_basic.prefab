@@ -322,7 +322,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113772}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 118.3, y: 1.14, z: 338.3}
+  m_LocalPosition: {x: 118.69978, y: 0.07886416, z: 335.32147}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_Children:
@@ -808,7 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9cdb53283bf439478c005db12e4654d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000000
   startingHealth: 100
   health: 100
   slider: {fileID: 11424038}
@@ -853,7 +853,7 @@ MonoBehaviour:
   firePoint: {fileID: 411248}
   lineRenderer: {fileID: 12059788}
   laserWidth: 0.01
-  dmgUI: {fileID: 0}
+  dmgUI: {fileID: 11448862}
   damagecCanvas: {fileID: 142406}
   healthLossRate: 2
 --- !u!114 &11486052
@@ -988,7 +988,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142406}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_RenderMode: 2
   m_Camera: {fileID: 0}
